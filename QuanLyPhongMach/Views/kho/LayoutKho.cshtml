@@ -1,0 +1,165 @@
+@model QuanLyPhongMach.Models.Printing.Kho.KhoNhapPrintModel
+@{ Layout = null; }
+<style type="text/css">
+    .flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+    }
+
+    .title {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+    }
+
+        .title > div {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+        }
+
+    .border {
+        border: 1px solid;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    td {
+        padding: 3px;
+        font-size: 15px;
+    }
+
+    .row-info {
+        margin-bottom: 5px;
+        font-size: 17px;
+    }
+
+    th {
+        font-size: 15px;
+        font-weight: 600;
+        text-align: center;
+        background-color: whitesmoke;
+    }
+
+    .card {
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+
+        .card.mb-1 > div {
+            margin-bottom: 3px;
+        }
+
+    p {
+        margin: 0;
+    }
+
+        p > b {
+            padding: 3px 5px 3px 5px;
+        }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-end {
+        text-align: end;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .w-75 {
+        width: 75%;
+    }
+
+    .w-70 {
+        width: 70%;
+    }
+
+    .w-65 {
+        width: 65%;
+    }
+
+    .w-60 {
+        width: 60%;
+    }
+
+    .w-55 {
+        width: 55%;
+    }
+
+    .w-50 {
+        width: 50%;
+    }
+
+    .w-45 {
+        width: 45%;
+    }
+
+    .w-40 {
+        width: 40%;
+    }
+
+    .w-35 {
+        width: 35%;
+    }
+
+    .w-34 {
+        width: 34%;
+    }
+
+    .w-33 {
+        width: 33%;
+    }
+
+    .w-30 {
+        width: 30%;
+    }
+
+    .w-25 {
+        width: 25%;
+    }
+
+    .w-20 {
+        width: 20%;
+    }
+
+    .mb-0 {
+        margin: 0;
+    }
+    header{
+        font-family: Sans-serif;
+        word-spacing: 0px;
+        color: #1d60b0;
+        font-size: 14px;
+        padding-bottom: 5px;
+        border-bottom: #1d60b0 1px solid;
+    }
+
+    .p-1 {
+        padding: 0.25rem !important;
+    }
+    .text-nowrap{
+        white-space: nowrap;
+    }
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid; }
+</style>
+<header class="flex" style="-webkit-box-align:center;align-items:center;">
+    @if (!string.IsNullOrWhiteSpace(Model.LogoDataUri))
+    {
+        <div style="width:70px;margin-right:10px;"><img src="@Model.LogoDataUri" style="width:65px;max-height:65px;" alt="" /></div>
+    }
+    <div>
+        <div style="font-weight:600;text-transform:uppercase;">@Model.CoSo.TenCskcb</div>
+        <div>@Model.CoSo.DiaChiCskcb</div>
+        <div>@Model.CoSo.DienThoaiCskcb &nbsp; @Model.EmailCskcb</div>
+    </div>
+</header>
+@RenderBody()

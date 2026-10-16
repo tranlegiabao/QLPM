@@ -1,0 +1,137 @@
+@{
+    Layout = null;
+    ViewData["Title"] = "Đăng nhập";
+    var returnUrl = ViewBag.ReturnUrl as string ?? "/";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Đăng nhập - Quản Lý Phòng Mạch</title>
+    <link rel="icon" type="image/svg+xml" href="~/static/logo-mark.svg" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="bg-light">
+    <main class="container min-vh-100 d-flex align-items-center justify-content-center py-4">
+        <div class="card shadow-sm border-0" style="width:100%;max-width:420px;">
+            <div class="card-body p-4">
+                <div class="text-center mb-4">
+                    <img class="sixos-login-logo mb-3" src="~/static/logo12.svg" alt="SixOs" />
+                    <h4 class="fw-bold mb-1">Quản Lý Phòng Mạch</h4>
+                    <div class="text-muted small">Đăng nhập hệ thống</div>
+                </div>
+
+                <form id="qlpm-login-form" method="post" autocomplete="on">
+                <input type="hidden" id="return_url" value="@returnUrl" />
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold" for="ten_dang_nhap">Tên đăng nhập</label>
+                    <input type="text" class="form-control" id="ten_dang_nhap" name="username" autocomplete="username" autofocus />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold" for="mat_khau">Mật khẩu</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="mat_khau" name="password" autocomplete="current-password" />
+                        <button type="button" class="btn btn-outline-secondary" id="btn_hien_mat_khau" tabindex="-1" title="Hiện/ẩn mật khẩu">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="ghi_nho" name="remember_me" />
+                    <label class="form-check-label" for="ghi_nho">Ghi nhớ đăng nhập</label>
+                </div>
+
+                <button type="submit" id="btn_dang_nhap" class="btn btn-primary w-100 fw-semibold">
+                    <i class="bi bi-box-arrow-in-right me-1"></i> Đăng nhập
+                </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div class="toast-container position-fixed top-0 end-0 p-3" id="toast-container"></div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/common/toast.js" asp-append-version="true"></script>
+    <script>
+        (() => {
+            const tenDangNhap = document.getElementById('ten_dang_nhap');
+            const matKhau = document.getElementById('mat_khau');
+            const btnDangNhap = document.getElementById('btn_dang_nhap');
+            const btnHienMatKhau = document.getElementById('btn_hien_mat_khau');
+            const loginForm = document.getElementById('qlpm-login-form');
+            const ghiNho = document.getElementById('ghi_nho');
+            const savedUsernameKey = 'qlpm_remember_username';
+
+            // Chỉ lưu tên tài khoản. Mật khẩu do trình quản lý mật khẩu của trình duyệt xử lý.
+            try {
+                const savedUsername = localStorage.getItem(savedUsernameKey);
+                if (savedUsername && !tenDangNhap.value) {
+                    tenDangNhap.value = savedUsername;
+                    ghiNho.checked = true;
+                }
+            } catch (_) {
+                // Trình duyệt có thể chặn localStorage; đăng nhập vẫn hoạt động bình thường.
+            }
+
+            btnHienMatKhau?.addEventListener('click', () => {
+                const hien = matKhau.type === 'password';
+                matKhau.type = hien ? 'text' : 'password';
+                btnHienMatKhau.innerHTML = hien ? '<i class="bi bi-eye-slash"></i>' : '<i class="bi bi-eye"></i>';
+            });
+
+            async function dangNhap() {
+                if (btnDangNhap.disabled) return;
+                const user = tenDangNhap.value.trim();
+                const pass = matKhau.value;
+                if (!user || !pass) {
+                    showToast('warning', 'Nhập tên đăng nhập và mật khẩu.');
+                    return;
+                }
+
+                btnDangNhap.disabled = true;
+                try {
+                    const response = await fetch('/api/xac_thuc/dang_nhap', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            ten_dang_nhap: user,
+                            mat_khau: pass,
+                            ghi_nho: ghiNho.checked,
+                            return_url: document.getElementById('return_url').value
+                        })
+                    });
+                    const res = await response.json();
+                    if (res.status !== 200) {
+                        showToast('error', res.message || 'Không đăng nhập được.');
+                        return;
+                    }
+                    try {
+                        if (ghiNho.checked) localStorage.setItem(savedUsernameKey, user);
+                        else localStorage.removeItem(savedUsernameKey);
+                    } catch (_) {
+                        // Không ảnh hưởng cookie đăng nhập được cấp từ server.
+                    }
+                    if (res.canh_bao) showToast('warning', 'Đăng nhập được, nhưng chưa cập nhật danh mục.');
+                    window.location.href = res.data?.return_url || '/';
+                } catch (err) {
+                    showToast('error', 'Không thể kết nối máy chủ.');
+                } finally {
+                    btnDangNhap.disabled = false;
+                }
+            }
+
+            loginForm?.addEventListener('submit', e => {
+                e.preventDefault();
+                dangNhap();
+            });
+        })();
+    </script>
+</body>
+</html>

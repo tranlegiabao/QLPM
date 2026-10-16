@@ -1,0 +1,271 @@
+@{
+    ViewData["Title"] = "Quản lý kho";
+    var coQuyenNhap = ViewBag.CoQuyenNhap as bool? ?? false;
+    var tab = ViewBag.KhoTab as string ?? "ton-kho";
+    var coQuyenHoan = ViewBag.CoQuyenHoan as bool? ?? false;
+    var coQuyenXuat = ViewBag.CoQuyenXuat as bool? ?? false;
+}
+
+<section class="container-fluid px-0 pb-0 kho-workspace" id="kho-workspace" data-kho-mode="quan-ly" data-initial-tab="@ViewBag.KhoTab"
+         data-can-import="@(coQuyenNhap ? "1" : "0")"
+         data-can-return="@(coQuyenHoan ? "1" : "0")" data-can-edit-supplier="@(User.CoQuyen("kho", "Sua") ? "1" : "0")" data-can-export="@(coQuyenXuat ? "1" : "0")">
+    <div class="card mb-2" data-kho-management-tabs>
+        <div class="card-body py-1 px-3 d-flex flex-wrap align-items-center gap-2">
+            <span class="small fw-semibold text-muted me-1">Quản lý kho:</span>
+            <div class="nav nav-pills nav-sm kho-main-tabs kho-sub-tabs" role="tablist" aria-label="Chức năng quản lý kho">
+                <button type="button" class="nav-link @(tab == "ton-kho" ? "active" : "")" data-kho-tab="ton-kho">Tồn kho</button>
+                <button type="button" class="nav-link @(tab == "nhap-kho" ? "active" : "")" data-kho-tab="nhap-kho">Nhập kho</button>
+                <button type="button" class="nav-link @(tab == "dieu-chinh" ? "active" : "")" data-kho-tab="dieu-chinh">Điều chỉnh / hủy thuốc</button>
+                <button type="button" class="nav-link @(tab == "phan-nhom" ? "active" : "")" data-kho-tab="phan-nhom">Phân nhóm thuốc</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="kho-tab-panel @(tab == "ton-kho" ? "" : "d-none")" data-kho-panel="ton-kho">
+        <div class="card h-100">
+            <div class="card-header py-2 d-flex flex-wrap align-items-center gap-2">
+                <strong>Tồn kho</strong>
+                <div class="input-group input-group-sm kho-search-inline">
+                    <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                    <input type="search" class="form-control" id="kho-ton-search" placeholder="Mã hoặc tên thuốc..." />
+                </div>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="kho-ton-refresh"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+            <div class="table-responsive kho-main-table-scroll" id="kho-ton-scroll">
+                <table class="table table-sm table-bordered align-middle mb-0">
+                    <thead class="table-light sticky-top">
+                        <tr>
+                            <th class="text-center" style="width:48px">TT</th>
+                            <th style="width:110px">Mã thuốc</th>
+                            <th>Tên thuốc</th>
+                            <th style="width:90px">ĐVT</th>
+                            <th class="text-end" style="width:100px">Vật lý</th>
+                            <th class="text-end" style="width:110px">Hết hạn/khóa</th>
+                            <th class="text-end" style="width:100px">Khả dụng</th>
+                            <th class="text-center" style="width:120px">HSD gần nhất</th>
+                            <th class="text-center" style="width:80px">Số lô</th>
+                            <th class="text-end" style="width:120px">Giá bán</th>
+                        </tr>
+                    </thead>
+                    <tbody id="kho-ton-body"><tr><td colspan="10" class="text-center text-muted py-4">Đang tải...</td></tr></tbody>
+                </table>
+            </div>
+            <div class="d-flex align-items-center border-top">
+                <span class="small text-muted px-2" id="kho-ton-count"></span>
+                <div class="qlpm-pagination-bar flex-grow-1" id="kho-ton-pagination"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="kho-tab-panel @(tab == "nhap-kho" ? "" : "d-none")" data-kho-panel="nhap-kho">
+        <div class="card h-100">
+            <div class="card-header py-2 d-flex flex-wrap align-items-center gap-2">
+                <strong>Phiếu nhập kho</strong>
+            </div>
+            <div class="p-3 border-bottom">
+                <div class="row g-2 align-items-end">
+                    <div class="col-lg-5">
+                        <label class="form-label small mb-1">Thuốc</label>
+                        <select id="kho-nhap-thuoc" class="form-select form-select-sm"></select>
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label small mb-1" for="kho-nhap-so-hd">Số hóa đơn</label>
+                        <input type="text" class="form-control form-control-sm" id="kho-nhap-so-hd" maxlength="100" />
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label small mb-1" for="kho-nhap-ghi-chu">Ghi chú</label>
+                        <input type="text" class="form-control form-control-sm" id="kho-nhap-ghi-chu" maxlength="500" />
+                    </div>
+                    <div class="col-lg-1 d-grid">
+                        <button type="button" class="btn btn-outline-primary btn-sm" id="kho-nhap-add" disabled="@(!coQuyenNhap)">
+                            <i class="bi bi-plus-lg"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="row g-2 align-items-end mt-1">
+                    <div class="col-lg-5">
+                        <label class="form-label small mb-1" for="kho-nhap-ncc">Nhà cung cấp</label>
+                        <div class="input-group input-group-sm">
+                            <select id="kho-nhap-ncc" class="form-select"><option value="">-- Chọn nhà cung cấp --</option></select>
+                            @if (coQuyenNhap) { <button type="button" class="btn btn-outline-secondary" id="kho-nhap-ncc-add" title="Mở danh mục để thêm nhà cung cấp"><i class="bi bi-plus-lg"></i></button> }
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label small mb-1" for="kho-nhap-ngay-hd">Ngày hóa đơn</label>
+                        <input type="text" class="form-control form-control-sm" id="kho-nhap-ngay-hd"
+                               placeholder="dd-MM-yyyy" inputmode="numeric" autocomplete="off" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive kho-main-table-scroll">
+                <table class="table table-sm table-bordered align-middle mb-0">
+                    <thead class="table-light sticky-top">
+                        <tr>
+                            <th class="text-center" style="width:48px">TT</th>
+                            <th>Thuốc</th>
+                            <th style="width:90px">ĐVT</th>
+                            <th style="width:130px">Số lô</th>
+                            <th style="width:125px">Hạn dùng</th>
+                            <th style="width:110px" class="text-end">SL</th>
+                            <th style="width:130px" class="text-end">Giá nhập</th>
+                            <th style="width:140px" class="text-end">Thành tiền</th>
+                            <th style="width:48px"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="kho-nhap-body">
+                        <tr class="kho-empty-row"><td colspan="9" class="text-center text-muted py-4">Chưa có thuốc trong phiếu nhập.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="border-top p-3 d-flex flex-wrap align-items-center gap-3">
+                <div class="ms-auto fs-5">Tổng: <strong id="kho-nhap-total">0 đ</strong></div>
+                @if (coQuyenNhap)
+                {
+                    <button type="button" class="btn btn-primary" id="kho-nhap-save">
+                        <i class="bi bi-box-arrow-in-down me-1"></i>Nhập kho
+                    </button>
+                }
+            </div>
+            <div class="border-top">
+                <div class="px-3 py-2 d-flex align-items-center"><strong>Lịch sử phiếu nhập</strong><button type="button" class="btn btn-sm btn-outline-secondary ms-auto" id="kho-nhap-history-refresh"><i class="bi bi-arrow-clockwise"></i></button></div>
+                <div class="table-responsive" style="max-height:260px">
+                    <table class="table table-sm table-bordered align-middle mb-0">
+                        <thead class="table-light sticky-top"><tr><th>Số phiếu</th><th>Ngày nhập</th><th>Nhà cung cấp</th><th>Hóa đơn</th><th class="text-end">Tổng tiền</th><th>Trạng thái</th><th style="width:185px">Thao tác</th></tr></thead>
+                        <tbody id="kho-nhap-history"><tr><td colspan="7" class="text-center text-muted">Đang tải...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="kho-tab-panel @(tab == "dieu-chinh" ? "" : "d-none")" data-kho-panel="dieu-chinh">
+        <div class="card h-100">
+            
+            <div class="p-3 border-bottom">
+                <div class="row g-2 align-items-end">
+                    <div class="col-lg-9">
+                        <label class="form-label small mb-1" for="kho-dc-thuoc">Thuốc</label>
+                        <select id="kho-dc-thuoc" class="form-select form-select-sm"></select>
+                    </div>
+                    <div class="col-lg-2">
+                        <label class="form-label small mb-1" for="kho-dc-loai">Loại chứng từ</label>
+                        <select id="kho-dc-loai" class="form-select form-select-sm" disabled="@(!coQuyenHoan)">
+                            <option value="DIEU_CHINH">Điều chỉnh tăng/giảm</option>
+                            <option value="HUY_THUOC">Hủy thuốc</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-1 d-grid">
+                        <button type="button" class="btn btn-outline-secondary btn-sm" id="kho-dc-refresh" title="Tải lại lô thuốc">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="table-responsive kho-main-table-scroll">
+                <table class="table table-sm table-bordered align-middle mb-0">
+                    <thead class="table-light sticky-top">
+                        <tr>
+                            <th class="text-center" style="width:48px">TT</th>
+                            <th>Số lô</th>
+                            <th class="text-center" style="width:125px">Hạn dùng</th>
+                            <th class="text-end" style="width:120px">Tồn vật lý</th>
+                            <th class="text-end" style="width:120px">Khả dụng</th>
+                            <th class="text-center" style="width:110px">Trạng thái</th>
+                            <th class="text-end" style="width:180px">Số lượng thay đổi / hủy</th>
+                        </tr>
+                    </thead>
+                    <tbody id="kho-dc-body"><tr><td colspan="7" class="text-center text-muted py-4">Chọn thuốc để xem các lô.</td></tr></tbody>
+                </table>
+            </div>
+            @if (coQuyenHoan)
+            {
+                <div class="border-top p-3 text-end">
+                    <button type="button" class="btn btn-danger" id="kho-dc-save">
+                        <i class="bi bi-file-earmark-check me-1"></i>Lập chứng từ
+                    </button>
+                </div>
+            }
+            <div class="border-top">
+                <div class="px-3 py-2 d-flex align-items-center">
+                    <strong>Lịch sử điều chỉnh / hủy thuốc</strong>
+                    <button type="button" class="btn btn-sm btn-outline-secondary ms-auto" id="kho-dc-history-refresh"><i class="bi bi-arrow-clockwise"></i></button>
+                </div>
+                <div class="table-responsive" style="max-height:260px">
+                    <table class="table table-sm table-bordered align-middle mb-0">
+                        <thead class="table-light sticky-top"><tr><th>Số phiếu</th><th>Ngày giờ</th><th>Loại</th><th>Người lập</th><th>Lý do</th><th class="text-end">Số dòng</th><th class="text-end">Tổng thay đổi</th></tr></thead>
+                        <tbody id="kho-dc-history"><tr><td colspan="7" class="text-center text-muted">Đang tải...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="kho-tab-panel @(tab == "phan-nhom" ? "" : "d-none")" data-kho-panel="phan-nhom">
+        <section class="admin-workspace p-0" id="kho-nhom-thuoc-root">
+            <div class="card h-100 kho-admin-list-card">
+                <div class="card-header py-2 d-flex justify-content-between align-items-center gap-2">
+                    <span class="fw-bold"><i class="bi bi-list-ul me-1"></i>Danh sách thuốc</span>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="kho-thuoc-refresh" title="Tải lại"><i class="bi bi-arrow-clockwise"></i></button>
+                </div>
+
+                <div class="p-2 border-bottom d-flex flex-wrap align-items-center gap-2">
+                    <div class="input-group input-group-sm kho-search-group">
+                        <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                        <input type="search" class="form-control" id="kho-thuoc-search" placeholder="Tìm mã hoặc tên thuốc..." />
+                        <button type="button" class="btn btn-outline-primary" id="kho-thuoc-filter">Tìm</button>
+                    </div>
+                    <span class="small text-muted ms-auto" id="kho-thuoc-count"></span>
+                </div>
+                <div class="kho-type-filter-bar px-2 py-2 border-bottom d-flex flex-wrap align-items-center gap-3">
+                    <span class="small fw-semibold text-muted">Lọc:</span>
+                    <label class="form-check form-check-inline mb-0"><input class="form-check-input" type="checkbox" id="kho-filter-all" checked /><span class="form-check-label">Tất cả</span></label>
+                    <label class="form-check form-check-inline mb-0"><input class="form-check-input kho-filter-type" type="checkbox" value="c" checked /><span class="form-check-label">Cơ bản (C)</span></label>
+                    <label class="form-check form-check-inline mb-0"><input class="form-check-input kho-filter-type" type="checkbox" value="n" checked /><span class="form-check-label">Gây nghiện (N)</span></label>
+                    <label class="form-check form-check-inline mb-0"><input class="form-check-input kho-filter-type" type="checkbox" value="h" checked /><span class="form-check-label">Hướng thần / tiền chất (H)</span></label>
+                    <label class="form-check form-check-inline mb-0"><input class="form-check-input kho-filter-type" type="checkbox" value="unassigned" checked /><span class="form-check-label">Chưa phân nhóm</span></label>
+                </div>
+                <div class="table-responsive" id="kho-thuoc-table-container">
+                    <table class="table table-sm table-bordered align-middle mb-0 ht-sticky-table" id="kho-thuoc-table">
+                        <thead class="table-light sticky-top">
+                            <tr>
+                                <th class="text-center kho-col-stt">STT</th>
+                                <th class="kho-col-code">Mã thuốc</th>
+                                <th>Tên thuốc</th>
+                                <th class="text-center kho-col-type" title="Đơn thuốc cơ bản">C</th>
+                                <th class="text-center kho-col-type" title="Đơn thuốc gây nghiện">N</th>
+                                <th class="text-center kho-col-type" title="Đơn thuốc hướng tâm thần và thuốc tiền chất">H</th>
+                                <th class="text-center" style="width:64px;">Tùy chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody id="kho-thuoc-tbody"><tr><td colspan="7" class="text-center text-muted py-4">Đang tải danh mục...</td></tr></tbody>
+                    </table>
+                </div>
+                <div class="qlpm-pagination-bar" id="kho-thuoc-pagination"></div>
+            </div>
+        </section>
+    </div>
+      <div class="modal fade" id="kho-nhap-huy-modal" tabindex="-1" aria-labelledby="kho-nhap-huy-modal-title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="kho-nhap-huy-modal-title">Hủy phiếu nhập kho</h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-0">Bạn có muốn hủy phiếu nhập kho này không?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Bỏ qua</button>
+                    <button type="button" class="btn btn-danger" id="kho-nhap-huy-submit">Xác nhận hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script src="~/js/kho/kho.js" asp-append-version="true"></script>
+<script src="~/js/kho/nhom-thuoc.js" asp-append-version="true"></script>

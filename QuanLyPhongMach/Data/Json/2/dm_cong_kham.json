@@ -1,0 +1,100 @@
+﻿[
+  {
+    "id": 8,
+    "ma": "KB008",
+    "ten": "Khám Da Liễu",
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00
+  },
+  {
+    "id": 6,
+    "ma": "KB006",
+    "ten": "Khám Mắt",
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00
+  },
+  {
+    "id": 526,
+    "ma": "KB014",
+    "ten": "Khám Mắt CK2",
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00
+  },
+  {
+    "id": 2,
+    "ma": "KB002",
+    "ten": "Khám Ngoại tổng hợp ",
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00
+  },
+  {
+    "id": 522,
+    "ma": "KB010",
+    "ten": "Khám Ngoại tổng hợp CK2",
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00
+  },
+  {
+    "id": 1,
+    "ma": "KB001",
+    "ten": "Khám Nội tổng hợp",
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00
+  },
+  {
+    "id": 521,
+    "ma": "KB009",
+    "ten": "Khám Nội tổng hợp CK2",
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00
+  },
+  {
+    "id": 3,
+    "ma": "KB003",
+    "ten": "Khám Phụ sản",
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00
+  },
+  {
+    "id": 523,
+    "ma": "KB011",
+    "ten": "Khám Phụ sản CK2",
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00
+  },
+  {
+    "id": 4,
+    "ma": "KB004",
+    "ten": "Khám Răng hàm mặt",
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00
+  },
+  {
+    "id": 524,
+    "ma": "KB012",
+    "ten": "Khám Răng hàm mặt CK2",
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00
+  },
+  {
+    "id": 5,
+    "ma": "KB005",
+    "ten": "Khám Tai mũi họng",
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00
+  },
+  {
+    "id": 525,
+    "ma": "KB013",
+    "ten": "Khám Tai mũi họng CK2",
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00
+  },
+  {
+    "id": 527,
+    "ma": "DV0324",
+    "ten": "Không tính công khám",
+    "don_vi_tinh": "Lần",
+    "don_gia": 0.00
+  }
+]

@@ -1,0 +1,317 @@
+﻿[
+  {
+    "id": 57,
+    "ma": "89",
+    "ten": "An Giang"
+  },
+  {
+    "id": 49,
+    "ma": "77",
+    "ten": "Bà Rịa - Vũng Tàu"
+  },
+  {
+    "id": 4,
+    "ma": "06",
+    "ten": "Bắc Kạn"
+  },
+  {
+    "id": 62,
+    "ma": "95",
+    "ten": "Bạc Liêu"
+  },
+  {
+    "id": 18,
+    "ma": "27",
+    "ten": "Bắc Ninh"
+  },
+  {
+    "id": 53,
+    "ma": "83",
+    "ten": "Bến Tre"
+  },
+  {
+    "id": 47,
+    "ma": "74",
+    "ten": "Bình Dương"
+  },
+  {
+    "id": 45,
+    "ma": "70",
+    "ten": "Bình Phước"
+  },
+  {
+    "id": 39,
+    "ma": "60",
+    "ten": "Bình Thuận"
+  },
+  {
+    "id": 43,
+    "ma": "67",
+    "ten": "Đắk Nông"
+  },
+  {
+    "id": 56,
+    "ma": "87",
+    "ten": "Đồng Tháp"
+  },
+  {
+    "id": 41,
+    "ma": "64",
+    "ten": "Gia Lai"
+  },
+  {
+    "id": 2,
+    "ma": "02",
+    "ten": "Hà Giang"
+  },
+  {
+    "id": 23,
+    "ma": "35",
+    "ten": "Hà Nam"
+  },
+  {
+    "id": 19,
+    "ma": "30",
+    "ten": "Hải Dương"
+  },
+  {
+    "id": 60,
+    "ma": "93",
+    "ten": "Hậu Giang"
+  },
+  {
+    "id": 11,
+    "ma": "17",
+    "ten": "Hòa Bình"
+  },
+  {
+    "id": 40,
+    "ma": "62",
+    "ten": "Kon Tum"
+  },
+  {
+    "id": 6,
+    "ma": "10",
+    "ten": "Lào Cai"
+  },
+  {
+    "id": 24,
+    "ma": "36",
+    "ten": "Nam Định"
+  },
+  {
+    "id": 38,
+    "ma": "58",
+    "ten": "Ninh Thuận"
+  },
+  {
+    "id": 36,
+    "ma": "54",
+    "ten": "Phú Yên"
+  },
+  {
+    "id": 33,
+    "ma": "49",
+    "ten": "Quảng Nam"
+  },
+  {
+    "id": 30,
+    "ma": "45",
+    "ten": "Quảng Trị"
+  },
+  {
+    "id": 61,
+    "ma": "94",
+    "ten": "Sóc Trăng"
+  },
+  {
+    "id": 46,
+    "ma": "72",
+    "ten": "Tây Ninh"
+  },
+  {
+    "id": 22,
+    "ma": "34",
+    "ten": "Thái Bình"
+  },
+  {
+    "id": 59,
+    "ma": "92",
+    "ten": "Thành phố Cần Thơ"
+  },
+  {
+    "id": 32,
+    "ma": "48",
+    "ten": "Thành phố Đà Nẵng"
+  },
+  {
+    "id": 48,
+    "ma": "75",
+    "ten": "Thành phố Đồng Nai"
+  },
+  {
+    "id": 1,
+    "ma": "01",
+    "ten": "Thành phố Hà Nội"
+  },
+  {
+    "id": 20,
+    "ma": "31",
+    "ten": "Thành phố Hải Phòng"
+  },
+  {
+    "id": 50,
+    "ma": "79",
+    "ten": "Thành phố Hồ Chí Minh"
+  },
+  {
+    "id": 31,
+    "ma": "46",
+    "ten": "Thành phố Huế"
+  },
+  {
+    "id": 58,
+    "ma": "91",
+    "ten": "Tỉnh An Giang"
+  },
+  {
+    "id": 15,
+    "ma": "24",
+    "ten": "Tỉnh Bắc Ninh"
+  },
+  {
+    "id": 63,
+    "ma": "96",
+    "ten": "Tỉnh Cà Mau"
+  },
+  {
+    "id": 3,
+    "ma": "04",
+    "ten": "Tỉnh Cao Bằng"
+  },
+  {
+    "id": 42,
+    "ma": "66",
+    "ten": "Tỉnh Đắk Lắk"
+  },
+  {
+    "id": 7,
+    "ma": "11",
+    "ten": "Tỉnh Điện Biên"
+  },
+  {
+    "id": 52,
+    "ma": "82",
+    "ten": "Tỉnh Đồng Tháp"
+  },
+  {
+    "id": 35,
+    "ma": "52",
+    "ten": "Tỉnh Gia Lai"
+  },
+  {
+    "id": 28,
+    "ma": "42",
+    "ten": "Tỉnh Hà Tĩnh"
+  },
+  {
+    "id": 21,
+    "ma": "33",
+    "ten": "Tỉnh Hưng Yên"
+  },
+  {
+    "id": 37,
+    "ma": "56",
+    "ten": "Tỉnh Khánh Hòa"
+  },
+  {
+    "id": 8,
+    "ma": "12",
+    "ten": "Tỉnh Lai Châu"
+  },
+  {
+    "id": 44,
+    "ma": "68",
+    "ten": "Tỉnh Lâm Đồng"
+  },
+  {
+    "id": 13,
+    "ma": "20",
+    "ten": "Tỉnh Lạng Sơn"
+  },
+  {
+    "id": 10,
+    "ma": "15",
+    "ten": "Tỉnh Lào Cai"
+  },
+  {
+    "id": 27,
+    "ma": "40",
+    "ten": "Tỉnh Nghệ An"
+  },
+  {
+    "id": 25,
+    "ma": "37",
+    "ten": "Tỉnh Ninh Bình"
+  },
+  {
+    "id": 16,
+    "ma": "25",
+    "ten": "Tỉnh Phú Thọ"
+  },
+  {
+    "id": 34,
+    "ma": "51",
+    "ten": "Tỉnh Quảng Ngãi"
+  },
+  {
+    "id": 14,
+    "ma": "22",
+    "ten": "Tỉnh Quảng Ninh"
+  },
+  {
+    "id": 29,
+    "ma": "44",
+    "ten": "Tỉnh Quảng Trị"
+  },
+  {
+    "id": 9,
+    "ma": "14",
+    "ten": "Tỉnh Sơn La"
+  },
+  {
+    "id": 51,
+    "ma": "80",
+    "ten": "Tỉnh Tây Ninh"
+  },
+  {
+    "id": 12,
+    "ma": "19",
+    "ten": "Tỉnh Thái Nguyên"
+  },
+  {
+    "id": 26,
+    "ma": "38",
+    "ten": "Tỉnh Thanh Hóa"
+  },
+  {
+    "id": 5,
+    "ma": "08",
+    "ten": "Tỉnh Tuyên Quang"
+  },
+  {
+    "id": 55,
+    "ma": "86",
+    "ten": "Tỉnh Vĩnh Long"
+  },
+  {
+    "id": 54,
+    "ma": "84",
+    "ten": "Trà Vinh"
+  },
+  {
+    "id": 17,
+    "ma": "26",
+    "ten": "Vĩnh Phúc"
+  }
+]

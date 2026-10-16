@@ -1,0 +1,606 @@
+@{
+    ViewData["Title"] = ViewData["Title"] ?? "Chi tiết cơ sở KCB";
+    var laQuanTriHeThong = User.IsInRole("quan_tri_he_thong");
+    var coQuyenNhanVien = laQuanTriHeThong || User.CoQuyen("he_thong_nhan_vien", "Xem");
+    var coQuyenTaiKhoan = laQuanTriHeThong || User.CoQuyen("he_thong_tai_khoan", "Xem");
+    var coQuyenVaiTro = laQuanTriHeThong || User.CoQuyen("he_thong_vai_tro", "Xem");
+    var coQuyenPhanQuyen = laQuanTriHeThong || User.CoQuyen("he_thong_phan_quyen", "Xem");
+    var coQuyenXoaNhanVien = laQuanTriHeThong || User.CoQuyen("he_thong_nhan_vien", "Xoa");
+    var coQuyenXoaTaiKhoan = laQuanTriHeThong || User.CoQuyen("he_thong_tai_khoan", "Xoa");
+    var coQuyenXoaVaiTro = laQuanTriHeThong || User.CoQuyen("he_thong_vai_tro", "Xoa");
+    var idCskcb = Convert.ToInt64(ViewBag.IdCskcb ?? 0L);
+    var tenCskcb = Convert.ToString(ViewBag.TenCskcb) ?? "";
+    var laMoi = Convert.ToBoolean(ViewBag.LaMoi ?? false);
+    var tabDau = laQuanTriHeThong && !laMoi && Context.Request.Query["tab"] == "cau-hinh" ? "cau-hinh"
+        : laQuanTriHeThong ? "cskcb"
+        : coQuyenNhanVien ? "nhan-vien"
+        : coQuyenTaiKhoan ? "tai-khoan"
+        : coQuyenVaiTro ? "vai-tro"
+        : "phan-quyen";
+    // Dùng đúng số nhóm tab có quyền để căn đều như thanh phân hệ Khám bệnh.
+    var soNhomTab = (laQuanTriHeThong ? 1 : 0)
+        + (coQuyenNhanVien || coQuyenTaiKhoan || (laQuanTriHeThong && !laMoi) ? 1 : 0)
+        + (coQuyenVaiTro || coQuyenPhanQuyen ? 1 : 0)
+        + (laQuanTriHeThong && !laMoi ? 1 : 0);
+    var soTabNhanSu = (coQuyenNhanVien ? 1 : 0) + (laQuanTriHeThong && !laMoi ? 1 : 0) + (coQuyenTaiKhoan ? 1 : 0);
+    var soTabPhanQuyen = (coQuyenVaiTro ? 1 : 0) + (coQuyenPhanQuyen ? 1 : 0);
+}
+
+<div class="container-fluid admin-workspace ht-detail-page"
+     id="ht-root"
+     data-page="detail"
+     data-global-admin="@laQuanTriHeThong.ToString().ToLowerInvariant()"
+     data-cskcb-id="@idCskcb"
+     data-cskcb-name="@tenCskcb"
+     data-new-cskcb="@laMoi.ToString().ToLowerInvariant()"
+     data-can-delete-cskcb="@laQuanTriHeThong.ToString().ToLowerInvariant()"
+     data-can-delete-nv="@coQuyenXoaNhanVien.ToString().ToLowerInvariant()"
+     data-can-delete-tk="@coQuyenXoaTaiKhoan.ToString().ToLowerInvariant()"
+     data-can-delete-vt="@coQuyenXoaVaiTro.ToString().ToLowerInvariant()">
+
+    @* Các tab chính chia đều, Cấu hình nằm bên phải Phân quyền. *@
+    <ul class="nav nav-tabs ht-fullwidth-tabbar" id="ht-tabs" role="tablist"
+        style="--ht-tab-count: @Math.Max(1, soNhomTab)" aria-label="Nhóm chức năng CSKCB">
+        @if (laQuanTriHeThong)
+        {
+            <li class="nav-item">
+                <button type="button" class="nav-link @(tabDau == "cskcb" ? "active" : "")"
+                        data-ht-group="cskcb" data-ht-target="#ht-tab-cskcb"
+                        data-bs-target="#ht-tab-cskcb" role="tab"
+                        aria-selected="@(tabDau == "cskcb" ? "true" : "false")">
+                    <i class="bi bi-building me-1"></i>Cơ sở
+                </button>
+            </li>
+        }
+        @if (coQuyenNhanVien || coQuyenTaiKhoan || (laQuanTriHeThong && !laMoi))
+        {
+            <li class="nav-item">
+                <button type="button"
+                        class="nav-link @(tabDau == "nhan-vien" || tabDau == "tai-khoan" ? "active" : "")"
+                        data-ht-group="nhan-su"
+                        data-ht-default="@(coQuyenNhanVien ? "#ht-tab-nhan-vien" : laQuanTriHeThong ? "#ht-tab-chuc-danh" : "#ht-tab-tai-khoan")"
+                        role="tab"
+                        aria-selected="@(tabDau == "nhan-vien" || tabDau == "tai-khoan" ? "true" : "false")"
+                        @(laMoi ? "disabled" : null)>
+                    <i class="bi bi-people me-1"></i>Nhân sự
+                </button>
+            </li>
+        }
+        @if (coQuyenVaiTro || coQuyenPhanQuyen)
+        {
+            <li class="nav-item">
+                <button type="button"
+                        class="nav-link @(tabDau == "vai-tro" || tabDau == "phan-quyen" ? "active" : "")"
+                        data-ht-group="quyen"
+                        data-ht-default="@(coQuyenVaiTro ? "#ht-tab-vai-tro" : "#ht-tab-phan-quyen")"
+                        role="tab"
+                        aria-selected="@(tabDau == "vai-tro" || tabDau == "phan-quyen" ? "true" : "false")"
+                        @(laMoi ? "disabled" : null)>
+                    <i class="bi bi-shield-lock me-1"></i>Phân quyền
+                </button>
+            </li>
+        }
+        @if (laQuanTriHeThong && !laMoi)
+        {
+            <li class="nav-item">
+                <button type="button" class="nav-link @(tabDau == "cau-hinh" ? "active" : "")"
+                        data-ht-group="cau-hinh" data-ht-target="#ht-tab-cau-hinh"
+                        role="tab" aria-selected="@(tabDau == "cau-hinh" ? "true" : "false")">
+                    <i class="bi bi-sliders me-1"></i>Cấu hình
+                </button>
+            </li>
+        }
+    </ul>
+
+    @* Phân hệ cấp 2 — chỉ xuất hiện khi đang ở Nhân sự / Phân quyền. *@
+    <ul class="nav nav-tabs ht-detail-subtabs @(tabDau == "cskcb" || tabDau == "cau-hinh" ? "d-none" : "")"
+        id="ht-subtabs" role="tablist" aria-label="Chức năng con"
+        style="--ht-sub-count: @(tabDau == "nhan-vien" || tabDau == "tai-khoan" ? soTabNhanSu : soTabPhanQuyen)">
+        @if (coQuyenNhanVien)
+        {
+            <li class="nav-item @(tabDau == "vai-tro" || tabDau == "phan-quyen" ? "d-none" : "")" data-ht-subgroup="nhan-su">
+                <button type="button" class="nav-link @(tabDau == "nhan-vien" ? "active" : "")"
+                        data-ht-target="#ht-tab-nhan-vien" role="tab"
+                        aria-selected="@(tabDau == "nhan-vien" ? "true" : "false")"
+                        @(laMoi ? "disabled" : null)>
+                    <i class="bi bi-person-badge me-1"></i>Nhân viên
+                </button>
+            </li>
+        }
+        @if (laQuanTriHeThong && !laMoi)
+        {
+            <li class="nav-item @(tabDau == "vai-tro" || tabDau == "phan-quyen" ? "d-none" : "")" data-ht-subgroup="nhan-su">
+                <button type="button" class="nav-link" data-ht-target="#ht-tab-chuc-danh" role="tab" aria-selected="false">
+                    <i class="bi bi-award me-1"></i>Chức danh
+                </button>
+            </li>
+        }
+        @if (coQuyenTaiKhoan)
+        {
+            <li class="nav-item @(tabDau == "vai-tro" || tabDau == "phan-quyen" ? "d-none" : "")" data-ht-subgroup="nhan-su">
+                <button type="button" class="nav-link @(tabDau == "tai-khoan" ? "active" : "")"
+                        data-ht-target="#ht-tab-tai-khoan" role="tab"
+                        aria-selected="@(tabDau == "tai-khoan" ? "true" : "false")"
+                        @(laMoi ? "disabled" : null)>
+                    <i class="bi bi-person-lock me-1"></i>Tài khoản
+                </button>
+            </li>
+        }
+        @if (coQuyenVaiTro)
+        {
+            <li class="nav-item @(tabDau == "nhan-vien" || tabDau == "tai-khoan" || tabDau == "cskcb" ? "d-none" : "")" data-ht-subgroup="quyen">
+                <button type="button" class="nav-link @(tabDau == "vai-tro" ? "active" : "")"
+                        data-ht-target="#ht-tab-vai-tro" role="tab"
+                        aria-selected="@(tabDau == "vai-tro" ? "true" : "false")"
+                        @(laMoi ? "disabled" : null)>
+                    <i class="bi bi-person-gear me-1"></i>Vai trò
+                </button>
+            </li>
+        }
+        @if (coQuyenPhanQuyen)
+        {
+            <li class="nav-item @(tabDau == "nhan-vien" || tabDau == "tai-khoan" || tabDau == "cskcb" ? "d-none" : "")" data-ht-subgroup="quyen">
+                <button type="button" class="nav-link @(tabDau == "phan-quyen" ? "active" : "")"
+                        data-ht-target="#ht-tab-phan-quyen" role="tab"
+                        aria-selected="@(tabDau == "phan-quyen" ? "true" : "false")"
+                        @(laMoi ? "disabled" : null)>
+                    <i class="bi bi-key me-1"></i>Phân quyền
+                </button>
+            </li>
+        }
+    </ul>
+
+    <div class="tab-content ht-detail-content">
+        @if (laQuanTriHeThong)
+        {
+            <section class="tab-pane fade @(tabDau == "cskcb" ? "show active" : "")" id="ht-tab-cskcb">
+                <div class="card border-0 shadow-sm">
+                   
+                    <div class="card-body">
+                        <input type="hidden" id="ht-cs-id" value="@(idCskcb > 0 ? idCskcb : "")" />
+                        <div class="ht-cs-layout">
+                            <div class="ht-cs-details">
+                                <div class="ht-cs-fields-grid">
+                                    <div class="ht-cs-field">
+                                        <label class="form-label small fw-semibold">Mã CSKCB</label>
+                                        <input type="text" class="form-control form-control-sm" id="ht-cs-ma" maxlength="20" />
+                                    </div>
+                                    <div class="ht-cs-field">
+                                        <label class="form-label small fw-semibold">Tên CSKCB</label>
+                                        <input type="text" class="form-control form-control-sm" id="ht-cs-ten" maxlength="300" />
+                                    </div>
+                                    <div class="ht-cs-field ht-cs-street-field">
+                                        <label class="form-label small fw-semibold">Số nhà / tên đường</label>
+                                        <input type="text" class="form-control form-control-sm" id="ht-cs-so-nha" maxlength="300" placeholder="VD: 12 Nguyễn Trãi" />
+                                    </div>
+                                    <div class="ht-cs-field">
+                                        <label class="form-label small fw-semibold">Tỉnh / Thành</label>
+                                        <select class="form-select form-select-sm" id="ht-cs-tinh">
+                                            <option value="">-- Chọn tỉnh / thành --</option>
+                                        </select>
+                                    </div>
+                                    <div class="ht-cs-field">
+                                        <label class="form-label small fw-semibold">Phường / Xã</label>
+                                        <select class="form-select form-select-sm" id="ht-cs-phuong" disabled>
+                                            <option value="">-- Chọn phường / xã --</option>
+                                        </select>
+                                    </div>
+                                    <div class="ht-cs-field">
+                                        <label class="form-label small fw-semibold">Điện thoại</label>
+                                        <input type="text" class="form-control form-control-sm" id="ht-cs-sdt" maxlength="10" inputmode="numeric" pattern="[0-9]*" />
+                                    </div>
+                                    <div class="ht-cs-field">
+                                        <label class="form-label small fw-semibold">Email</label>
+                                        <input type="email" class="form-control form-control-sm" id="ht-cs-email" maxlength="200" />
+                                    </div>
+                                </div>
+                                <fieldset class="ht-cs-bank-group">
+                                    <legend class="small fw-semibold">Thông tin ngân hàng</legend>
+                                    <div class="ht-cs-bank-grid">
+                                        <div class="ht-cs-field">
+                                            <label class="form-label small fw-semibold">Mã số thuế</label>
+                                            <input type="text" class="form-control form-control-sm" id="ht-cs-ma-st" maxlength="50" />
+                                        </div>
+                                        <div class="ht-cs-field">
+                                            <label class="form-label small fw-semibold">Ngân hàng</label>
+                                            <select class="form-select form-select-sm" id="ht-cs-ngan-hang">
+                                                <option value="">-- Không chọn --</option>
+                                            </select>
+                                        </div>
+                                        <div class="ht-cs-field">
+                                            <label class="form-label small fw-semibold">Số tài khoản</label>
+                                            <input type="text" class="form-control form-control-sm" id="ht-cs-so-tk" maxlength="100" />
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <div class="ht-cs-logo">
+                                <label class="form-label small fw-semibold">Hình ảnh cơ sở</label>
+                                <input type="hidden" id="ht-cs-url-logo" maxlength="1000" />
+                                <input type="file" id="ht-cs-logo-file" class="d-none" accept="image/png,image/jpeg,image/webp,image/gif" />
+
+                                <div class="ht-image-search-box">
+                                    <div class="ht-image-dropzone" id="ht-cs-image-dropzone" role="button" tabindex="0">
+                                        <div class="ht-image-drop-prompt">
+                                            <div class="ht-image-drop-title">Kéo hình ảnh vào đây hoặc <button type="button" class="btn btn-link p-0 align-baseline" id="btn-ht-cs-logo-file">tải tệp lên</button></div>
+                                            <div class="small text-muted mt-1">JPG, PNG, WEBP, GIF · tối đa 5 MB</div>
+                                        </div>
+                                        <div class="ht-image-preview-panel d-none" id="ht-cs-logo-preview-wrap">
+                                            <img id="ht-cs-logo-preview" alt="Xem trước hình ảnh cơ sở" />
+                                            <div class="d-flex align-items-center gap-2 mt-2">
+                                                <span class="small text-muted text-break flex-grow-1 text-start" id="ht-cs-logo-text"></span>
+                                                <button type="button" class="btn btn-outline-danger btn-sm" id="btn-ht-cs-logo-clear">Bỏ ảnh</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ht-image-divider">
+                                        <span></span><strong>HOẶC</strong><span></span>
+                                    </div>
+
+                                    <div class="input-group">
+                                        <input type="url" class="form-control" id="ht-cs-logo-link" maxlength="1000" placeholder="Dán đường liên kết của hình ảnh" />
+                                        <button type="button" class="btn btn-outline-primary" id="btn-ht-cs-logo-link-apply">Áp dụng</button>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="ht-cs-ltt-group"><partial name="~/Views/he_thong/_LienThongCskcb.cshtml" /></div>
+                            <div class="ht-cs-actions ht-admin-actions">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ht-cs-active" checked />
+                                    <label class="form-check-label" for="ht-cs-active">Hoạt động</label>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    @if (laMoi)
+                                    {
+                                        <a class="btn btn-outline-secondary btn-sm" href="/he_thong">Hủy</a>
+                                    }
+                                    <button class="btn btn-primary btn-sm" id="btn-ht-cs-luu">
+                                        <i class="bi bi-floppy me-1"></i>Lưu cơ sở KCB
+                                    </button>
+                                    @if (!laMoi)
+                                    {
+                                        <button type="button" class="btn btn-outline-danger btn-sm" id="btn-ht-cs-xoa-page">
+                                            <i class="bi bi-trash me-1"></i>Xóa cơ sở
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+
+        @if (coQuyenNhanVien)
+        {
+            <section class="tab-pane fade @(tabDau == "nhan-vien" ? "show active" : "")" id="ht-tab-nhan-vien">
+                <div class="ht-detail-split">
+                    <div class="card ht-detail-form-card ht-nv-compact-card">
+                        <div class="card-body ht-nv-compact-body">
+                            <input type="hidden" id="ht-nv-id" />
+                            <div class="ht-nv-fields-grid">
+                                <div class="ht-nv-field">
+                                    <label class="form-label small fw-semibold" for="ht-nv-ma">Mã nhân viên</label>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="text" class="form-control form-control-sm min-w-0" id="ht-nv-ma" maxlength="30" />
+                                    </div>
+                                </div>
+                                <div class="ht-nv-field ht-nv-name-field">
+                                    <label class="form-label small fw-semibold" for="ht-nv-ho-ten">Họ và tên</label>
+                                    <input type="text" class="form-control form-control-sm text-uppercase" id="ht-nv-ho-ten" maxlength="200" />
+                                </div>
+                                <div class="ht-nv-field">
+                                    <label class="form-label small fw-semibold" for="ht-nv-chuc-danh">Chức danh</label>
+                                    <select class="form-select form-select-sm" id="ht-nv-chuc-danh">
+                                        <option value="">-- Chọn chức danh --</option>
+                                    </select>
+                                </div>
+                                <div class="ht-nv-field">
+                                    <label class="form-label small fw-semibold" for="ht-nv-dien-thoai">Điện thoại</label>
+                                    <input type="text" class="form-control form-control-sm" id="ht-nv-dien-thoai" maxlength="10" inputmode="numeric" pattern="[0-9]*" />
+                                </div>
+                                <div class="ht-nv-field">
+                                    <label class="form-label small fw-semibold" for="ht-nv-email">Email</label>
+                                    <input type="email" class="form-control form-control-sm" id="ht-nv-email" maxlength="200" />
+                                </div>
+                                <div class="ht-nv-field ht-nv-street-field">
+                                    <label class="form-label small fw-semibold" for="ht-nv-so-nha">Số nhà / tên đường</label>
+                                    <input type="text" class="form-control form-control-sm" id="ht-nv-so-nha" maxlength="300" placeholder="VD: 12 Nguyễn Trãi" />
+                                </div>
+                                <div class="ht-nv-field">
+                                    <label class="form-label small fw-semibold" for="ht-nv-tinh">Tỉnh / Thành</label>
+                                    <select class="form-select form-select-sm" id="ht-nv-tinh">
+                                        <option value="">-- Chọn tỉnh / thành --</option>
+                                    </select>
+                                </div>
+                                <div class="ht-nv-field">
+                                    <label class="form-label small fw-semibold" for="ht-nv-phuong">Phường / Xã</label>
+                                    <select class="form-select form-select-sm" id="ht-nv-phuong" disabled>
+                                        <option value="">-- Chọn phường / xã --</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="ht-nv-save-row ht-admin-actions">
+                                    <div class="ht-nv-flags">
+                                        <label class="form-check m-0"><input class="form-check-input" type="checkbox" id="ht-nv-la-bac-si" /><span class="form-check-label">Là bác sĩ</span></label>
+                                        <label class="form-check m-0"><input class="form-check-input" type="checkbox" id="ht-nv-active" checked /><span class="form-check-label">Hoạt động</span></label>
+                                    </div>
+                                    <button class="btn btn-primary btn-sm" id="btn-ht-nv-luu"><i class="bi bi-floppy me-1"></i>Lưu nhân viên</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm flex-shrink-0" id="btn-ht-nv-moi" title="Xóa trắng form"><i class="bi bi-eraser me-1"></i>Xóa trắng</button>
+                                </div>
+                            </div>
+                            <partial name="~/Views/he_thong/_LienThongNhanVien.cshtml" />
+
+                        </div>
+                    </div>
+
+                    <div class="card ht-admin-list-card">
+                        <div class="p-2 border-bottom">
+                            <div class="ht-admin-search-toolbar">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                                    <input type="text" class="form-control" id="ht-nv-filter" placeholder="Tìm mã NV, họ tên, SĐT, email..." />
+                                    <button type="button" class="btn btn-outline-primary" id="btn-ht-nv-filter">Tìm</button>
+                                </div>
+                                <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-ht-nv-tai-lai" title="Tải lại" aria-label="Tải lại danh sách"><i class="bi bi-arrow-clockwise"></i></button>
+                            </div>
+                        </div>
+                        <div class="table-responsive ht-table-scroll">
+                            <table class="table table-sm table-bordered align-middle mb-0 ht-sticky-table" id="ht-nv-table">
+                                <thead class="table-light sticky-top">
+                                    <tr>
+                                        <th class="ht-col-stt text-center">STT</th>
+                                        <th class="ht-sticky-name ht-col-name">Họ tên</th>
+                                        <th>Chức danh</th>
+                                        <th>Điện thoại</th>
+                                        <th>Email</th>
+                                        <th class="text-center">Bác sĩ</th>
+                                        <th>Tài khoản</th>
+                                        <th class="ht-col-code">Mã NV</th>
+                                        <th class="text-center">Trạng thái</th>
+                                        <th class="text-center ht-sticky-action ht-action-col">Tùy chọn</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ht-nv-body"></tbody>
+                            </table>
+                        </div>
+                        <div class="qlpm-pagination-bar" id="ht-nv-pagination"></div>
+                    </div>
+                </div>
+            </section>
+        }
+
+        @if (laQuanTriHeThong && !laMoi)
+        {
+            <section class="tab-pane fade" id="ht-tab-chuc-danh">
+                <div class="ht-detail-split">
+                    <div class="card ht-detail-form-card">
+                        <div class="card-body py-2">
+                            <input type="hidden" id="ht-cd-id" />
+                            <div class="ht-fill-fields ht-admin-fields-grid">
+                                <div class="ht-fill-field">
+                                    <div class="flex-grow-1 min-w-0">
+                                        <label class="form-label small fw-semibold">Mã chức danh</label>
+                                        <input type="text" class="form-control form-control-sm" id="ht-cd-ma" maxlength="60" />
+                                    </div>
+                                </div>
+                                <div class="ht-fill-field">
+                                    <label class="form-label small fw-semibold">Tên chức danh</label>
+                                    <input type="text" class="form-control form-control-sm" id="ht-cd-ten" maxlength="200" />
+                                </div>
+                                <div class="ht-fill-field">
+                                    <label class="form-label small fw-semibold">Viết tắt</label>
+                                    <input type="text" class="form-control form-control-sm" id="ht-cd-viet-tat" maxlength="50" placeholder="VD: BS, DS, ĐD" />
+                                </div>
+                            </div>
+                            <div class="ht-admin-actions">
+                                <div class="form-check m-0">
+                                    <input class="form-check-input" type="checkbox" id="ht-cd-active" checked />
+                                    <label class="form-check-label" for="ht-cd-active">Hoạt động</label>
+                                </div>
+                                <button class="btn btn-primary btn-sm" id="btn-ht-cd-luu"><i class="bi bi-floppy me-1"></i>Lưu chức danh</button>
+                                <button type="button" class="btn btn-outline-secondary btn-sm flex-shrink-0" id="btn-ht-cd-moi" title="Xóa trắng form"><i class="bi bi-eraser me-1"></i>Xóa trắng</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card ht-admin-list-card">
+                        <div class="p-2 border-bottom">
+                            <div class="ht-admin-search-toolbar">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                                    <input type="text" class="form-control" id="ht-cd-filter" placeholder="Tìm mã, tên hoặc viết tắt chức danh..." />
+                                    <button type="button" class="btn btn-outline-primary" id="btn-ht-cd-filter">Tìm</button>
+                                </div>
+                                <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-ht-cd-tai-lai" title="Tải lại" aria-label="Tải lại danh sách"><i class="bi bi-arrow-clockwise"></i></button>
+                            </div>
+                        </div>
+                        <div class="table-responsive ht-table-scroll">
+                            <table class="table table-sm table-bordered align-middle mb-0 ht-sticky-table" id="ht-cd-table">
+                                <thead class="table-light sticky-top">
+                                    <tr>
+                                        <th class="ht-col-stt text-center">STT</th>
+                                        <th class="ht-sticky-name ht-col-role">Tên chức danh</th>
+                                        <th>Viết tắt</th>
+                                        <th class="ht-col-code">Mã</th>
+                                        <th class="text-center">Trạng thái</th>
+                                        <th class="text-center ht-sticky-action ht-action-col">Tùy chọn</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ht-cd-body"></tbody>
+                            </table>
+                        </div>
+                        <div class="qlpm-pagination-bar" id="ht-cd-pagination"></div>
+                    </div>
+                </div>
+            </section>
+        }
+
+        @if (coQuyenTaiKhoan)
+        {
+            <section class="tab-pane fade @(tabDau == "tai-khoan" ? "show active" : "")" id="ht-tab-tai-khoan">
+                <div class="ht-detail-split">
+                    <div class="card ht-detail-form-card">
+                        
+                        <div class="card-body py-2">
+                            <input type="hidden" id="ht-tk-id" />
+                            <div class="ht-fill-fields ht-admin-fields-grid">
+                                <div class="ht-fill-field">
+                                    <div class="flex-grow-1 min-w-0">
+                                        <label class="form-label small fw-semibold">Nhân viên</label>
+                                        <select id="ht-tk-nhan-vien"></select>
+                                    </div>
+                                </div>
+                                <div class="ht-fill-field">
+                                    <label class="form-label small fw-semibold">Tên đăng nhập</label>
+                                    <input type="text" class="form-control form-control-sm" id="ht-tk-ten" autocomplete="off" data-lpignore="true" data-1p-ignore="true" />
+                                </div>
+                                <div class="ht-fill-field">
+                                    <label class="form-label small fw-semibold">Vai trò</label>
+                                    <select id="ht-tk-vai-tro" multiple></select>
+                                </div>
+                            </div>
+                            <div class="ht-admin-actions">
+                                <button class="btn btn-primary btn-sm" id="btn-ht-tk-luu"><i class="bi bi-floppy me-1"></i>Lưu</button>
+                                <button type="button" class="btn btn-outline-secondary btn-sm flex-shrink-0" id="btn-ht-tk-moi" title="Xóa trắng form"><i class="bi bi-eraser me-1"></i>Xóa trắng</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card ht-admin-list-card">
+                        <div class="p-2 border-bottom">
+                            <div class="ht-admin-search-toolbar">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                                    <input type="text" class="form-control" id="ht-tk-filter" placeholder="Tìm nhân viên, tên đăng nhập..." />
+                                    <button type="button" class="btn btn-outline-primary" id="btn-ht-tk-filter">Tìm</button>
+                                </div>
+                                <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-ht-tk-tai-lai" title="Tải lại" aria-label="Tải lại danh sách"><i class="bi bi-arrow-clockwise"></i></button>
+                            </div>
+                        </div>
+                        <div class="table-responsive ht-table-scroll">
+                            <table class="table table-sm table-bordered align-middle mb-0 ht-sticky-table" id="ht-tk-table">
+                                <thead class="table-light sticky-top">
+                                    <tr>
+                                        <th class="ht-col-stt text-center">STT</th>
+                                        <th class="ht-sticky-name ht-col-name">Nhân viên</th>
+                                        <th class="ht-col-login">Tên đăng nhập</th>
+                                        <th>Vai trò</th>
+                                        <th>Đăng nhập cuối</th>
+                                        <th class="ht-col-code">Mã NV</th>
+                                        <th class="text-center">Trạng thái</th>
+                                        <th class="text-center ht-sticky-action ht-action-col">Tùy chọn</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ht-tk-body"></tbody>
+                            </table>
+                        </div>
+                        <div class="qlpm-pagination-bar" id="ht-tk-pagination"></div>
+                    </div>
+                </div>
+            </section>
+        }
+
+        @if (coQuyenVaiTro)
+        {
+            <section class="tab-pane fade @(tabDau == "vai-tro" ? "show active" : "")" id="ht-tab-vai-tro">
+                <div class="ht-detail-split">
+                    <div class="card ht-detail-form-card">
+                        <div class="card-header py-2 fw-bold">Vai trò</div>
+                        <div class="card-body py-2">
+                            <input type="hidden" id="ht-vt-id" />
+                            <div class="ht-fill-fields ht-admin-fields-grid">
+                                <div class="ht-fill-field">
+                                    <label class="form-label small fw-semibold">Mã vai trò</label>
+                                    <input type="text" class="form-control form-control-sm" id="ht-vt-ma" />
+                                </div>
+                                <div class="ht-fill-field">
+                                    <label class="form-label small fw-semibold">Tên vai trò</label>
+                                    <input type="text" class="form-control form-control-sm" id="ht-vt-ten" />
+                                </div>
+                                <div class="ht-fill-field">
+                                    <label class="form-label small fw-semibold">Mô tả</label>
+                                    <input type="text" class="form-control form-control-sm" id="ht-vt-mo-ta" />
+                                </div>
+                            </div>
+                            <div class="ht-admin-actions">
+                                <div class="form-check m-0"><input class="form-check-input" type="checkbox" id="ht-vt-active" checked /><label class="form-check-label" for="ht-vt-active">Hoạt động</label></div>
+                                <button class="btn btn-primary btn-sm" id="btn-ht-vt-luu">Lưu</button>
+                                <button class="btn btn-outline-secondary btn-sm" id="btn-ht-vt-moi">Mới</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card ht-admin-list-card">
+                        <div class="p-2 border-bottom">
+                            <div class="ht-admin-search-toolbar">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                                    <input type="text" class="form-control" id="ht-vt-filter" placeholder="Tìm mã, tên vai trò, mô tả..." />
+                                    <button type="button" class="btn btn-outline-primary" id="btn-ht-vt-filter">Tìm</button>
+                                </div>
+                                <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-ht-vt-tai-lai" title="Tải lại" aria-label="Tải lại danh sách"><i class="bi bi-arrow-clockwise"></i></button>
+                            </div>
+                        </div>
+                        <div class="table-responsive ht-table-scroll">
+                            <table class="table table-sm table-bordered align-middle mb-0 ht-sticky-table" id="ht-vt-table">
+                                <thead class="table-light sticky-top">
+                                    <tr>
+                                        <th class="ht-col-stt text-center">STT</th>
+                                        <th class="ht-sticky-name ht-col-role">Tên vai trò</th>
+                                        <th>Mô tả</th>
+                                        <th class="ht-col-code">Mã</th>
+                                        <th>Trạng thái</th>
+                                        <th class="text-center ht-sticky-action ht-action-col">Tùy chọn</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ht-vt-body"></tbody>
+                            </table>
+                        </div>
+                        <div class="qlpm-pagination-bar" id="ht-vt-pagination"></div>
+                    </div>
+                </div>
+            </section>
+        }
+
+        @if (coQuyenPhanQuyen)
+        {
+            <section class="tab-pane fade @(tabDau == "phan-quyen" ? "show active" : "")" id="ht-tab-phan-quyen">
+                <div class="card">
+                    <div class="card-header py-2 d-flex gap-2 align-items-center">
+                        <strong>Vai trò:</strong>
+                        <div class="ht-pq-role-picker">
+                            <select id="ht-pq-vai-tro" aria-label="Chọn vai trò để phân quyền"></select>
+                        </div>
+                        <button class="btn btn-primary btn-sm ms-auto" id="btn-ht-pq-luu"><i class="bi bi-floppy me-1"></i>Lưu phân quyền</button>
+                    </div>
+                    <div class="table-responsive ht-table-scroll">
+                        <table class="table table-sm table-bordered align-middle mb-0" id="ht-pq-table">
+                            <thead class="table-light sticky-top"><tr><th>Phân hệ</th><th>Chức năng</th><th class="text-center">Xem</th><th class="text-center">Thêm</th><th class="text-center">Sửa</th><th class="text-center">Xóa</th><th class="text-center">Xuất</th><th class="text-center">Cá nhân</th><th class="text-center">Tất cả</th></tr></thead>
+                            <tbody id="ht-pq-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        }
+        @if (laQuanTriHeThong && !laMoi)
+        {
+            <section class="tab-pane fade @(tabDau == "cau-hinh" ? "show active" : "")" id="ht-tab-cau-hinh">
+                <partial name="~/Views/he_thong/_CauHinhTab.cshtml" model="@(ViewBag.CauHinhCskcb as QuanLyPhongMach.Models.ViewModels.CauHinhHeThongViewModel)" />
+            </section>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/he_thong/he_thong.js" asp-append-version="true"></script>
+    <script src="~/js/he_thong/lien_thong_tai_khoan.js" asp-append-version="true"></script>
+    @if (laQuanTriHeThong && !laMoi)
+    {
+        <script src="~/js/he_thong/cau_hinh.js" asp-append-version="true"></script>
+    }
+}

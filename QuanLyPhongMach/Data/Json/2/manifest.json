@@ -1,0 +1,29 @@
+﻿{
+  "id_cskcb": 2,
+  "phien_ban_nguon": 769,
+  "phien_ban_hien_tai": 769,
+  "phien_ban_da_phat_hanh": 769,
+  "ngay_dong_bo": "2026-10-13",
+  "thoi_gian_dong_bo": "2026-10-13 15:09:21",
+  "danh_sach_file": [
+    "dung_chung/dm_ngan_hang.json",
+    "dung_chung/dm_gioi_tinh.json",
+    "dung_chung/dm_chuc_danh.json",
+    "2/dm_dan_toc.json",
+    "2/dm_tinh_thanh.json",
+    "2/dm_phuong_xa.json",
+    "2/dm_icd10.json",
+    "2/dm_cong_kham.json",
+    "2/dm_dich_vu.json",
+    "2/dm_don_vi_tinh.json",
+    "2/dm_thuoc.json",
+    "2/dm_tri_so_sinh_hieu.json",
+    "2/dm_nhan_vien.json",
+    "2/dm_bac_si.json",
+    "2/dm_phac_do.json",
+    "2/dm_quoc_tich.json",
+    "2/dm_nghe_nghiep.json",
+    "2/dm_ma_giam_gia.json"
+  ],
+  "trang_thai": "THANH_CONG"
+}

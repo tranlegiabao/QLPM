@@ -1,0 +1,85 @@
+﻿{
+    "Target":  "Hieu/QLPM",
+    "Backup":  "C:\\Program Files\\Microsoft SQL Server\\MSSQL17.MSSQLSERVER\\MSSQL\\Backup\\QLPM_before_kho_v114_20261013_164215.bak",
+    "BackupVerified":  true,
+    "Rollback":  false,
+    "Before":  {
+                   "QL_Kho_Nhap":  {
+                                       "Count":  1,
+                                       "Hash":  "9C08EBDC5CD006E0F247C5F76BFD64AC79F16AECDBCDCD0240EAC44AB3A2A759"
+                                   },
+                   "QL_Kho_Nhap_CT":  {
+                                          "Count":  1,
+                                          "Hash":  "AAEB381239D4A01308F95E654226C110A9870CAA31698CB580D130616B85CE9D"
+                                      },
+                   "QL_Kho_Xuat":  {
+                                       "Count":  9,
+                                       "Hash":  "672255E1E7FDC6DCCCE959AA2000C595596E067D72DF45855F02A2E59C84D772"
+                                   },
+                   "QL_Kho_Xuat_CT":  {
+                                          "Count":  23,
+                                          "Hash":  "47A8D6D04A2DF415605F00700C42C7C3C736F6A2F4E3CD2A1E091511B32A3383"
+                                      },
+                   "QL_Kho_Hoan":  {
+                                       "Count":  2,
+                                       "Hash":  "E92A7E9B478E6918FE24AAD1A74CE957392ACCCEB2497A0F80782693A6DE6876"
+                                   },
+                   "QL_Kho_Hoan_CT":  {
+                                          "Count":  6,
+                                          "Hash":  "8766C3F03400344F46775BDE51ED847488C85DEBB497C46C03AA8147F744C94C"
+                                      },
+                   "QL_Kho_DieuChinh":  {
+                                            "Count":  0,
+                                            "Hash":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                                        },
+                   "QL_Kho_DieuChinh_CT":  {
+                                               "Count":  0,
+                                               "Hash":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                                           },
+                   "QL_Kho_KiemKe":  {
+                                         "Count":  0,
+                                         "Hash":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                                     },
+                   "QL_Kho_KiemKe_CT":  {
+                                            "Count":  0,
+                                            "Hash":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                                        },
+                   "QL_Kho_XuatKhac":  {
+                                           "Count":  0,
+                                           "Hash":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                                       },
+                   "QL_Kho_XuatKhac_CT":  {
+                                              "Count":  0,
+                                              "Hash":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                                          },
+                   "QL_Kho_KhoaLo":  {
+                                         "Count":  0,
+                                         "Hash":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                                     },
+                   "QL_Kho_SoChungTu":  {
+                                            "Count":  0,
+                                            "Hash":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                                        },
+                   "DM_Kho":  {
+                                  "Count":  1,
+                                  "Hash":  "A10835350D55B0DEAC7BAF81A085640F24A1DF7DEA2FC1FE1E6350C54990C4C5"
+                              },
+                   "QL_Kho_LoThuoc":  {
+                                          "Count":  263,
+                                          "Hash":  "62EFC651ECE93C8D60125A2A0EEF210D0411A69526E9AAB064D4ABABEF78C5B8"
+                                      },
+                   "QL_Kho_GiaoDich":  {
+                                           "Count":  281,
+                                           "Hash":  "CF70E502EF3E503639FDB0BC5F16E90EE56859182ACAC4F9B201591D64B84255"
+                                       }
+               },
+    "Applied":  false,
+    "BusinessTestsRun":  0,
+    "Sources":  {
+                    "59_kho_gop_chung_tu_v114.sql":  "83710B63F9F24ED7D4B49FAEBB67F113A92B9DC4D1467E4D112E87C7C00A6B5D",
+                    "60_kho_sto_v114.sql":  "3122DE30CD34C5197BB18A9AB2103440A94B804A23A7FF831F35ED378943FBC8",
+                    "62_kho_kiem_tra_v114.sql":  "420E58CEE2B1123054FD23FD2619EA9CE6F4ECF451C9DF9102DA5F5C1BCBEB4C",
+                    "Invoke-KhoV114.ps1":  "8169BFD84BC446A97725C55BAC722158E46C16AC02763E92ADC1904A1891576A",
+                    "61_kho_chot_schema_v114.sql":  "ECDFD0FB68C501C42A5A412DD97FCA1E2E9964210DC30DC673A9A2983EEAF27E"
+                }
+}

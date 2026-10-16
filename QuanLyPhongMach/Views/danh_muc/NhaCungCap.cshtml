@@ -1,0 +1,126 @@
+@{
+    ViewData["Title"] = "Danh mục nhà cung cấp";
+    var coQuyenThem = ViewBag.CoQuyenThem as bool? ?? false;
+    var coQuyenSua = ViewBag.CoQuyenSua as bool? ?? false;
+    var coQuyenXoa = ViewBag.CoQuyenXoa as bool? ?? false;
+    var tuNhapKho = Context.Request.Query["tu_nhap_kho"].ToString() == "1";
+}
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+    <h5 class="mb-0"><i class="bi bi-truck me-2 text-primary"></i>Danh mục nhà cung cấp</h5>
+    @if (tuNhapKho)
+    {
+        <a class="btn btn-sm btn-outline-secondary" href="/kho/quan-ly?tab=nhap-kho"><i class="bi bi-arrow-left me-1"></i>Quay lại nhập kho</a>
+    }
+</div>
+<div class="container-fluid px-0" id="kho-ncc-panel" data-can-import="@(coQuyenThem ? "1" : "0")"
+     data-can-edit-supplier="@(coQuyenSua ? "1" : "0")" data-can-return="@(coQuyenXoa ? "1" : "0")">
+        <div class="row g-3">
+            <section class="col-12 col-lg-4" aria-label="Thông tin nhà cung cấp">
+                <div class="card">
+                    <div class="card-header py-2 d-flex align-items-center justify-content-between">
+                        <strong id="kho-ncc-form-title">Thêm nhà cung cấp</strong>
+                        <button type="button" class="btn btn-outline-primary btn-sm" id="kho-ncc-new" title="Tạo nhà cung cấp mới">
+                            <i class="bi bi-plus-lg me-1"></i>Mới
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <form id="kho-ncc-form" autocomplete="off">
+                            <input type="hidden" id="kho-ncc-id" value="0" />
+                            <div class="mb-2">
+                                <label for="kho-ncc-ma" class="form-label mb-1">Mã nhà cung cấp</label>
+                                <input id="kho-ncc-ma" class="form-control form-control-sm" maxlength="50"
+                                       placeholder="Để trống để tự tạo mã" />
+                            </div>
+                            <div class="mb-2">
+                                <label for="kho-ncc-ten" class="form-label mb-1">Tên nhà cung cấp <span class="text-danger">*</span></label>
+                                <input id="kho-ncc-ten" class="form-control form-control-sm" maxlength="300" required />
+                            </div>
+                            <div class="mb-2">
+                                <label for="kho-ncc-mst" class="form-label mb-1">Mã số thuế</label>
+                                <input id="kho-ncc-mst" class="form-control form-control-sm" maxlength="50" />
+                            </div>
+                            <div class="mb-2">
+                                <label for="kho-ncc-sdt" class="form-label mb-1">Điện thoại</label>
+                                <input id="kho-ncc-sdt" class="form-control form-control-sm" inputmode="numeric"
+                                       pattern="[0-9]*" maxlength="10" placeholder="Tối đa 10 số" />
+                            </div>
+                            <div class="mb-2">
+                                <label for="kho-ncc-dia-chi" class="form-label mb-1">Địa chỉ</label>
+                                <textarea id="kho-ncc-dia-chi" class="form-control form-control-sm" rows="2" maxlength="500"></textarea>
+                            </div>
+                            <div class="form-check form-switch mb-3">
+                                <input id="kho-ncc-active" type="checkbox" class="form-check-input" checked />
+                                <label class="form-check-label" for="kho-ncc-active">Đang hoạt động</label>
+                            </div>
+                            <div class="d-flex gap-2 justify-content-end">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" id="kho-ncc-clear">Xóa trắng</button>
+                                <button type="submit" class="btn btn-primary btn-sm" id="kho-ncc-save">
+                                    <i class="bi bi-floppy me-1"></i>Lưu
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <section class="col-12 col-lg-8" aria-label="Danh sách nhà cung cấp">
+                <div class="card">
+                    <div class="card-header py-2 d-flex flex-wrap align-items-center gap-2">
+                        <strong>Danh mục nhà cung cấp</strong>
+                        <span id="kho-ncc-count" class="small text-muted ms-auto"></span>
+                        <button class="btn btn-sm btn-outline-secondary" type="button" id="kho-ncc-refresh" title="Tải lại danh sách">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </button>
+                    </div>
+                    <div class="card-body p-2">
+                        <div class="input-group input-group-sm mb-2">
+                            <input type="search" id="kho-ncc-search" class="form-control"
+                                   placeholder="Tìm theo mã, tên, MST, điện thoại..." aria-label="Tìm nhà cung cấp" />
+                            <button type="button" id="kho-ncc-search-btn" class="btn btn-outline-primary">Tìm</button>
+                        </div>
+                        <div class="d-flex flex-wrap gap-3 small mb-2">
+                            <label class="form-check form-check-inline m-0">
+                                <input type="radio" class="form-check-input" name="kho-ncc-status" value="hoat_dong" checked />
+                                <span class="form-check-label">Hoạt động</span>
+                            </label>
+                            <label class="form-check form-check-inline m-0">
+                                <input type="radio" class="form-check-input" name="kho-ncc-status" value="ngung" />
+                                <span class="form-check-label">Ngừng sử dụng</span>
+                            </label>
+                            <label class="form-check form-check-inline m-0">
+                                <input type="radio" class="form-check-input" name="kho-ncc-status" value="tat_ca" />
+                                <span class="form-check-label">Tất cả</span>
+                            </label>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-sm table-hover table-bordered align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="text-center" style="width:42px">TT</th>
+                                        <th class="text-nowrap">Mã NCC</th>
+                                        <th style="min-width:170px">Tên nhà cung cấp</th>
+                                        <th>MST</th>
+                                        <th>Điện thoại</th>
+                                        <th style="min-width:150px">Địa chỉ</th>
+                                        <th>Trạng thái</th>
+                                        <th class="text-center" style="min-width:105px">Tùy chọn</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="kho-ncc-body">
+                                    <tr><td colspan="8" class="text-center text-muted py-4">Đang tải danh mục...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-2 small" id="kho-ncc-pager">
+                            <span id="kho-ncc-page-info" class="text-muted"></span>
+                            <div class="btn-group btn-group-sm">
+                                <button type="button" id="kho-ncc-prev" class="btn btn-outline-secondary" aria-label="Trang trước"><i class="bi bi-chevron-left"></i></button>
+                                <button type="button" id="kho-ncc-next" class="btn btn-outline-secondary" aria-label="Trang sau"><i class="bi bi-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+<script src="~/js/danh_muc/nha-cung-cap.js" asp-append-version="true"></script>

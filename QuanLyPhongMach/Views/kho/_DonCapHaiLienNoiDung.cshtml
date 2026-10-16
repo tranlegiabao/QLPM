@@ -1,0 +1,16 @@
+@model QuanLyPhongMach.Models.Printing.Kho.KhoCapPhatPrintModel
+@using System.Globalization
+@{var p=Model.ThongTin;var vi=CultureInfo.GetCultureInfo("vi-VN");}
+<div class="heading"><div class="heading-company"><div class="code">@(string.IsNullOrWhiteSpace(Model.MaToa)?Model.SoPhieu:Model.MaToa)</div><div>Tên đơn vị: @p.TenCskcb</div><div>Địa chỉ: @p.DiaChiCskcb</div><div>Số điện thoại: @p.DienThoaiCskcb</div></div><div class="barcode"><div>Mã số người bệnh</div>@Html.Raw(p.BarcodeSvg)<div>@p.MaBn</div></div></div>
+<div class="center"><strong>Số phiếu: @p.MaVaoVien</strong></div>
+<h1>ĐƠN TẠI NHÀ THUỐC BỆNH VIỆN</h1>
+<table class="info"><tr><td style="width:40%">Họ tên: <strong>@p.HoTen</strong></td><td style="width:16%">Năm sinh: @p.NgaySinh?.Year</td><td style="width:20%">Cân nặng: @p.SinhHieu.FirstOrDefault(x=>x.Ten=="Cân nặng")?.GiaTri</td><td>Nam <span class="check">@(p.GioiTinh=="Nam"?"x":"")</span> Nữ <span class="check">@(p.GioiTinh=="Nữ"?"x":"")</span></td></tr></table>
+<div class="line">Số thẻ bảo hiểm y tế (nếu có):</div>
+<div class="line">Địa chỉ liên hệ: @p.DiaChi</div>
+<div class="line">Chẩn đoán: @p.ChanDoan</div>
+<strong>Thuốc điều trị:</strong>
+@for(var i=0;i<Model.ChiTiet.Count;i++){var d=Model.ChiTiet[i];<div class="medicine"><div class="quantity">SL: <strong>@d.SoLuong.ToString("00.####",vi)</strong> @d.DonViTinh</div><strong>@(i+1)) @d.Ten</strong> @if(!string.IsNullOrWhiteSpace(d.HoatChat)){<text>(@d.HoatChat)</text>} @if(!string.IsNullOrWhiteSpace(d.HamLuong)){<text>(@d.HamLuong)</text>}<div class="dose">Cách dùng: @d.LieuDung</div></div>}
+<div class="line">Lời dặn: @p.LoiDan</div>
+<div class="signature"><div>Ngày @Model.NgayKe.ToString("dd") tháng @Model.NgayKe.ToString("MM") năm @Model.NgayKe.ToString("yyyy")</div><strong>Bác sĩ/Y sĩ khám bệnh</strong><div><em>(Ký ghi rõ họ tên)</em></div><div class="space"></div><strong>@Model.BacSi</strong></div>
+<div class="footer"><div>- Khám lại xin mang theo đơn này. @if(p.NgayTaiKham.HasValue){<text>Ngày hẹn tái khám: <strong>@p.NgayTaiKham.Value.ToString("dd-MM-yyyy")</strong></text>}</div><div>- Tên bố hoặc mẹ của trẻ hoặc người đưa trẻ đến khám bệnh, chữa bệnh: @p.GiamHoHoTen</div></div>
+

@@ -1,0 +1,21 @@
+﻿{
+    "Server":  "Hieu",
+    "Database":  "QLPM",
+    "SourceSha256":  "BEC811A47A61AEC136895DAB464D6397E7728E2337DB38505D984F793C048C71",
+    "Procedures":  [
+                       "STO_QL_Kho_DieuChinh_Luu",
+                       "STO_QL_Kho_KhoaLo_Luu",
+                       "STO_QL_Kho_KiemKe_HuyNhap",
+                       "STO_QL_Kho_Nhap_Huy",
+                       "STO_QL_Kho_Xuat_Hoan",
+                       "STO_QL_Kho_XuatKhac_Huy",
+                       "STO_QL_Kho_XuatKhac_Luu",
+                       "STO_QL_ThuNgan_HoanTien",
+                       "STO_QL_ThuNgan_HuyChungTu"
+                   ],
+    "Rollback":  "D:\\project\\QLPM\\Doc\\Database\\ChangeLogs\\OptionalActionReason_20261013_161905\\before.sql",
+    "TablesChanged":  0,
+    "OperatingDataWritten":  0,
+    "BusinessTestsRun":  0,
+    "Applied":  true
+}

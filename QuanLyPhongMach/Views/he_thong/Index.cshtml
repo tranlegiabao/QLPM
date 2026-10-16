@@ -1,0 +1,426 @@
+@{
+    ViewData["Title"] = "Quản trị hệ thống";
+    var coQuyenNhanVien = User.CoQuyen("he_thong_nhan_vien", "Xem");
+    var coQuyenThemNhanVien = User.CoQuyen("he_thong_nhan_vien", "Them");
+    var coQuyenXoaNhanVien = User.CoQuyen("he_thong_nhan_vien", "Xoa");
+    var coQuyenXoaTaiKhoan = User.CoQuyen("he_thong_tai_khoan", "Xoa");
+    var coQuyenXoaVaiTro = User.CoQuyen("he_thong_vai_tro", "Xoa");
+    var laQuanTriHeThong = User.IsInRole("quan_tri_he_thong");
+}
+
+<div class="container-fluid admin-workspace" id="ht-root"
+     data-global-admin="@laQuanTriHeThong.ToString().ToLowerInvariant()"
+     data-can-delete-cskcb="@laQuanTriHeThong.ToString().ToLowerInvariant()"
+     data-can-delete-nv="@coQuyenXoaNhanVien.ToString().ToLowerInvariant()"
+     data-can-delete-tk="@coQuyenXoaTaiKhoan.ToString().ToLowerInvariant()"
+     data-can-delete-vt="@coQuyenXoaVaiTro.ToString().ToLowerInvariant()">
+   @*  <div class="admin-page-header">
+        <div class="admin-page-heading">
+            <div class="admin-page-icon"><i class="bi bi-gear-fill"></i></div>
+            <div>
+                <h5 class="mb-0 fw-bold">Quản trị hệ thống</h5>
+                <div class="admin-page-subtitle">Quản lý cơ sở KCB, nhân viên, tài khoản, vai trò, phân quyền và đồng bộ danh mục.</div>
+            </div>
+        </div>
+    </div> *@
+
+    <ul class="nav nav-tabs admin-tabs" id="ht-tabs">
+        @if (laQuanTriHeThong)
+        {
+            <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#ht-tab-tong-quan"><i class="bi bi-grid-1x2-fill me-1"></i>Tổng quan</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#ht-tab-cskcb">Cơ sở KCB</button></li>
+        }
+        @if (coQuyenNhanVien)
+        {
+            <li class="nav-item"><button class="nav-link @(!laQuanTriHeThong ? "active" : "")" data-bs-toggle="tab" data-bs-target="#ht-tab-nhan-vien">Nhân viên</button></li>
+        }
+        <li class="nav-item"><button class="nav-link @(!laQuanTriHeThong && !coQuyenNhanVien ? "active" : "")" data-bs-toggle="tab" data-bs-target="#ht-tab-tai-khoan">Tài khoản</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#ht-tab-vai-tro">Vai trò</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#ht-tab-phan-quyen">Phân quyền</button></li>
+        <li class="nav-item ms-auto d-flex align-items-center pe-1">
+            <button type="button" class="btn btn-outline-primary btn-sm" id="btn-ht-dong-bo">
+                <i class="bi bi-arrow-repeat me-1"></i>Đồng bộ danh mục json
+            </button>
+        </li>
+    </ul>
+
+    @if (laQuanTriHeThong)
+    {
+        <div class="ht-admin-context d-none" id="ht-admin-context">
+            <div class="d-flex align-items-center gap-2 min-w-0">
+                <i class="bi bi-building-check text-primary"></i>
+                <span class="small text-muted">Đang thao tác:</span>
+                <strong class="text-truncate" id="ht-admin-context-name"></strong>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-secondary ms-auto" id="btn-ht-context-clear">
+                <i class="bi bi-arrow-left-right me-1"></i>Đổi cơ sở
+            </button>
+        </div>
+    }
+
+    <div class="tab-content">
+        @if (laQuanTriHeThong)
+        {
+            <section class="tab-pane fade show active" id="ht-tab-tong-quan">
+                <div class="card ht-overview-card">
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                            <div>
+                                <h5 class="mb-1 fw-bold"><i class="bi bi-buildings me-2 text-primary"></i>Cơ sở khám chữa bệnh</h5>
+                                <div class="small text-muted">Chọn một cơ sở để giữ ngữ cảnh khi chuyển sang Nhân viên, Tài khoản, Vai trò và Phân quyền.</div>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-sm" id="btn-ht-overview-reload">
+                                <i class="bi bi-arrow-clockwise me-1"></i>Tải lại
+                            </button>
+                        </div>
+
+                        <div class="ht-overview-filter">
+                            <div class="input-group">
+                                <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                                <input type="text" class="form-control" id="ht-overview-search" placeholder="Tìm mã, tên, địa chỉ, điện thoại, email..." />
+                                <button type="button" class="btn btn-primary" id="btn-ht-overview-search">Tìm</button>
+                            </div>
+                            <select class="form-select" id="ht-overview-status" aria-label="Lọc trạng thái cơ sở KCB">
+                                <option value="">Tất cả trạng thái</option>
+                                <option value="1">Đang hoạt động</option>
+                                <option value="0">Ngừng hoạt động</option>
+                            </select>
+                        </div>
+
+                        <div class="ht-cskcb-card-grid" id="ht-overview-grid">
+                            <div class="text-center text-muted py-5 w-100">Đang tải danh sách cơ sở KCB...</div>
+                        </div>
+
+                        <div class="qlpm-pagination-bar mt-3" id="ht-overview-pagination"></div>
+                    </div>
+                </div>
+            </section>
+        }
+        @if (coQuyenNhanVien)
+        {
+            <section class="tab-pane fade @(!laQuanTriHeThong ? "show active" : "")" id="ht-tab-nhan-vien">
+                               <div class="row g-2">
+                    <div class="col-lg-4">
+                        <div class="card h-100">
+                            <div class="card-header py-2 fw-bold">Thông tin nhân viên</div>
+                            <div class="card-body py-2">
+                                <input type="hidden" id="ht-nv-id" />
+
+                                <label class="form-label small fw-semibold">Mã nhân viên</label>
+                                <input type="text" class="form-control form-control-sm" id="ht-nv-ma" maxlength="30" />
+
+                                <label class="form-label small fw-semibold mt-2">Họ và tên</label>
+                                <input type="text" class="form-control form-control-sm text-uppercase" id="ht-nv-ho-ten" maxlength="200" />
+
+                                <label class="form-label small fw-semibold mt-2">Chức danh</label>
+                                <select class="form-select form-select-sm" id="ht-nv-chuc-danh">
+                                    <option value="">-- Chọn vai trò --</option>
+                                </select>
+
+                                <div class="row g-2 mt-1">
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Điện thoại</label>
+                                        <input type="text" class="form-control form-control-sm" id="ht-nv-dien-thoai" maxlength="20" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Email</label>
+                                        <input type="email" class="form-control form-control-sm" id="ht-nv-email" maxlength="200" />
+                                    </div>
+                                </div>
+
+                                <div class="d-flex gap-4 mt-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="ht-nv-la-bac-si" />
+                                        <label class="form-check-label" for="ht-nv-la-bac-si">Là bác sĩ</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="ht-nv-active" checked />
+                                        <label class="form-check-label" for="ht-nv-active">Hoạt động</label>
+                                    </div>
+                                </div>
+
+                                <partial name="_LienThongNhanVien" />
+                                <div class="d-flex gap-2 mt-3">
+                                    <button class="btn btn-primary btn-sm flex-grow-1" id="btn-ht-nv-luu">
+                                        <i class="bi bi-floppy me-1"></i>Lưu nhân viên
+                                    </button>
+                                    <button class="btn btn-outline-secondary btn-sm" id="btn-ht-nv-moi"><i class="bi bi-eraser me-1"></i>Xóa trắng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="card h-100">
+                            <div class="card-header py-2 d-flex justify-content-between align-items-center gap-2">
+                                <span class="fw-bold">Danh sách nhân viên</span>
+                                <div class="d-flex gap-2 flex-shrink-0">
+                                    <button class="btn btn-outline-secondary btn-sm" id="btn-ht-nv-tai-lai" title="Tải lại"><i class="bi bi-arrow-clockwise"></i></button>
+                                </div>
+                            </div>
+                            <div class="p-2 border-bottom">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                                    <input type="text" class="form-control" id="ht-nv-filter" placeholder="Tìm mã NV, họ tên, SĐT, email..." />
+                                    <button type="button" class="btn btn-outline-primary" id="btn-ht-nv-filter">Tìm</button>
+                                </div>
+                            </div>
+                            <div class="table-responsive" style="max-height:65vh;">
+                                <table class="table table-sm table-bordered align-middle mb-0 ht-sticky-table" id="ht-nv-table">
+                                    <thead class="table-light sticky-top">
+                                        <tr>
+                                            <th class="ht-col-stt text-center">STT</th>
+                                            <th>CSKCB</th>
+                                            <th class="ht-sticky-name ht-col-name">Họ tên</th>
+                                            <th>Chức danh</th>
+                                            <th>Điện thoại</th>
+                                            <th>Email</th>
+                                            <th class="text-center">Bác sĩ</th>
+                                            <th>Tài khoản</th>
+                                            <th class="ht-col-code">Mã NV</th>
+                                            <th class="text-center">Trạng thái</th>
+                                            <th class="text-center ht-sticky-action ht-action-col">Tùy chọn</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="ht-nv-body"></tbody>
+                                </table>
+                            </div>
+                            <div class="qlpm-pagination-bar" id="ht-nv-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+
+        @if (laQuanTriHeThong)
+        {
+            <section class="tab-pane fade" id="ht-tab-cskcb">
+                <div class="row g-2">
+                    <div class="col-lg-4">
+                        <div class="card h-100">
+                            
+                            <div class="card-body py-2">
+                                <input type="hidden" id="ht-cs-id" />
+                                <label class="form-label small fw-semibold">Mã CSKCB</label>
+                                <input type="text" class="form-control form-control-sm" id="ht-cs-ma" maxlength="20" />
+                                <label class="form-label small fw-semibold mt-2">Tên CSKCB</label>
+                                <input type="text" class="form-control form-control-sm" id="ht-cs-ten" maxlength="300" />
+                                <label class="form-label small fw-semibold mt-2">Địa chỉ</label>
+                                <textarea class="form-control form-control-sm" id="ht-cs-dia-chi" maxlength="500" rows="2"></textarea>
+                                <div class="row g-2 mt-1">
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Điện thoại</label>
+                                        <input type="text" class="form-control form-control-sm" id="ht-cs-sdt" maxlength="100" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Email</label>
+                                        <input type="email" class="form-control form-control-sm" id="ht-cs-email" maxlength="200" />
+                                    </div>
+                                </div>
+                                <div class="row g-2 mt-1">
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Mã số thuế</label>
+                                        <input type="text" class="form-control form-control-sm" id="ht-cs-ma-st" maxlength="50" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Ngân hàng</label>
+                                        <select class="form-select form-select-sm" id="ht-cs-ngan-hang">
+                                            <option value="">-- Không chọn --</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row g-2 mt-1">
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Số tài khoản</label>
+                                        <input type="text" class="form-control form-control-sm" id="ht-cs-so-tk" maxlength="100" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Logo</label>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <input type="hidden" id="ht-cs-url-logo" maxlength="1000" />
+                                            <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" title="Chọn hình ảnh">
+                                                <i class="bi bi-image"></i>
+                                            </button>
+                                            <span class="small text-muted text-truncate flex-grow-1" id="ht-cs-logo-text">Chưa chọn hình ảnh</span>
+                                            <div class="dropdown-menu dropdown-menu-end p-3 shadow" style="width:min(420px,90vw);">
+                                                <div class="small fw-semibold mb-2">Chọn hình ảnh</div>
+                                                <input type="file" id="ht-cs-logo-file" class="d-none" accept="image/png,image/jpeg,image/webp,image/gif" />
+                                                <button type="button" class="btn btn-outline-primary btn-sm w-100" id="btn-ht-cs-logo-file">
+                                                    <i class="bi bi-folder2-open me-1"></i>Chọn từ thư mục
+                                                </button>
+                                                <div class="d-flex align-items-center gap-2 my-2">
+                                                    <hr class="flex-grow-1 my-0" /><span class="small text-muted">HOẶC</span><hr class="flex-grow-1 my-0" />
+                                                </div>
+                                                <div class="input-group input-group-sm">
+                                                    <input type="url" class="form-control" id="ht-cs-logo-link" maxlength="1000" placeholder="Dán đường liên kết của hình ảnh" />
+                                                    <button type="button" class="btn btn-outline-primary" id="btn-ht-cs-logo-link-apply">Áp dụng</button>
+                                                </div>
+                                                <div class="mt-2 d-none" id="ht-cs-logo-preview-wrap">
+                                                    <img id="ht-cs-logo-preview" alt="Xem trước logo" class="img-thumbnail" style="max-height:96px;max-width:100%;" />
+                                                    <button type="button" class="btn btn-link btn-sm text-danger p-0 ms-2" id="btn-ht-cs-logo-clear">Bỏ ảnh</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-check mt-3">
+                                    <input class="form-check-input" type="checkbox" id="ht-cs-active" checked />
+                                    <label class="form-check-label" for="ht-cs-active">Hoạt động</label>
+                                </div>
+                                
+                                <partial name="_LienThongCskcb" />
+                                <div class="d-flex gap-2 mt-3">
+                                    <button class="btn btn-primary btn-sm flex-grow-1" id="btn-ht-cs-luu"><i class="bi bi-floppy me-1"></i>Lưu CSKCB</button>
+                                    <button class="btn btn-outline-secondary btn-sm" id="btn-ht-cs-moi">Mới</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card h-100">
+                            <div class="card-header py-2 d-flex justify-content-between align-items-center">
+                                <span class="fw-bold">Danh sách cơ sở KCB</span>
+                                <button class="btn btn-outline-secondary btn-sm" id="btn-ht-cs-tai-lai" title="Tải lại"><i class="bi bi-arrow-clockwise"></i></button>
+                            </div>
+                            <div class="p-2 border-bottom">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                                    <input type="text" class="form-control" id="ht-cs-filter" placeholder="Tìm mã, tên, địa chỉ, điện thoại..." />
+                                    <button type="button" class="btn btn-outline-primary" id="btn-ht-cs-filter">Tìm</button>
+                                </div>
+                            </div>
+                            <div class="table-responsive" style="max-height:65vh;">
+                                <table class="table table-sm table-bordered align-middle mb-0 ht-sticky-table" id="ht-cs-table">
+                                    <thead class="table-light sticky-top">
+                                        <tr>
+                                            <th class="ht-col-stt text-center">STT</th>
+                                            <th>Mã CSKCB</th>
+                                            <th class="ht-sticky-name ht-col-name">Tên CSKCB</th>
+                                            <th>Địa chỉ</th>
+                                            <th>Điện thoại</th>
+                                            <th>Email</th>
+                                            <th>Mã số thuế</th>
+                                            <th>Ngân hàng</th>
+                                            <th>Số tài khoản</th>
+                                            <th class="text-center">Trạng thái</th>
+                                            <th class="text-center ht-sticky-action ht-action-col">Tùy chọn</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="ht-cs-body"></tbody>
+                                </table>
+                            </div>
+                            <div class="qlpm-pagination-bar" id="ht-cs-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+
+        <section class="tab-pane fade @(!coQuyenNhanVien ? "show active" : "")" id="ht-tab-tai-khoan">
+            <div class="row g-2">
+                <div class="col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-header py-2 fw-bold">Thông tin tài khoản</div>
+                        <div class="card-body py-2">
+                            <input type="hidden" id="ht-tk-id" />
+                            <label class="form-label small fw-semibold">Nhân viên</label>
+                            <select id="ht-tk-nhan-vien"></select>
+                            <label class="form-label small fw-semibold mt-2">Tên đăng nhập</label>
+                            <input type="text" class="form-control form-control-sm" id="ht-tk-ten" autocomplete="off" data-lpignore="true" data-1p-ignore="true" />
+                            <label class="form-label small fw-semibold mt-2">Vai trò</label>
+                            <select id="ht-tk-vai-tro" multiple></select>
+                            <div class="d-flex gap-2 mt-3">
+                                <button class="btn btn-primary btn-sm flex-grow-1" id="btn-ht-tk-luu"><i class="bi bi-floppy me-1"></i>Lưu</button>
+                                <button class="btn btn-outline-secondary btn-sm" id="btn-ht-tk-moi"><i class="bi bi-eraser me-1"></i>Xóa trắng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card h-100">
+                        <div class="card-header py-2 d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">Danh sách tài khoản</span>
+                            <button class="btn btn-outline-secondary btn-sm" id="btn-ht-tk-tai-lai"><i class="bi bi-arrow-clockwise"></i></button>
+                        </div>
+                        <div class="p-2 border-bottom">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                                <input type="text" class="form-control" id="ht-tk-filter" placeholder="Tìm nhân viên, tên đăng nhập..." />
+                                <button type="button" class="btn btn-outline-primary" id="btn-ht-tk-filter">Tìm</button>
+                            </div>
+                        </div>
+                        <div class="table-responsive" style="max-height:65vh;">
+                            <table class="table table-sm table-bordered align-middle mb-0 ht-sticky-table" id="ht-tk-table">
+                                <thead class="table-light sticky-top"><tr><th class="ht-col-stt text-center">STT</th><th>CSKCB</th><th class="ht-sticky-name ht-col-name">Nhân viên</th><th>Tên đăng nhập</th><th>Vai trò</th><th>Đăng nhập cuối</th><th class="ht-col-code">Mã NV</th><th class="text-center">Trạng thái</th><th class="text-center ht-sticky-action ht-action-col">Tùy chọn</th></tr></thead>
+                                <tbody id="ht-tk-body"></tbody>
+                            </table>
+                        </div>
+                        <div class="qlpm-pagination-bar" id="ht-tk-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tab-pane fade" id="ht-tab-vai-tro">
+            <div class="row g-2">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header py-2 fw-bold">Vai trò</div>
+                        <div class="card-body py-2">
+                            <input type="hidden" id="ht-vt-id" />
+                            <label class="form-label small fw-semibold">Mã vai trò</label>
+                            <input type="text" class="form-control form-control-sm" id="ht-vt-ma" />
+                            <label class="form-label small fw-semibold mt-2">Tên vai trò</label>
+                            <input type="text" class="form-control form-control-sm" id="ht-vt-ten" />
+                            <label class="form-label small fw-semibold mt-2">Mô tả</label>
+                            <textarea class="form-control form-control-sm" id="ht-vt-mo-ta" rows="3"></textarea>
+                            <div class="form-check mt-2"><input class="form-check-input" type="checkbox" id="ht-vt-active" checked /><label class="form-check-label" for="ht-vt-active">Hoạt động</label></div>
+                            <div class="d-flex gap-2 mt-3"><button class="btn btn-primary btn-sm flex-grow-1" id="btn-ht-vt-luu">Lưu</button><button class="btn btn-outline-secondary btn-sm" id="btn-ht-vt-moi">Mới</button></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card h-100">
+                        <div class="card-header py-2 d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">Danh sách vai trò</span>
+                            <button class="btn btn-outline-secondary btn-sm" id="btn-ht-vt-tai-lai"><i class="bi bi-arrow-clockwise"></i></button>
+                        </div>
+                        <div class="p-2 border-bottom">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                                <input type="text" class="form-control" id="ht-vt-filter" placeholder="Tìm mã, tên vai trò, mô tả..." />
+                                <button type="button" class="btn btn-outline-primary" id="btn-ht-vt-filter">Tìm</button>
+                            </div>
+                        </div>
+                        <div class="table-responsive flex-grow-1"><table class="table table-sm table-bordered mb-0 ht-sticky-table" id="ht-vt-table"><thead class="table-light sticky-top"><tr><th class="ht-col-stt text-center">STT</th><th>CSKCB</th><th class="ht-sticky-name ht-col-role">Tên vai trò</th><th>Mô tả</th><th class="ht-col-code">Mã</th><th>Trạng thái</th><th class="text-center ht-sticky-action ht-action-col">Tùy chọn</th></tr></thead><tbody id="ht-vt-body"></tbody></table></div>
+                        <div class="qlpm-pagination-bar" id="ht-vt-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tab-pane fade" id="ht-tab-phan-quyen">
+            <div class="card">
+                <div class="card-header py-2 d-flex gap-2 align-items-center">
+                    <strong>Vai trò:</strong>
+                        <div class="ht-pq-role-picker">
+                            <select id="ht-pq-vai-tro" aria-label="Chọn vai trò để phân quyền"></select>
+                        </div>
+                    <button class="btn btn-primary btn-sm ms-auto" id="btn-ht-pq-luu"><i class="bi bi-floppy me-1"></i>Lưu phân quyền</button>
+                </div>
+                <div class="table-responsive" style="max-height:68vh;">
+                    <table class="table table-sm table-bordered align-middle mb-0" id="ht-pq-table">
+                        <thead class="table-light sticky-top"><tr><th>Phân hệ</th><th>Chức năng</th><th class="text-center">Xem</th><th class="text-center">Thêm</th><th class="text-center">Sửa</th><th class="text-center">Xóa</th><th class="text-center">Xuất</th><th class="text-center">Cá nhân</th><th class="text-center">Tất cả</th></tr></thead>
+                        <tbody id="ht-pq-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/he_thong/he_thong.js" asp-append-version="true"></script>
+    <script src="~/js/he_thong/lien_thong_tai_khoan.js" asp-append-version="true"></script>
+}

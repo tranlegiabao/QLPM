@@ -1,0 +1,307 @@
+@{
+    ViewData["Title"] = "Thu ngân";
+    var coQuyenThu = ViewBag.CoQuyenThu as bool? ?? false;
+    var coQuyenHoan = ViewBag.CoQuyenHoan as bool? ?? false;
+    var coQuyenHuy = ViewBag.CoQuyenHuy as bool? ?? false;
+    var coQuyenXuat = ViewBag.CoQuyenXuat as bool? ?? false;
+}
+
+<section class="container-fluid px-0 pb-0 thu-ngan-workspace" id="thu-ngan-root"
+         data-can-collect="@(coQuyenThu ? "1" : "0")"
+         data-can-refund="@(coQuyenHoan ? "1" : "0")"
+         data-can-cancel="@(coQuyenHuy ? "1" : "0")"
+         data-can-export="@(coQuyenXuat ? "1" : "0")">
+    <div class="qlpm-nav-tabs thu-ngan-section-nav mb-2" aria-label="Nhóm chức năng thu ngân">
+        <div class="nav" role="tablist">
+            <div class="nav-item">
+                <button type="button" class="nav-link active" data-thu-ngan-group="thu-tien">
+                    <i class="bi bi-cash-coin me-1"></i>Thu tiền
+                </button>
+            </div>
+            <div class="nav-item">
+                <button type="button" class="nav-link" data-thu-ngan-group="chung-tu">
+                    <i class="bi bi-receipt-cutoff me-1"></i>QL chứng từ
+                </button>
+            </div>
+            <div class="nav-item">
+                <button type="button" class="nav-link" data-thu-ngan-group="lich-su">
+                    <i class="bi bi-clock-history me-1"></i>Lịch sử chứng từ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="qlpm-page-root thu-ngan-layout">
+    <section class="qlpm-pane-left thu-ngan-list" aria-label="Danh sách bệnh nhân thu ngân">
+        <div class="border-bottom pb-2 mb-2">
+            <div class="thu-ngan-doc-date-range d-none mb-2" data-thu-ngan-filter="chung-tu lich-su">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text bg-light text-muted">Từ ngày</span>
+                    <input type="text" id="thu-ngan-tu-ngay" class="form-control" placeholder="dd/MM/yyyy" />
+                </div>
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text bg-light text-muted">Đến ngày</span>
+                    <input type="text" id="thu-ngan-den-ngay" class="form-control" placeholder="dd/MM/yyyy" />
+                </div>
+            </div>
+
+            <div class="d-flex gap-2 mb-2 thu-ngan-search-row">
+                <div class="input-group input-group-sm thu-ngan-inline-date" data-thu-ngan-filter="thu-tien">
+                    <span class="input-group-text bg-light text-muted">Ngày</span>
+                    <input type="text" id="thu-ngan-ngay" class="form-control" placeholder="dd/MM/yyyy" aria-label="Ngày thu tiền" />
+                </div>
+                <div class="input-group input-group-sm flex-grow-1">
+                    <input type="text" id="thu-ngan-search" class="form-control" placeholder="Mã BN, tên BN, CCCD, SĐT..." />
+                    <button class="btn btn-outline-secondary" type="button" id="thu-ngan-search-btn" title="Tìm kiếm">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+                <button class="btn btn-primary btn-load-list" type="button" id="thu-ngan-refresh" title="Tải danh sách thu ngân">
+                    <i class="bi bi-arrow-clockwise"></i><span class="visually-hidden">Tải danh sách</span>
+                </button>
+            </div>
+
+            <div class="d-flex align-items-center gap-2 px-1 thu-ngan-filter-row" data-thu-ngan-filter="thu-tien">
+                <div class="d-flex flex-wrap gap-2 small" data-thu-ngan-payment-status>
+                    <div class="form-check form-check-inline m-0">
+                        <input class="form-check-input" type="radio" name="thu-ngan-filter-status" id="thu-ngan-rad-cho-thu" value="cho_thu" checked />
+                        <label class="form-check-label text-warning" for="thu-ngan-rad-cho-thu">Chưa thu</label>
+                    </div>
+                    <div class="form-check form-check-inline m-0">
+                        <input class="form-check-input" type="radio" name="thu-ngan-filter-status" id="thu-ngan-rad-da-thu" value="da_thu" />
+                        <label class="form-check-label text-success" for="thu-ngan-rad-da-thu">Đã thu</label>
+                    </div>
+                    <div class="form-check form-check-inline m-0">
+                        <input class="form-check-input" type="radio" name="thu-ngan-filter-status" id="thu-ngan-rad-tat-ca" value="tat_ca" />
+                        <label class="form-check-label" for="thu-ngan-rad-tat-ca">Tất cả</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="qlpm-table-container" id="thu-ngan-list-scroll">
+            <table class="table table-hover table-bordered qlpm-table tiep-nhan-table thu-ngan-patient-table" id="thu-ngan-table">
+                <thead>
+                    <tr>
+                        <th class="text-center" style="width:45px;min-width:45px;">STT</th>
+                        <th class="sticky-col sticky-col-ten-bn" style="min-width:180px;">Tên BN</th>
+                        <th class="text-center text-nowrap" style="min-width:110px;">Ngày tiếp nhận</th>
+                        <th class="text-center text-nowrap" style="min-width:85px;">Ngày sinh</th>
+                        <th class="text-center text-nowrap" style="width:60px;min-width:60px;">Giới tính</th>
+                        <th class="text-nowrap" style="min-width:110px;">CCCD</th>
+                        <th class="text-nowrap" style="min-width:95px;">SĐT</th>
+                        <th class="col-dia-chi" style="min-width:200px;">Địa chỉ</th>
+                        <th class="col-ma-bn" style="width:95px;min-width:95px;">Mã BN</th>
+                        <th class="text-center text-nowrap sticky-col sticky-col-tuy-chon" style="width:100px;min-width:100px;">Tùy chọn</th>
+                    </tr>
+                </thead>
+                <tbody id="thu-ngan-list-body">
+                    <tr><td colspan="10" class="text-center text-muted py-4">Chọn điều kiện lọc rồi bấm Tải danh sách.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="qlpm-pagination-bar" id="thu-ngan-pagination"></div>
+    </section>
+
+    <section class="qlpm-pane-right thu-ngan-detail-pane" aria-label="Chi tiết thu ngân">
+        <div class="thu-ngan-panel h-100" data-thu-ngan-panel="thu-tien">
+        @* <div class="d-flex align-items-center justify-content-between border-bottom pb-2 mb-2">
+            <strong><i class="bi bi-receipt me-1"></i>Chi tiết thanh toán</strong>
+            <span class="badge d-none" id="thu-ngan-detail-status"></span>
+        </div> *@
+
+        <div id="thu-ngan-empty" class="d-flex flex-column align-items-center justify-content-center flex-grow-1 text-muted py-5">
+            <i class="bi bi-cash-coin display-5 mb-2"></i>
+            <div>Chọn bệnh nhân để xem chi phí.</div>
+        </div>
+
+        <div id="thu-ngan-detail" class="d-none thu-ngan-detail-content">
+            <div class="thu-ngan-payment-scroll">
+            <div id="tn-no-unpaid" class="d-none text-center text-muted py-4">Không còn khoản nào chưa thu.</div>
+            <section class="thu-ngan-cost-section" id="tn-service-section">
+                <div class="thu-ngan-section-header">
+                    <strong>Chỉ định</strong>
+                    <label class="thu-ngan-discount-picker mb-0" title="Áp dụng giảm giá cho các dòng chỉ định đang chọn">
+                        <span>Giảm giá</span>
+                        <select class="form-select form-select-sm" id="tn-service-discount">
+                            <option value="">-- % --</option>
+                            @* Danh sách mã giảm giá được nạp từ dbo.DM_MaGiamGia qua STO. *@
+                        </select>
+                    </label>
+                    <span class="ms-auto d-flex align-items-center gap-2">
+    <span>Tạm tính: <strong id="tn-service-subtotal">0 đ</strong></span>
+</span>
+                </div>
+                <div class="table-responsive thu-ngan-cost-scroll">
+                    <table class="table table-sm table-bordered align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width:42px" class="text-center">
+                                    <input type="checkbox" class="form-check-input m-0 tn-select-all" id="tn-service-select-all" title="Chọn/bỏ chọn tất cả chỉ định" aria-label="Chọn tất cả chỉ định" />
+                                </th>
+                                <th>Nội dung</th>
+                                <th style="width:70px" class="text-center">SL</th>
+                                <th style="width:108px" class="text-end">Đơn giá</th>
+                                <th style="width:92px" class="text-center">Giảm(%)</th>
+                                <th style="width:120px" class="text-end">Thanh toán</th>
+                            </tr>
+                        </thead>
+                        <tbody id="thu-ngan-service-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="thu-ngan-cost-section" id="tn-medicine-section">
+                <div class="thu-ngan-section-header">
+                    <strong>Toa thuốc</strong>
+                    <label class="thu-ngan-discount-picker mb-0" title="Áp dụng giảm giá cho các dòng toa thuốc đang chọn">
+                        <span>Giảm giá</span>
+                        <select class="form-select form-select-sm" id="tn-medicine-discount">
+                            <option value="">-- % --</option>
+                            @* Danh sách mã giảm giá được nạp từ dbo.DM_MaGiamGia qua STO. *@
+                        </select>
+                    </label>
+                    <span class="ms-auto d-flex align-items-center gap-2">
+    <span>Tạm tính: <strong id="tn-medicine-subtotal">0 đ</strong></span>
+</span>
+                </div>
+                <div class="table-responsive thu-ngan-cost-scroll">
+                    <table class="table table-sm table-bordered align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width:42px" class="text-center">
+                                    <input type="checkbox" class="form-check-input m-0 tn-select-all" id="tn-medicine-select-all" title="Chọn/bỏ chọn tất cả toa thuốc" aria-label="Chọn tất cả toa thuốc" />
+                                </th>
+                                <th>Tên thuốc</th>
+                                <th style="width:70px" class="text-center">SL</th>
+                                <th style="width:82px" class="text-center">ĐVT</th>
+                                <th style="width:108px" class="text-end">Đơn giá</th>
+                                <th style="width:92px" class="text-center">Giảm(%)</th>
+                                <th style="width:120px" class="text-end">Thanh toán</th>
+                            </tr>
+                        </thead>
+                        <tbody id="thu-ngan-medicine-body"></tbody>
+                    </table>
+                </div>
+            </section>
+            </div>
+
+            <div class="thu-ngan-payment-his border-top" id="tn-payment-footer">
+                <div class="thu-ngan-payment-main-row">
+                    <div class="thu-ngan-his-field thu-ngan-his-total">
+                        <span>Tổng thanh toán</span>
+                        <strong id="tn-tong-thanh-toan">0</strong>
+                    </div>
+
+                    <select class="form-select form-select-sm thu-ngan-his-bank" id="tn-ngan-hang">
+                        <option value="">-- Chuyển khoản --</option>
+                    </select>
+
+                    <input type="text" inputmode="numeric"
+                           class="form-control form-control-sm text-end thu-ngan-money-input thu-ngan-his-transfer"
+                           id="tn-chuyen-khoan" value="0"
+                           placeholder="Số tiền chuyển khoản" />
+
+                    <div class="thu-ngan-his-field thu-ngan-his-cash">
+                        <span>Thu tiền mặt:</span>
+                        <strong id="tn-tien-mat">0</strong>
+                    </div>
+                </div>
+
+                <div class="thu-ngan-payment-note-row">
+                    <div class="input-group input-group-sm thu-ngan-his-note">
+                        <span class="input-group-text">Ghi chú</span>
+                        <input type="text" maxlength="500" class="form-control" id="tn-ghi-chu" />
+                    </div>
+
+                    @if (coQuyenThu)
+                    {
+                        <button type="button" class="btn btn-primary btn-sm" id="tn-btn-thu">Lưu</button>
+                    }
+                </div>
+
+                <div class="small text-muted pt-1" id="tn-payment-help"></div>
+
+            </div>
+
+        </div>
+        </div>
+
+        <div class="thu-ngan-panel h-100 d-none" data-thu-ngan-panel="chung-tu">
+            <div id="thu-ngan-document-empty" class="d-flex flex-column align-items-center justify-content-center h-100 text-muted py-5">
+                <i class="bi bi-receipt-cutoff display-5 mb-2"></i>
+                <div>Chọn bệnh nhân để quản lý chứng từ.</div>
+            </div>
+
+            <div id="thu-ngan-document-detail" class="d-none thu-ngan-document-content">
+                <section class="thu-ngan-cost-section thu-ngan-document-current-section" aria-label="Chứng từ của bệnh nhân đang chọn">
+                    
+                    <div class="table-responsive thu-ngan-document-table-scroll">
+                        <table class="table table-sm table-bordered align-middle mb-0 thu-ngan-document-table">
+                            <thead class="table-light sticky-top">
+                                <tr>
+                                    <th class="text-center" style="width:46px">STT</th>
+                                    <th>Nội dung</th>
+                                    <th class="text-center" style="width:65px">SL</th>
+                                    <th class="text-center" style="width:82px">ĐVT</th>
+                                    <th class="text-end" style="width:108px">Đơn giá</th>
+                                    <th class="text-center" style="width:92px">Giảm(%)</th>
+                                    <th class="text-end" style="width:120px">Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tn-document-current">
+                                <tr><td colspan="7" class="text-center text-muted py-3">Chưa có chứng từ.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+
+            </div>
+        </div>
+
+        <div class="thu-ngan-panel h-100 d-none" data-thu-ngan-panel="lich-su">
+            <div id="thu-ngan-history-empty" class="d-flex flex-column align-items-center justify-content-center h-100 text-muted py-5">
+                <i class="bi bi-clock-history display-5 mb-2"></i>
+                <div>Chọn bệnh nhân để xem lịch sử chứng từ.</div>
+            </div>
+
+            <div id="thu-ngan-history-detail" class="d-none thu-ngan-history-content">
+                <div class="thu-ngan-section-header">
+                    <strong>Lịch sử chứng từ</strong>
+                    <span class="text-muted ms-2" id="tn-history-patient"></span>
+                    @if (coQuyenXuat)
+                    {
+                        <button type="button" class="btn btn-sm btn-outline-success ms-auto" id="tn-history-excel">
+                            <i class="bi bi-file-earmark-excel me-1"></i>Xuất Excel
+                        </button>
+                    }
+                </div>
+
+                <div class="table-responsive thu-ngan-history-table-scroll">
+                    <table class="table table-sm table-bordered align-middle mb-0 thu-ngan-history-table">
+                        <thead class="table-light sticky-top">
+                            <tr>
+                                <th style="width:145px">Thời gian</th>
+                                <th style="width:150px">Hành động</th>
+                                <th style="width:190px">Số phiếu</th>
+                                <th class="text-end" style="width:130px">Số tiền</th>
+                                <th style="width:180px">Người thực hiện</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tn-history-body">
+                            <tr><td colspan="6" class="text-center text-muted py-3">Chưa có lịch sử.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+</section>
+
+<iframe id="thu-ngan-print-frame" title="Bản in phiếu thu" style="display:none"></iframe>
+
+<script src="~/js/thu_ngan/thungan.js" asp-append-version="true"></script>

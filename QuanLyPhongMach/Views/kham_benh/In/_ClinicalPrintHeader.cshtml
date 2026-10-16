@@ -1,0 +1,27 @@
+@model QuanLyPhongMach.Models.Printing.KhamBenh.KhamBenhPrintDocument
+<div class="print-header">
+    <div class="print-header__identity">
+        <div class="print-header__identity-inner">
+            <div class="print-header__logo">
+                @if (!string.IsNullOrWhiteSpace(Model.LogoDataUri))
+                {
+                    <img src="@Model.LogoDataUri" alt="Logo" />
+                }
+            </div>
+            <div class="print-header__clinic">
+                <strong>@Model.TenCskcb</strong>
+                @if (!string.IsNullOrWhiteSpace(Model.DiaChiCskcb)) { <div>Địa chỉ: @Model.DiaChiCskcb</div> }
+                @if (!string.IsNullOrWhiteSpace(Model.DienThoaiCskcb)) { <div>Điện thoại: @Model.DienThoaiCskcb</div> }
+                @if (!string.IsNullOrWhiteSpace(Model.EmailCskcb)) { <div>Email: @Model.EmailCskcb</div> }
+            </div>
+        </div>
+    </div>
+    <div class="print-header__codes">
+        @if (!string.IsNullOrWhiteSpace(Model.MaBn)) { <div>Mã định danh: <em>@Model.MaBn</em></div> }
+        @if (!string.IsNullOrWhiteSpace(Model.MaVaoVien)) { <div>Mã LK: <em>@Model.MaVaoVien</em></div> }
+        @if (!string.IsNullOrWhiteSpace(Model.BarcodeSvg))
+        {
+            <div class="barcode">@Html.Raw(Model.BarcodeSvg)</div>
+        }
+    </div>
+</div>

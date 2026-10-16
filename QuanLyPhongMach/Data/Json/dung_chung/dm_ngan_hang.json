@@ -1,0 +1,247 @@
+﻿[
+  {
+    "id": 7,
+    "ma": "Agribank",
+    "ten": "Agribank"
+  },
+  {
+    "id": 2,
+    "ma": "BIDV",
+    "ten": "BIDV"
+  },
+  {
+    "id": 8,
+    "ma": "ACB",
+    "ten": "Ngân hàng Á Châu"
+  },
+  {
+    "id": 27,
+    "ma": "ABBANK",
+    "ten": "Ngân hàng An Bình"
+  },
+  {
+    "id": 35,
+    "ma": "ANZVL",
+    "ten": "Ngân hàng ANZ Việt Nam"
+  },
+  {
+    "id": 38,
+    "ma": "Viet Capital Bank",
+    "ten": "Ngân hàng Bản Việt"
+  },
+  {
+    "id": 41,
+    "ma": "BAOVIET Bank",
+    "ten": "Ngân hàng Bảo Việt"
+  },
+  {
+    "id": 15,
+    "ma": "LienVietPostBank",
+    "ten": "Ngân hàng Bưu điện Liên Việt"
+  },
+  {
+    "id": 13,
+    "ma": "VBSP",
+    "ten": "Ngân hàng Chính sách xã hội Việt Nam"
+  },
+  {
+    "id": 37,
+    "ma": "CIMB",
+    "ten": "Ngân hàng CIMB Việt Nam"
+  },
+  {
+    "id": 3,
+    "ma": "VietinBank",
+    "ten": "Ngân hàng Công thương Việt Nam"
+  },
+  {
+    "id": 22,
+    "ma": "PVcomBank",
+    "ten": "Ngân hàng Đại Chúng Việt Nam"
+  },
+  {
+    "id": 36,
+    "ma": "OceanBank",
+    "ten": "Ngân hàng Đại Dương"
+  },
+  {
+    "id": 44,
+    "ma": "GPBank",
+    "ten": "Ngân hàng Dầu khí toàn cầu"
+  },
+  {
+    "id": 31,
+    "ma": "DongA Bank",
+    "ten": "Ngân hàng Đông Á"
+  },
+  {
+    "id": 12,
+    "ma": "SeABank",
+    "ten": "Ngân hàng Đông Nam Á"
+  },
+  {
+    "id": 16,
+    "ma": "MSB",
+    "ten": "Ngân hàng Hàng Hải"
+  },
+  {
+    "id": 48,
+    "ma": "HLBVN",
+    "ten": "Ngân hàng Hong Leong Việt Nam"
+  },
+  {
+    "id": 43,
+    "ma": "Co-opBank",
+    "ten": "Ngân hàng Hợp tác xã Việt Nam"
+  },
+  {
+    "id": 40,
+    "ma": "IVB",
+    "ten": "Ngân hàng Indovina"
+  },
+  {
+    "id": 39,
+    "ma": "Kienlongbank",
+    "ten": "Ngân hàng Kiên Long"
+  },
+  {
+    "id": 6,
+    "ma": "Techcombank",
+    "ten": "Ngân hàng Kỹ Thương"
+  },
+  {
+    "id": 34,
+    "ma": "Nam A Bank",
+    "ten": "Ngân hàng Nam Á"
+  },
+  {
+    "id": 4,
+    "ma": "Vietcombank",
+    "ten": "Ngân hàng Ngoại Thương Việt Nam"
+  },
+  {
+    "id": 11,
+    "ma": "HDBank",
+    "ten": "Ngân hàng Phát triển Thành phố Hồ Chí Minh"
+  },
+  {
+    "id": 18,
+    "ma": "VDB",
+    "ten": "Ngân hàng Phát triển Việt Nam"
+  },
+  {
+    "id": 19,
+    "ma": "OCB",
+    "ten": "Ngân hàng Phương Đông"
+  },
+  {
+    "id": 26,
+    "ma": "PBVN",
+    "ten": "Ngân hàng Public Bank Việt Nam"
+  },
+  {
+    "id": 5,
+    "ma": "MB",
+    "ten": "Ngân hàng Quân Dội"
+  },
+  {
+    "id": 29,
+    "ma": "NCB",
+    "ten": "Ngân hàng Quốc dân"
+  },
+  {
+    "id": 10,
+    "ma": "VIB",
+    "ten": "Ngân hàng Quốc Tế"
+  },
+  {
+    "id": 17,
+    "ma": "SCB",
+    "ten": "Ngân hàng Sài Gòn"
+  },
+  {
+    "id": 9,
+    "ma": "SHB",
+    "ten": "Ngân hàng Sài Gòn – Hà Nội"
+  },
+  {
+    "id": 42,
+    "ma": "SAIGONBANK",
+    "ten": "Ngân hàng Sài Gòn Công Thương"
+  },
+  {
+    "id": 14,
+    "ma": "Sacombank",
+    "ten": "Ngân hàng Sài Gòn Thương Tín"
+  },
+  {
+    "id": 28,
+    "ma": "SHBVN",
+    "ten": "Ngân hàng Shinhan Việt Nam"
+  },
+  {
+    "id": 25,
+    "ma": "SCBVL",
+    "ten": "Ngân hàng Standard Chartered Việt Nam"
+  },
+  {
+    "id": 21,
+    "ma": "TPBank",
+    "ten": "Ngân hàng Tiên Phong"
+  },
+  {
+    "id": 23,
+    "ma": "Bac A Bank",
+    "ten": "Ngân hàng TMCP Bắc Á"
+  },
+  {
+    "id": 49,
+    "ma": "MBBANK",
+    "ten": "Ngân hàng TMCP Quân Đội"
+  },
+  {
+    "id": 32,
+    "ma": "UOB",
+    "ten": "Ngân hàng UOB Việt Nam"
+  },
+  {
+    "id": 30,
+    "ma": "VietABank",
+    "ten": "Ngân hàng Việt Á"
+  },
+  {
+    "id": 1,
+    "ma": "VPBank",
+    "ten": "Ngân hàng Việt Nam Thịnh Vượng"
+  },
+  {
+    "id": 33,
+    "ma": "Vietbank",
+    "ten": "Ngân hàng Việt Nam Thương Tín"
+  },
+  {
+    "id": 45,
+    "ma": "VRB",
+    "ten": "Ngân hàng Việt Nga"
+  },
+  {
+    "id": 24,
+    "ma": "Woori",
+    "ten": "Ngân hàng Woori Việt Nam"
+  },
+  {
+    "id": 47,
+    "ma": "PG Bank",
+    "ten": "Ngân hàng Xăng dầu Petrolimex"
+  },
+  {
+    "id": 46,
+    "ma": "CB",
+    "ten": "Ngân hàng Xây dựng"
+  },
+  {
+    "id": 20,
+    "ma": "Eximbank",
+    "ten": "Ngân hàng Xuất Nhập Khẩu"
+  }
+]

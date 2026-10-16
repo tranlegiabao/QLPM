@@ -1,0 +1,6 @@
+@model QuanLyPhongMach.Models.Printing.ThuNgan.ThuNganPrintModel
+<header style="font-family:Sans-serif;color:#1d60b0;font-size:14px;padding-bottom:5px;border-bottom:1px solid #1d60b0;">
+    <div style="font-weight:bold;font-size:18px;">@Model.TenCskcb</div>
+    <div>@Model.DiaChiCskcb</div>
+    @if (!string.IsNullOrWhiteSpace(Model.DienThoaiCskcb)) { <div>Điện thoại: @Model.DienThoaiCskcb</div> }
+</header>

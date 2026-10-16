@@ -1,0 +1,11 @@
+@if(User.IsInRole("quan_tri_he_thong"))
+{
+    <fieldset class="border rounded p-2 mt-3" id="ht-cs-ky-pdf">
+        <legend class="float-none w-auto small fw-semibold px-1">Ký số PDF</legend>
+        <label for="ht-cs-ky-pdf-url" class="form-label small mb-1">URL dịch vụ ký PDF</label>
+        <input id="ht-cs-ky-pdf-url" type="url" maxlength="500" class="form-control form-control-sm" placeholder="https://.../api/sign-pdf" />
+        <div id="ht-cs-ky-pdf-info" class="form-text">Mã CSKCB lấy từ hồ sơ cơ sở; mã người ký là mã nhân viên của bác sĩ.</div>
+        <label class="form-check mt-2 mb-2"><input id="ht-cs-ky-pdf-active" type="checkbox" class="form-check-input" />Bật ký số PDF</label>
+        <button id="ht-cs-ky-pdf-save" type="button" class="btn btn-outline-primary btn-sm" disabled>Lưu cấu hình ký PDF</button>
+    </fieldset>
+}

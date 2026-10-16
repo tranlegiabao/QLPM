@@ -1,0 +1,40 @@
+@model QuanLyPhongMach.Models.Printing.KhamBenh.KhamBenhPrintDocument
+@{
+    var patientNameLabel = ViewData["PatientNameLabel"] as string ?? "Họ tên";
+    var showPatientIdentity = ViewData["ShowPatientIdentity"] as bool? == true;
+}
+<table class="info-grid">
+    <colgroup>
+        @if (showPatientIdentity)
+        {
+            <col style="width: 29.5%" />
+            <col style="width: 29.5%" />
+            <col style="width: 26%" />
+            <col style="width: 15%" />
+        }
+        else
+        {
+            <col style="width: 24%" />
+            <col style="width: 24%" />
+            <col style="width: 36%" />
+            <col style="width: 16%" />
+        }
+    </colgroup>
+    <tr>
+        <td colspan="2"><span class="label">@patientNameLabel:</span> <span class="line-value patient-name">@Model.HoTen</span></td>
+        <td><span class="label">Ngày sinh:</span> <span class="line-value">@(Model.NgaySinh?.ToString("dd-MM-yyyy") ?? "")</span></td>
+        <td><span class="label">Giới tính:</span> <span class="line-value">@Model.GioiTinh</span></td>
+    </tr>
+    @if (showPatientIdentity)
+    {
+        <tr>
+            <td colspan="4"><span class="label">Số định danh cá nhân/số hộ chiếu của người bệnh (nếu có):</span> <span class="line-value">@Model.SoCccd</span></td>
+        </tr>
+    }
+    <tr>
+        <td colspan="4"><span class="label">Địa chỉ:</span> <span class="line-value">@Model.DiaChi</span></td>
+    </tr>
+    <tr>
+        <td colspan="4"><span class="label">Điện thoại:</span> <span class="line-value">@Model.DienThoai</span></td>
+    </tr>
+</table>

@@ -1,0 +1,62 @@
+﻿[
+  {
+    "id": 1,
+    "ma": "1",
+    "ten": "Bác sĩ",
+    "viet_tat": "BS"
+  },
+  {
+    "id": 52,
+    "ma": "6",
+    "ten": "Cử nhân CĐHA",
+    "viet_tat": "CN CĐHA"
+  },
+  {
+    "id": 56,
+    "ma": "10",
+    "ten": "Cử nhân xét nghiệm",
+    "viet_tat": "CN XN"
+  },
+  {
+    "id": 6,
+    "ma": "3",
+    "ten": "Điều dưỡng",
+    "viet_tat": "ĐD"
+  },
+  {
+    "id": 57,
+    "ma": "11",
+    "ten": "Dược sĩ cao đẳng",
+    "viet_tat": "DSCĐ"
+  },
+  {
+    "id": 53,
+    "ma": "7",
+    "ten": "Dược sĩ đại học",
+    "viet_tat": "DSĐH"
+  },
+  {
+    "id": 54,
+    "ma": "8",
+    "ten": "Dược sĩ trung cấp",
+    "viet_tat": "DSTC"
+  },
+  {
+    "id": 51,
+    "ma": "5",
+    "ten": "Kỹ thuật viên",
+    "viet_tat": "KTV"
+  },
+  {
+    "id": 50,
+    "ma": "4",
+    "ten": "Nữ hộ sinh",
+    "viet_tat": "NHS"
+  },
+  {
+    "id": 49,
+    "ma": "2",
+    "ten": "Y sĩ",
+    "viet_tat": "YS"
+  }
+]

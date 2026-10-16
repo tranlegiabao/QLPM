@@ -1,0 +1,51 @@
+name: QLPM Build
+
+on:
+  push:
+    branches:
+      - main
+      - Hieu_QLPM
+      - 'Hieu_05/10'
+      - 'Hieu_12/10_1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 7
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 7.0.x
+
+      - name: Restore
+        run: dotnet restore QuanLyPhongMach/QuanLyPhongMach.csproj
+
+      - name: Enforce STO-only database access
+        run: |
+          if git grep -nE 'SqlQueryRaw|ExecuteSqlRaw|ExecuteSqlInterpolated|FromSqlRaw|FromSqlInterpolated|QueryMultipleSqlAsync|CommandType[.]Text' -- '*.cs'; then
+            echo "::error::QLPM forbids direct raw SQL. Call dbo stored procedures instead."
+            exit 1
+          fi
+
+      - name: Validate Kho JavaScript syntax
+        run: node --check QuanLyPhongMach/wwwroot/js/kho/kho.js
+
+      - name: Validate Phân nhóm thuốc JavaScript and view
+        run: |
+          node --check QuanLyPhongMach/wwwroot/js/kho/nhom-thuoc.js
+          node -e "const fs=require('fs');const v=fs.readFileSync('QuanLyPhongMach/Views/kho/Index.cshtml','utf8');const quote=String.fromCharCode(34);for(const id of ['kho-nhom-thuoc-root','kho-thuoc-tbody','kho-thuoc-search','kho-thuoc-pagination','kho-filter-all','kho-thuoc-filter'])if(!v.includes('id='+quote+id+quote))throw Error('Missing Phân nhóm thuốc element: '+id);if(!v.includes('~/js/kho/nhom-thuoc.js'))throw Error('Missing group medicine script');"
+
+      - name: Build
+        run: dotnet build QuanLyPhongMach/QuanLyPhongMach.csproj -c Release --no-restore -o .codex/.codex-build
+      - name: Restore integration contract checks
+        run: dotnet restore QuanLyPhongMach.SafetyChecks/QuanLyPhongMach.SafetyChecks.csproj
+
+      - name: Run integration contract checks
+        run: dotnet run --project QuanLyPhongMach.SafetyChecks/QuanLyPhongMach.SafetyChecks.csproj --configuration Release --no-restore

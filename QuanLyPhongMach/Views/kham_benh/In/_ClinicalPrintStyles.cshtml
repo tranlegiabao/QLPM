@@ -1,0 +1,278 @@
+<style>
+    @@page { size: A5 portrait; margin: 0; }
+
+    * { box-sizing: border-box; }
+
+    html { margin: 0; padding: 0; }
+    body {
+        margin: 0;
+        padding: 0 6px;
+        color: #000;
+        font-family: "Times New Roman", serif;
+        font-size: 15px;
+        line-height: 1.12;
+    }
+
+    .print-page {
+        width: 100%;
+        position: relative;
+        page-break-after: always;
+    }
+    .print-page:last-child { page-break-after: auto; }
+
+    /* Phiếu chỉ định co theo đúng nội dung, tránh min-height đẩy ra trang trắng thứ 2. */
+    .print-document--order .print-page {
+        min-height: 0;
+        padding-bottom: 0;
+    }
+
+    /* A5 210mm, lề PDF 5mm mỗi phía. Giữ phần dành riêng cho
+       khối thông tin giám hộ, không làm tăng chiều cao để tránh trang trắng. */
+    .print-document--prescription .print-page {
+        min-height: 198mm;
+        padding-bottom: 18mm;
+    }
+
+    /* Tăng leading thêm 1.5pt cho nội dung toa để chữ không bị sít nhau.
+       Chỉ áp dụng toa thuốc, không làm thay đổi phiếu chỉ định. */
+    .print-document--prescription {
+        line-height: calc(1em + 1.5pt);
+    }
+
+    .print-header {
+        display: table;
+        width: 100%;
+        margin-bottom: 6px;
+    }
+    .print-header__identity,
+    .print-header__codes {
+        display: table-cell;
+        vertical-align: top;
+    }
+    .print-header__identity {
+        width: 70%;
+        padding-right: 4px;
+    }
+    .print-header__identity-inner {
+        display: table;
+        width: 100%;
+        padding-bottom: 2px;
+        border-bottom: 1px solid #1d60b0;
+    }
+    .print-header__logo,
+    .print-header__clinic {
+        display: table-cell;
+        vertical-align: top;
+    }
+    .print-header__logo {
+        width: 49px;
+        text-align: left;
+        vertical-align: middle;
+    }
+    .print-header__logo img {
+        max-width: 42px;
+        max-height: 44px;
+    }
+    .print-header__clinic {
+        padding: 0 3px 0 0;
+        color: #1d60b0;
+        font-family: Arial, sans-serif;
+        font-size: 11px;
+        line-height: 1.2;
+    }
+    .print-header__clinic strong {
+        display: block;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    .print-header__clinic div { font-size: 11px; }
+
+    .print-header__codes {
+        width: 30%;
+        text-align: right;
+        font-size: 12px;
+        line-height: 1.15;
+        white-space: nowrap;
+    }
+    .print-header__codes em { font-style: italic; }
+
+    .barcode {
+        width: 118px;
+        margin: 2px 0 0 auto;
+        overflow: visible;
+        text-align: center;
+    }
+    .barcode svg {
+        display: block;
+        width: 100%;
+        height: 25px;
+    }
+    .barcode__label {
+        margin-top: 1px;
+        font-family: Arial, sans-serif;
+        font-size: 6px;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .document-title {
+        margin: 7px 0 0;
+        text-align: center;
+        font-size: 23px;
+        line-height: 1.05;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    .print-document--order .document-title {
+        margin-bottom: 5px;
+        font-size: 26px;
+    }
+
+    .document-subtitle {
+        margin: 1px 0 6px;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.1;
+        font-weight: 400;
+        font-style: italic;
+    }
+
+    .info-grid {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1px;
+        table-layout: fixed;
+    }
+    .info-grid td {
+        padding: 0 0 1px;
+        vertical-align: top;
+    }
+    .vitals-grid td { width: 25%; }
+
+    .label { font-weight: 400; }
+    .patient-name {
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    .line-value { padding: 0; }
+
+    .section-label { margin: 3px 0 1px; font-weight: 700; }
+    .clinical-row { margin-bottom: 1px; }
+
+    .clinical-table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+        margin-top: 4px;
+        page-break-inside: auto;
+    }
+    .clinical-table thead { display: table-header-group; }
+    .clinical-table tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+    .clinical-table th,
+    .clinical-table td {
+        border: 1px solid #000;
+        vertical-align: top;
+        overflow-wrap: anywhere;
+        word-wrap: break-word;
+    }
+    .clinical-table th {
+        padding: 1px 3px;
+        text-align: center;
+        font-size: 15px;
+        line-height: 1.05;
+        font-weight: 600;
+        background: whitesmoke;
+    }
+    .clinical-table td {
+        padding: 2px 3px;
+        font-size: 15px;
+        line-height: 1.12;
+    }
+    .clinical-table th:first-child,
+    .clinical-table td:first-child {
+        white-space: nowrap;
+        overflow-wrap: normal;
+        word-wrap: normal;
+    }
+    .print-document--prescription .clinical-table th {
+        font-size: 18px;
+        line-height: calc(1em + 1.5pt);
+    }
+    .print-document--prescription .clinical-table td {
+        font-size: 15px;
+        line-height: calc(1em + 1.5pt);
+    }
+
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .nowrap { white-space: nowrap; }
+    .muted { color: #000; font-style: italic; }
+    .total-row { font-weight: 700; }
+
+    .signatures {
+        display: table;
+        width: 100%;
+        margin-top: 4px;
+        font-size: 15px;
+        page-break-inside: avoid;
+    }
+    .print-document--order .signatures { margin-top: 4px; }
+    .print-document--prescription .signatures { margin-top: 8px; }
+    .signature {
+        display: table-cell;
+        width: 50%;
+        text-align: center;
+        vertical-align: top;
+    }
+    .signature__space { height: 112px; position: relative; }
+    .signature__anchor { position: absolute; left: 50%; color: #fff; font-family: monospace; font-size: 1px; line-height: 1px; white-space: nowrap; }
+    .signature__anchor--top { top: 2px; }
+    .signature__anchor--bottom { bottom: 2px; }
+    .issue-date { text-align: center; font-style: italic; }
+    .print-document--prescription .signature__space { height: 112px; }
+
+    .medicine-name { font-size: 16px; font-weight: 700; }
+    .medicine-detail { font-size: 15px; font-style: italic; }
+    .dose {
+        margin-top: 0;
+        padding-left: 28px;
+        font-size: 15px;
+    }
+    .print-document--prescription .dose,
+    .print-document--prescription .clinical-row,
+    .print-document--prescription .notes,
+    .print-document--prescription .info-grid td {
+        line-height: calc(1em + 1.5pt);
+    }
+
+    .notes {
+        margin-top: 2px;
+        font-size: 15px;
+        page-break-inside: avoid;
+    }
+    .follow-up { margin-top: 1px; }
+
+    /* Một footer cố định cho tài liệu toa: wkhtmltopdf lặp lại ở đáy
+       mỗi trang A5. Không neo vào .print-page/min-height, vốn làm thông tin
+       giám hộ dừng giữa khoảng trắng ở các bản PDF có hệ số thu nhỏ khác nhau. */
+    .print-document--prescription .guardian-info {
+        position: fixed;
+        left: 6px;
+        right: 6px;
+        bottom: 5mm;
+        font-size: 13px;
+        line-height: calc(1em + 1.5pt);
+        page-break-inside: avoid;
+    }
+    .guardian-info__line {
+        display: block;
+        min-height: calc(1em + 1.5pt);
+        white-space: normal;
+    }
+</style>

@@ -1,0 +1,341 @@
+@{
+    ViewData["Title"] = "Thông tin hành chính / Tiếp nhận";
+}
+
+<div class="qlpm-page-root tiep-nhan-layout">
+    <section class="qlpm-pane-left tiep-nhan-list" aria-label="Danh sách lượt tiếp nhận">
+        <div class="border-bottom pb-2 mb-2">
+            <div class="row g-2 align-items-center mb-2">
+                <div class="col-6">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text bg-light text-muted">Từ</span>
+                        <input type="text" id="tn-filter-tu-ngay" class="form-control" placeholder="dd/MM/yyyy" />
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text bg-light text-muted">Đến</span>
+                        <input type="text" id="tn-filter-den-ngay" class="form-control" placeholder="dd/MM/yyyy" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group input-group-sm mb-2">
+                <input type="text" id="tn-filter-tu-khoa" class="form-control" placeholder="Mã BN, tên BN, CCCD, SĐT..." />
+                <button class="btn btn-outline-secondary" type="button" id="btn-tn-tim-kiem" title="Tìm kiếm"><i class="bi bi-search"></i></button>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between gap-2 px-1">
+                <div class="d-flex flex-wrap gap-3 small">
+                    <div class="form-check form-check-inline m-0">
+                        <input class="form-check-input" type="radio" name="tn-filter-status" id="tn-rad-chua-chuyen" value="0" checked />
+                        <label class="form-check-label text-status-chua-chuyen" for="tn-rad-chua-chuyen">Chưa chuyển</label>
+                    </div>
+                    <div class="form-check form-check-inline m-0">
+                        <input class="form-check-input" type="radio" name="tn-filter-status" id="tn-rad-da-chuyen" value="1" />
+                        <label class="form-check-label text-status-da-chuyen" for="tn-rad-da-chuyen">Đã chuyển</label>
+                    </div>
+                    <div class="form-check form-check-inline m-0">
+                        <input class="form-check-input" type="radio" name="tn-filter-status" id="tn-rad-tat-ca" value="" />
+                        <label class="form-check-label" for="tn-rad-tat-ca">Tất cả</label>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-load-list" type="button" id="btn-tn-reload" title="Tải danh sách tiếp nhận">
+                    <i class="bi bi-arrow-clockwise me-1"></i> Tải danh sách
+                </button>
+            </div>
+        </div>
+
+        <div class="qlpm-table-container">
+            <table class="table table-hover table-bordered qlpm-table tiep-nhan-table" id="tn-table">
+                <thead>
+                    <tr>
+                        <th class="text-center col-stt" style="width: 45px; min-width: 45px;">STT</th>
+                        <th class="sticky-col sticky-col-ten-bn" style="min-width: 180px;">Tên BN</th>
+                        <th class="text-center text-nowrap col-ngay-tn" style="min-width: 110px;">Ngày tiếp nhận</th>
+                        <th class="text-center text-nowrap col-ngay-sinh" style="min-width: 85px;">Ngày sinh</th>
+                        <th class="text-center text-nowrap col-gioi-tinh" style="width: 60px; min-width: 60px;">Giới tính</th>
+                        <th class="text-nowrap col-cccd" style="min-width: 110px;">CCCD</th>
+                        <th class="text-nowrap col-sdt" style="min-width: 95px;">SĐT</th>
+                        <th class="col-dia-chi" style="min-width: 200px;">Địa chỉ</th>
+                        <th class="col-ma-bn" style="width: 95px; min-width: 95px;">Mã BN</th>
+                        <th class="text-center sticky-col sticky-col-tuy-chon" style="width: 85px; min-width: 85px;">Tùy chọn</th>
+                    </tr>
+                </thead>
+                <tbody id="tn-table-body">
+                    <tr><td colspan="10" class="text-center text-muted py-4">Chọn điều kiện lọc rồi bấm Tải danh sách.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="qlpm-pagination-bar" id="tn-pagination"></div>
+    </section>
+
+    <section class="qlpm-pane-right tiep-nhan-form-pane" aria-label="Thông tin hành chính">
+        <form id="tn-form" onsubmit="return false;" class="d-flex flex-column h-100">
+            <input type="hidden" id="tn-id-benh-nhan" value="" />
+            <input type="hidden" id="tn-id-vao-vien" value="" />
+            <input type="hidden" id="tn-ghi-chu-bn" value="" />
+            <input type="hidden" id="tn-ghi-chu-lan-kham" value="" />
+
+            <div class="row g-2 align-items-end mb-2">
+                <div class="col-auto">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-tn-tao-moi" title="Nhập mới bệnh nhân">
+                        <i class="bi bi-plus-lg me-1"></i> Tạo mới
+                    </button>
+                </div>
+                <div class="col-md-2 col-3">
+                    <label class="form-label">STT</label>
+                    <input type="number" id="tn-stt-ngay" class="form-control form-control-sm fw-bold text-center" min="1" placeholder="[Tự động]" />
+                </div>
+                <div class="col-md-3 col-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label class="form-label mb-1">Mã BN</label>
+                        <span id="tn-badge-bn-cu" class="tn-badge-bn-cu d-none" title="Đang tiếp nhận BN cũ. Bấm để bỏ chọn và nhập người mới.">
+                            <i class="bi bi-person-check-fill me-1"></i>BN cũ <i class="bi bi-x"></i>
+                        </span>
+                    </div>
+                    <input type="text" id="tn-ma-bn" class="form-control form-control-sm bg-light fw-bold text-primary" readonly placeholder="[Tự động]" />
+                </div>
+                <div class="col">
+                    <label class="form-label text-danger">Họ và tên (*)</label>
+                    <input type="text" id="tn-ho-ten" class="form-control form-control-sm fw-bold text-uppercase" required />
+                </div>
+            </div>
+
+            <div class="row g-2 mb-2">
+                <div class="col-md-3 position-relative">
+                    <label class="form-label">Ngày sinh</label>
+                    <input type="text" id="tn-ngay-sinh" class="form-control form-control-sm" placeholder="dd-MM-yyyy" maxlength="10" />
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Giới tính</label>
+                    <select id="tn-gioi-tinh" class="form-select form-select-sm"></select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Quốc tịch</label>
+                    <select id="tn-quoc-tich" class="form-select form-select-sm"></select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Dân tộc</label>
+                    <select id="tn-dan-toc" class="form-select form-select-sm"></select>
+                </div>
+            </div>
+
+            <div class="row g-2 mb-2">
+                <div class="col-md-4">
+                    <label class="form-label">Nghề nghiệp</label>
+                    <select id="tn-nghe-nghiep" class="form-select form-select-sm"></select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">SĐT</label>
+                    <input type="text" id="tn-dien-thoai" class="form-control form-control-sm" inputmode="numeric" maxlength="10" />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">CCCD</label>
+                    <input type="text" id="tn-cccd" class="form-control form-control-sm" inputmode="numeric" maxlength="12" />
+                </div>
+            </div>
+
+            <!-- Thứ tự nhập địa chỉ: Số nhà -> Tỉnh / Thành phố -> Phường / Xã -->
+            <div class="row g-2 mb-2">
+                <div class="col-md-4">
+                    <label class="form-label">Số nhà / Tên đường</label>
+                    <input type="text" id="tn-so-nha" class="form-control form-control-sm" />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Tỉnh / Thành phố</label>
+                    <select id="tn-tinh-thanh" class="form-select form-select-sm"></select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Phường / Xã</label>
+                    <select id="tn-phuong-xa" class="form-select form-select-sm"></select>
+                </div>
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Địa chỉ</label>
+                <input type="text" id="tn-dia-chi" class="form-control form-control-sm" />
+            </div>
+
+            <!-- Thông tin cha/mẹ / người giám hộ (chỉ hiện khi BN < 18 tuổi) -->
+            <div id="section-giam-ho" class="giam-ho-section d-none mb-2">
+                <div class="d-flex align-items-center mb-2">
+                    <span class="badge bg-warning-subtle text-warning border border-warning-subtle px-2 py-1">
+                        <i class="bi bi-person-fill me-1"></i>Bệnh nhân dưới 18 tuổi — cần thông tin người giám hộ
+                    </span>
+                </div>
+                <div class="row g-2">
+                    <div class="col-md-3">
+                        <label class="form-label">Mối quan hệ</label>
+                        <select id="tn-giam-ho-moi-quan-he" class="form-select form-select-sm">
+                            <option value="">-- Chọn --</option>
+                            <option value="Cha">Cha</option>
+                            <option value="Mẹ">Mẹ</option>
+                            <option value="Người giám hộ khác">Người giám hộ khác</option>
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="form-label">Họ tên người giám hộ</label>
+                        <input type="text" id="tn-giam-ho-ho-ten" class="form-control form-control-sm text-uppercase" />
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">SĐT</label>
+                        <input type="text" id="tn-giam-ho-dien-thoai" class="form-control form-control-sm" inputmode="numeric" maxlength="10" />
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">CCCD</label>
+                        <input type="text" id="tn-giam-ho-cccd" class="form-control form-control-sm" inputmode="numeric" maxlength="12" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thứ tự nút: Lưu -> Chọn công khám -> Chuyển khám -->
+            <div class="tiep-nhan-actions mt-auto d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-luu px-4 fw-bold" id="btn-tn-luu" title="Lưu thông tin tiếp nhận (F2)">
+                        <i class="bi bi-floppy-fill me-1"></i> Lưu
+                    </button>
+                    <button type="button" class="btn btn-outline-primary text-start" id="btn-mo-modal-cong-kham" title="Chọn công khám">
+                        <i class="bi bi-card-checklist me-1"></i>
+                        <span id="tn-cong-kham-tom-tat">Chọn công khám</span>
+                    </button>
+                </div>
+                <button type="button" class="btn btn-chuyen-kham px-4 fw-bold" id="btn-tn-chuyen-kham" disabled title="Chuyển sang phòng khám">
+                    <i class="bi bi-arrow-right-circle-fill me-1"></i> Chuyển khám
+                </button>
+            </div>
+        </form>
+    </section>
+</div>
+
+<div class="modal fade" id="modalCongKham" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header py-2">
+                <div>
+                    <h6 class="modal-title fw-bold text-primary mb-0">Công khám</h6>
+                    <small class="text-muted" id="modal-ck-ten-benh-nhan">Chưa chọn bệnh nhân</small>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+            </div>
+            <div class="modal-body p-2">
+                <div class="row g-2">
+                    <div class="col-md-6 border-end pe-2">
+                        <div class="input-group input-group-sm mb-2">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" id="modal-ck-search" class="form-control" placeholder="Tìm công khám..." />
+                        </div>
+                        <div class="overflow-auto border rounded p-1" style="height: 320px;" id="modal-ck-available-list">
+                            <!-- Danh sách công khám có sẵn -->
+                        </div>
+                    </div>
+                    <div class="col-md-6 ps-2">
+                        <h6 class="fw-bold mb-2">Công khám đã chọn (<span id="modal-ck-selected-count">0</span>)</h6>
+                        <div class="overflow-auto border rounded p-1" style="height: 320px;">
+                            <table class="table table-sm table-hover mb-0" id="modal-ck-selected-table">
+                                <thead class="table-light sticky-top">
+                                    <tr>
+                                        <th>Tên công khám</th>
+                                        <th class="text-end" style="width: 90px;">Đơn giá</th>
+                                        <th style="width: 35px;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="modal-ck-selected-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-sm btn-primary" id="btn-modal-ck-xac-nhan">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalGhiChu" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header py-2">
+                <h6 class="modal-title fw-bold text-primary mb-0">Ghi chú</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex gap-4 mb-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="modal-note-type" id="modal-note-type-bn" value="benh_nhan" checked />
+                        <label class="form-check-label" for="modal-note-type-bn">Ghi chú BN</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="modal-note-type" id="modal-note-type-lan-kham" value="lan_kham" />
+                        <label class="form-check-label" for="modal-note-type-lan-kham">Ghi chú lần khám</label>
+                    </div>
+                </div>
+                <textarea id="modal-note-editor" class="form-control" rows="6"></textarea>
+            </div>
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-sm btn-primary" id="btn-modal-note-luu">Lưu ghi chú</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalBoDangKy" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content shadow">
+            <div class="modal-header py-2 bg-danger bg-opacity-10 border-bottom">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-x-circle text-danger fs-5"></i>
+                    <div>
+                        <h6 class="modal-title fw-bold text-danger mb-0">Bỏ đăng ký công khám</h6>
+                        <small class="text-muted" id="modal-bdk-patient-info">Bệnh nhân: --</small>
+                    </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+            </div>
+            <div class="modal-body p-3">
+                <p class="small text-muted mb-3">
+                    Chọn các công khám bạn muốn bỏ đăng ký bên dưới hoặc bấm nút <strong>icon thùng rác</strong> trên từng dòng để bỏ nhanh. Nếu bỏ <strong>tất cả công khám</strong>, thông tin bệnh nhân và lượt tiếp nhận vẫn được giữ lại, lượt tiếp nhận sẽ trở về trạng thái <strong>Chưa chuyển</strong>.
+                </p>
+                <div class="table-responsive border rounded" style="max-height: 280px;">
+                    <table class="table table-hover table-sm qlpm-table mb-0" id="modal-bdk-table">
+                        <thead class="table-light sticky-top">
+                            <tr>
+                                <th class="text-center" style="width: 40px;">
+                                    <input type="checkbox" class="form-check-input" id="modal-bdk-check-all" title="Chọn tất cả" />
+                                </th>
+                                <th class="text-center" style="width: 45px;">STT</th>
+                                <th style="width: 100px;">Mã CK</th>
+                                <th>Tên công khám</th>
+                                <th class="text-end" style="width: 100px;">Đơn giá</th>
+                                <th class="text-end" style="width: 110px;">Thành tiền</th>
+                                <th>Ghi chú</th>
+                                <th class="text-center" style="width: 45px;" title="Xóa công khám"><i class="bi bi-trash text-danger"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody id="modal-bdk-table-body">
+                            <tr><td colspan="8" class="text-center text-muted py-3">Đang tải...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-2 px-1">
+                    <span class="small text-muted" id="modal-bdk-summary">Đã chọn: 0 công khám</span>
+                    <span class="small fw-bold text-danger" id="modal-bdk-total-money"></span>
+                </div>
+            </div>
+            <div class="modal-footer py-2 border-top bg-light">
+                <button type="button" class="btn btn-sm btn-secondary px-3" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-sm btn-danger px-3 fw-bold" id="btn-modal-bdk-xac-nhan">
+                    <i class="bi bi-trash me-1"></i> Bỏ đăng ký đã chọn
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/tiep_nhan/tiepnhan.js" asp-append-version="true"></script>
+}

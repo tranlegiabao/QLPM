@@ -1,0 +1,25 @@
+@model QuanLyPhongMach.Models.Printing.Kho.KhoCapPhatPrintModel
+@using System.Globalization
+@{ Layout=null;var p=Model.ThongTin;var vi=CultureInfo.GetCultureInfo("en-US"); }
+<!doctype html><html lang="vi"><head><meta charset="utf-8"/><style>
+body{margin:0;font-family:"Times New Roman",serif;font-size:17px;color:#000}
+header{font-family:Arial,sans-serif;font-size:13px;color:#1d60b0;border-bottom:1px solid #1d60b0;padding-bottom:5px;display:table;width:100%}
+.logo{display:table-cell;width:64px;vertical-align:middle}.logo img{max-width:58px;max-height:58px}.clinic{display:table-cell;vertical-align:middle}
+h1{font-size:26px;text-align:center;margin:5px 0 16px}.center{text-align:center}.row{margin-bottom:10px}.grid{width:100%;border-collapse:collapse}.grid td{padding:0 0 10px;vertical-align:top}
+table.lines{width:100%;border-collapse:collapse;table-layout:fixed}table.lines td,table.lines th{border:1px solid #000;padding:3px 5px;overflow-wrap:anywhere}
+thead{display:table-header-group}tr{page-break-inside:avoid}.num{text-align:right}.signatures{display:table;width:100%;margin-top:20px;page-break-inside:avoid}.signature{display:table-cell;width:50%;text-align:center}.space{height:70px}.warning{font-weight:bold;text-align:center;margin:5px}.small{font-size:13px}
+</style></head><body>
+<header>@if(!string.IsNullOrEmpty(p.LogoDataUri)){<div class="logo"><img src="@p.LogoDataUri" alt=""/></div>}<div class="clinic"><strong>@p.TenCskcb</strong><br/>@p.DiaChiCskcb<br/>@p.DienThoaiCskcb @p.EmailCskcb</div></header>
+<h1>PHIẾU CẤP PHÁT THUỐC</h1>
+<div class="row center">Số phiếu: @Model.SoPhieu, Ngày lập: @Model.NgayXuat.ToString("dd-MM-yyyy")</div>
+<table class="grid"><tr><td style="width:50%">Tên bệnh nhân: <strong>@p.HoTen</strong></td><td style="width:25%">Năm sinh: <strong>@p.NgaySinh?.Year</strong></td><td>Giới tính: <strong>@p.GioiTinh</strong></td></tr>
+<tr><td colspan="2">Địa chỉ: @p.DiaChi</td><td>Điện thoại: @p.DienThoai</td></tr></table>
+<div class="row">Ghi chú: @Model.GhiChu</div>
+@if(Model.GiaLegacy){<div class="small row">Phiếu cũ: giá/ĐVT tham chiếu dữ liệu toa, chưa có snapshot chứng từ thu.</div>}
+<table class="lines"><thead><tr><th style="width:5%">STT</th><th style="width:35%">Tên hàng hoá</th><th style="width:12%">Số lượng</th><th style="width:10%">Đơn vị</th><th style="width:18%">Đơn giá</th><th style="width:20%">Thành tiền</th></tr><tr><th>A</th><th>B</th><th>1</th><th>C</th><th>2</th><th>3</th></tr></thead><tbody>
+@for(var i=0;i<Model.ChiTiet.Count;i++){var d=Model.ChiTiet[i];<tr><td class="center">@(i+1)</td><td>@d.Ten</td><td class="num">@d.SoLuong.ToString("#,##0.####",vi)</td><td>@d.DonViTinh</td><td class="num">@d.DonGia.ToString("#,##0.##",vi)</td><td class="num">@d.ThanhTien.ToString("#,##0.##",vi)</td></tr>}
+<tr><td colspan="5"><strong>Tổng tiền:</strong></td><td class="num"><strong>@Model.TongTien.ToString("#,##0.##",vi)</strong></td></tr></tbody></table>
+@if(Model.ChiTiet.Any(x=>x.DaHoanCoSo>0)){<div class="small row">Đã có hoàn thuốc; bản in giữ số lượng cấp ban đầu của phiếu.</div>}
+<div class="signatures"><div class="signature"><div>&nbsp;</div><strong>Người nhận</strong><div>(ký, họ tên)</div><div class="space"></div></div><div class="signature"><div><em>Ngày ... Tháng ... Năm ...</em></div><strong>Người lập phiếu</strong><div>(ký, họ tên)</div><div class="space"></div><strong>@Model.NguoiXuat</strong></div></div>
+</body></html>
+

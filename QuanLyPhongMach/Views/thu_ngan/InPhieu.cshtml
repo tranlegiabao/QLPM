@@ -1,0 +1,175 @@
+@model QuanLyPhongMach.Models.Printing.ThuNgan.ThuNganPrintModel
+@using System.Globalization
+@{
+    Layout = null;
+    var us = CultureInfo.GetCultureInfo("en-US");
+    string SoLuong(decimal value) => value.ToString("#,0.###", us);
+    string Tien(decimal value) => decimal.Round(value, 0, MidpointRounding.AwayFromZero).ToString("#,0", us);
+    var dichVu = Model.ChiTiet.Where(x => x.Loai != "THUOC").ToList();
+    var thuoc = Model.ChiTiet.Where(x => x.Loai == "THUOC").ToList();
+    var laPhieuHoan = Model.LoaiChungTu == "HOAN";
+    var tenNhomChungTu = thuoc.Count > 0 && dichVu.Count == 0
+        ? "toa thuốc"
+        : (dichVu.Count > 0 && thuoc.Count == 0 ? "chỉ định" : "");
+    var tenPhieu = (laPhieuHoan ? "Phiếu hoàn tiền" : "Phiếu thu")
+        + (string.IsNullOrWhiteSpace(tenNhomChungTu) ? "" : " " + tenNhomChungTu);
+    string TenNhom(string loai) => loai switch
+    {
+        "CONG_KHAM" => "Công khám",
+        "CLS" => "Cận lâm sàng",
+        "THUOC" => "Thuốc",
+        _ => "Khác"
+    };
+}
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <title>@tenPhieu @Model.SoPhieu</title>
+    <style>
+        @@page { size: A4; margin: 14mm 14mm 16mm; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: Arial, sans-serif; font-size: 13px; color: #111827; }
+        .sheet { max-width: 900px; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; gap: 24px; border-bottom: 1px solid #111827; padding-bottom: 8px; }
+        .clinic { font-weight: 700; text-transform: uppercase; font-size: 15px; }
+        .muted { color: #4b5563; font-size: 12px; }
+        h1 { text-align: center; text-transform: uppercase; font-size: 22px; margin: 18px 0 3px; }
+        .receipt-code { text-align: center; margin-bottom: 14px; }
+        .patient { display: grid; grid-template-columns: 1.6fr 1fr; gap: 5px 24px; margin-bottom: 12px; }
+        .label { font-weight: 700; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #9ca3af; padding: 6px 7px; vertical-align: top; }
+        th { background: #f3f4f6; text-align: center; }
+        .right { text-align: right; white-space: nowrap; }
+        .center { text-align: center; }
+        .summary { width: 48%; margin-left: auto; margin-top: 12px; }
+        .summary-row { display: flex; justify-content: space-between; gap: 16px; padding: 3px 0; }
+        .summary-row.total { border-top: 1px solid #111827; margin-top: 4px; padding-top: 7px; font-size: 15px; }
+        .payment { margin-top: 12px; }
+        .sign { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 26px; text-align: center; }
+        .sign-space { height: 68px; }
+        .cancelled { border: 2px solid #b91c1c; color: #b91c1c; padding: 7px; margin: 10px 0; text-align: center; font-weight: 700; }
+    </style>
+</head>
+<body>
+<div class="sheet">
+    <div class="header">
+        <div>
+            <div class="clinic">@Model.TenCskcb</div>
+            @if (!string.IsNullOrWhiteSpace(Model.DiaChiCskcb)) { <div class="muted">Địa chỉ: @Model.DiaChiCskcb</div> }
+            @if (!string.IsNullOrWhiteSpace(Model.DienThoaiCskcb)) { <div class="muted">Điện thoại: @Model.DienThoaiCskcb</div> }
+        </div>
+        <div class="muted" style="text-align:right">
+            <div>Mã BN: <strong>@Model.MaBenhNhan</strong></div>
+            <div>Mã lượt: <strong>@Model.MaVaoVien</strong></div>
+        </div>
+    </div>
+
+    <h1>@tenPhieu</h1>
+    <div class="receipt-code">Số phiếu: <strong>@Model.SoPhieu</strong></div>
+    @if (!string.IsNullOrWhiteSpace(Model.SoChungTuGoc)) { <div class="receipt-code">Chứng từ gốc: <strong>@Model.SoChungTuGoc</strong></div> }
+    @if (Model.TrangThai == 0) { <div class="cancelled">CHỨNG TỪ ĐÃ HỦY — @Model.LyDoHuy</div> }
+
+    <div class="patient">
+        <div><span class="label">Họ tên:</span> @Model.HoTen</div>
+        <div><span class="label">Ngày sinh:</span> @(Model.NgaySinh?.ToString("dd-MM-yyyy") ?? "")</div>
+        <div><span class="label">Giới tính:</span> @Model.GioiTinh</div>
+        <div><span class="label">Thời gian thu:</span> @Model.NgayGioThu.ToString("HH:mm")</div>
+    </div>
+
+    @if (dichVu.Count > 0)
+    {
+        <div class="label" style="margin:10px 0 5px">Khám &amp; chỉ định</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:45px">TT</th>
+                    <th style="width:120px">Nhóm</th>
+                    <th>Nội dung</th>
+                    <th style="width:95px">SL</th>
+                    <th style="width:105px">Đơn giá</th>
+                    <th style="width:80px">Giảm(%)</th>
+                    <th style="width:120px">Thanh toán</th>
+                </tr>
+            </thead>
+            <tbody>
+            @for (var i = 0; i < dichVu.Count; i++)
+            {
+                var row = dichVu[i];
+                <tr>
+                    <td class="center">@(i + 1)</td>
+                    <td>@TenNhom(row.Loai)</td>
+                    <td>@row.Ten</td>
+                    <td class="right">@SoLuong(row.SoLuong)</td>
+                    <td class="right">@Tien(row.DonGia)</td>
+                    <td class="right">@row.GiamPhanTram.ToString("0.##", CultureInfo.InvariantCulture)</td>
+                    <td class="right">@Tien(row.ThanhToan)</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+
+    @if (thuoc.Count > 0)
+    {
+        <div class="label" style="margin:12px 0 5px">Toa thuốc</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:45px">TT</th>
+                    <th>Tên thuốc</th>
+                    <th style="width:95px">SL</th>
+                    <th style="width:90px">ĐVT</th>
+                    <th style="width:105px">Đơn giá</th>
+                    <th style="width:80px">Giảm(%)</th>
+                    <th style="width:120px">Thanh toán</th>
+                </tr>
+            </thead>
+            <tbody>
+            @for (var i = 0; i < thuoc.Count; i++)
+            {
+                var row = thuoc[i];
+                <tr>
+                    <td class="center">@(i + 1)</td>
+                    <td>@row.Ten</td>
+                    <td class="right">@SoLuong(row.SoLuong)</td>
+                    <td class="center">@row.DonViTinh</td>
+                    <td class="right">@Tien(row.DonGia)</td>
+                    <td class="right">@row.GiamPhanTram.ToString("0.##", CultureInfo.InvariantCulture)</td>
+                    <td class="right">@Tien(row.ThanhToan)</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+
+    <div class="summary">
+        <div class="summary-row"><span>Tổng tiền:</span><strong>@Tien(Model.TongTien) đ</strong></div>
+        <div class="summary-row"><span>Giảm:</span><strong>@Tien(Model.TienGiam) đ</strong></div>
+        <div class="summary-row total"><span>@(laPhieuHoan ? "Tiền hoàn:" : "Thực thu:")</span><strong>@Tien(Model.ThucThu) đ</strong></div>
+    </div>
+
+    <div class="payment">
+        <div><span class="label">Tiền mặt:</span> @Tien(Model.TienMat) đ</div>
+        <div><span class="label">Chuyển khoản:</span> @Tien(Model.ChuyenKhoan) đ@if (!string.IsNullOrWhiteSpace(Model.NganHang)) { <text> - @Model.NganHang</text> }</div>
+        @if (!string.IsNullOrWhiteSpace(Model.GhiChu)) { <div><span class="label">Ghi chú:</span> @Model.GhiChu</div> }
+    </div>
+
+    <div class="sign">
+        <div>
+            <strong>@(laPhieuHoan ? "Người nhận tiền" : "Người nộp tiền")</strong>
+            <div class="muted">(Ký, họ tên)</div>
+            <div class="sign-space"></div>
+        </div>
+        <div>
+            <div>@Model.NgayGioThu.ToString("HH:mm"), Ngày @Model.NgayGioThu.ToString("dd") tháng @Model.NgayGioThu.ToString("MM") năm @Model.NgayGioThu.ToString("yyyy")</div>
+            <strong>@(laPhieuHoan ? "Người hoàn" : "Thu ngân")</strong>
+            <div class="muted">(Ký, họ tên)</div>
+            <div class="sign-space"></div>
+            <strong>@Model.NhanVienThu</strong>
+        </div>
+    </div>
+</div>
+</body>
+</html>

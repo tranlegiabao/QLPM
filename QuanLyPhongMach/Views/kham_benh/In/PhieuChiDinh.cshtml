@@ -1,0 +1,67 @@
+@model QuanLyPhongMach.Models.Printing.KhamBenh.KhamBenhPrintDocument
+@using System.Globalization
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    @await Html.PartialAsync("~/Views/kham_benh/In/_ClinicalPrintStyles.cshtml")
+</head>
+<body class="print-document print-document--order">
+@foreach (var sheet in Model.ChiDinhPages)
+{
+    <section class="print-page">
+        @await Html.PartialAsync("~/Views/kham_benh/In/_ClinicalPrintHeader.cshtml", Model)
+        <h1 class="document-title">Phiếu chỉ định</h1>
+        @{
+            ViewData["PatientNameLabel"] = "Họ tên";
+            ViewData["ShowPatientIdentity"] = false;
+        }
+        @await Html.PartialAsync("~/Views/kham_benh/In/_ClinicalPatientInfo.cshtml", Model)
+        @await Html.PartialAsync("~/Views/kham_benh/In/_ClinicalVitals.cshtml", Model)
+        <div class="clinical-row"><span class="label">Triệu chứng:</span> @Model.TrieuChung</div>
+        <div class="clinical-row"><span class="label">Chẩn đoán:</span> @Model.ChanDoan</div>
+
+        <table class="clinical-table">
+            <thead>
+                <tr>
+                    <th style="width: 5%">TT</th>
+                    <th>Nội dung</th>
+                    <th style="width: 5%">SL</th>
+                    @if (!sheet.GuiNgoai)
+                    {
+                        <th style="width: 15.5%">Đơn giá BV</th>
+                        <th style="width: 17.5%">Thành tiền BV</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+            @for (var i = 0; i < sheet.DichVu.Count; i++)
+            {
+                var row = sheet.DichVu[i];
+                <tr>
+                    <td class="text-center">@(i + 1)</td>
+                    <td>@row.TenDichVu@if (!string.IsNullOrWhiteSpace(row.GhiChu)) { <text> [@row.GhiChu]</text> }</td>
+                    <td class="text-center">@row.SoLuong.ToString("0.##", CultureInfo.InvariantCulture)</td>
+                    @if (!sheet.GuiNgoai)
+                    {
+                        <td class="text-right nowrap">@row.DonGia.ToString("N0", CultureInfo.GetCultureInfo("vi-VN"))</td>
+                        <td class="text-right nowrap">@row.ThanhTien.ToString("N0", CultureInfo.GetCultureInfo("vi-VN"))</td>
+                    }
+                </tr>
+            }
+            @if (!sheet.GuiNgoai)
+            {
+                <tr class="total-row"><td colspan="4" class="text-right">Tổng tiền</td><td class="text-right nowrap">@sheet.TongTien.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) đ</td></tr>
+            }
+            </tbody>
+        </table>
+
+        <div class="signatures">
+            <div class="signature"><strong>Bệnh nhân</strong><div class="muted">(Ký, họ tên)</div><div class="signature__space"></div></div>
+            <div class="signature"><div class="issue-date">@sheet.NgayLap.ToString("HH:mm"), Ngày @sheet.NgayLap.ToString("dd") tháng @sheet.NgayLap.ToString("MM") năm @sheet.NgayLap.ToString("yyyy")</div><strong>Bác sĩ chỉ định</strong><div class="muted">(Ký, họ tên)</div><div class="signature__space"><span class="signature__anchor signature__anchor--top">QLPM_CD_TOP</span><span class="signature__anchor signature__anchor--bottom">QLPM_CD_BOTTOM</span></div><strong>@Model.BacSi</strong></div>
+        </div>
+
+    </section>
+}
+</body>
+</html>

@@ -1,0 +1,18 @@
+﻿{
+    "indexes":  {
+                    "Hash":  "34B2C317D50A8BF2B331AB802F01A948A245AA6B8913613C21401D9015FA5386",
+                    "Query":  "SELECT (SELECT t.name table_name,i.name,i.type_desc,i.is_unique,i.is_primary_key,i.is_unique_constraint,i.filter_definition,ic.key_ordinal,ic.is_included_column,ic.is_descending_key,c.name column_name FROM sys.tables t JOIN sys.indexes i ON i.object_id=t.object_id JOIN sys.index_columns ic ON ic.object_id=i.object_id AND ic.index_id=i.index_id JOIN sys.columns c ON c.object_id=ic.object_id AND c.column_id=ic.column_id WHERE t.name LIKE \u0027QL_Kho[_]%\u0027 OR t.name=\u0027DM_Kho\u0027 ORDER BY t.name,i.index_id,ic.index_column_id FOR JSON PATH)"
+                },
+    "checks":  {
+                   "Hash":  "6EDB8E3EAB436FBF9A378C8FE14CA67961E547B5A1DD1E37FB1EE8A11FFC587B",
+                   "Query":  "SELECT (SELECT OBJECT_NAME(parent_object_id) table_name,name,definition,is_disabled,is_not_trusted FROM sys.check_constraints WHERE OBJECT_NAME(parent_object_id) LIKE \u0027QL_Kho[_]%\u0027 OR OBJECT_NAME(parent_object_id)=\u0027DM_Kho\u0027 FOR JSON PATH)"
+               },
+    "foreign_keys":  {
+                         "Hash":  "ACBCAD036AEA984E62509D2C972E93B99F8615F270FD260655D8483C86F844DF",
+                         "Query":  "SELECT (SELECT fk.name,OBJECT_NAME(fk.parent_object_id) parent_table,pc.name parent_column,OBJECT_NAME(fk.referenced_object_id) ref_table,rc.name ref_column,fc.constraint_column_id ordinal,fk.is_disabled,fk.is_not_trusted,fk.delete_referential_action_desc,fk.update_referential_action_desc FROM sys.foreign_keys fk JOIN sys.foreign_key_columns fc ON fc.constraint_object_id=fk.object_id JOIN sys.columns pc ON pc.object_id=fc.parent_object_id AND pc.column_id=fc.parent_column_id JOIN sys.columns rc ON rc.object_id=fc.referenced_object_id AND rc.column_id=fc.referenced_column_id WHERE OBJECT_NAME(fk.parent_object_id) LIKE \u0027QL_Kho[_]%\u0027 OR OBJECT_NAME(fk.referenced_object_id) LIKE \u0027QL_Kho[_]%\u0027 ORDER BY fk.name,fc.constraint_column_id FOR JSON PATH)"
+                     },
+    "columns":  {
+                    "Hash":  "4B601C883C8AEBC8BA66D68049D17699C1887AB1D5D416994504195E74BF48BB",
+                    "Query":  "SELECT (SELECT t.name,c.name AS column_name,TYPE_NAME(c.user_type_id) AS type_name,c.max_length,c.precision,c.scale,c.is_nullable,c.is_identity,dc.definition AS default_definition FROM sys.tables t JOIN sys.columns c ON c.object_id=t.object_id LEFT JOIN sys.default_constraints dc ON dc.object_id=c.default_object_id WHERE t.name LIKE \u0027QL_Kho[_]%\u0027 OR t.name=\u0027DM_Kho\u0027 ORDER BY t.name,c.column_id FOR JSON PATH)"
+                }
+}

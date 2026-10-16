@@ -1,0 +1,5 @@
+[
+  { "ma": "c", "ten": "Đơn thuốc cơ bản", "active": true },
+  { "ma": "n", "ten": "Đơn thuốc gây nghiện", "active": true },
+  { "ma": "h", "ten": "Đơn thuốc hướng tâm thần và thuốc tiền chất", "active": true }
+]

@@ -1,0 +1,182 @@
+﻿[
+  {
+    "id": 4,
+    "ma": "NV0009",
+    "ten": "777",
+    "la_bac_si": false,
+    "id_chuc_danh": null,
+    "chuc_danh": null,
+    "viet_tat_chuc_danh": null,
+    "sdt": null
+  },
+  {
+    "id": 1,
+    "ma": "Admin",
+    "ten": "Admin",
+    "la_bac_si": true,
+    "id_chuc_danh": null,
+    "chuc_danh": null,
+    "viet_tat_chuc_danh": null,
+    "sdt": null
+  },
+  {
+    "id": 18,
+    "ma": "NV009",
+    "ten": "bảo",
+    "la_bac_si": true,
+    "id_chuc_danh": 1,
+    "chuc_danh": "Bác sĩ",
+    "viet_tat_chuc_danh": "BS",
+    "sdt": null
+  },
+  {
+    "id": 16,
+    "ma": "NV0009",
+    "ten": "Bùi Khánh Vy",
+    "la_bac_si": false,
+    "id_chuc_danh": 6,
+    "chuc_danh": "Điều dưỡng",
+    "viet_tat_chuc_danh": "ĐD",
+    "sdt": "0888123456"
+  },
+  {
+    "id": 12,
+    "ma": "NV0009",
+    "ten": "Đặng Thu Hà",
+    "la_bac_si": false,
+    "id_chuc_danh": null,
+    "chuc_danh": null,
+    "viet_tat_chuc_danh": null,
+    "sdt": "0966123456"
+  },
+  {
+    "id": 17,
+    "ma": "NV0009",
+    "ten": "Đỗ Hoàng Nam",
+    "la_bac_si": true,
+    "id_chuc_danh": 1,
+    "chuc_danh": "Bác sĩ",
+    "viet_tat_chuc_danh": "BS",
+    "sdt": "0899123456"
+  },
+  {
+    "id": 13,
+    "ma": "NV0009",
+    "ten": "Huỳnh Quốc Việt",
+    "la_bac_si": false,
+    "id_chuc_danh": null,
+    "chuc_danh": null,
+    "viet_tat_chuc_danh": null,
+    "sdt": "0945123456"
+  },
+  {
+    "id": 8,
+    "ma": "NV0009",
+    "ten": "Lê Quốc Bảo",
+    "la_bac_si": true,
+    "id_chuc_danh": 1,
+    "chuc_danh": "Bác sĩ",
+    "viet_tat_chuc_danh": "BS",
+    "sdt": "0987654321"
+  },
+  {
+    "id": 6,
+    "ma": "NV0009",
+    "ten": "Nguyễn Minh Khoa",
+    "la_bac_si": true,
+    "id_chuc_danh": 1,
+    "chuc_danh": "Bác sĩ",
+    "viet_tat_chuc_danh": "BS",
+    "sdt": "0903123456"
+  },
+  {
+    "id": 9,
+    "ma": "NV0009",
+    "ten": "Nguyễn Thị Lan",
+    "la_bac_si": false,
+    "id_chuc_danh": 6,
+    "chuc_danh": "Điều dưỡng",
+    "viet_tat_chuc_danh": "ĐD",
+    "sdt": "0938123456"
+  },
+  {
+    "id": 5,
+    "ma": "NV0009",
+    "ten": "nice",
+    "la_bac_si": true,
+    "id_chuc_danh": 1,
+    "chuc_danh": "Bác sĩ",
+    "viet_tat_chuc_danh": "BS",
+    "sdt": null
+  },
+  {
+    "id": 10,
+    "ma": "NV0009",
+    "ten": "Phạm Thanh Tùng",
+    "la_bac_si": false,
+    "id_chuc_danh": 51,
+    "chuc_danh": "Kỹ thuật viên",
+    "viet_tat_chuc_danh": "KTV",
+    "sdt": "0909876543"
+  },
+  {
+    "id": 14,
+    "ma": "NV0009",
+    "ten": "Phan Mỹ Linh",
+    "la_bac_si": false,
+    "id_chuc_danh": 53,
+    "chuc_danh": "Dược sĩ đại học",
+    "viet_tat_chuc_danh": "DSĐH",
+    "sdt": "0922123456"
+  },
+  {
+    "id": 3,
+    "ma": "NV0009",
+    "ten": "ThS Cận Lâm Sàng",
+    "la_bac_si": true,
+    "id_chuc_danh": null,
+    "chuc_danh": null,
+    "viet_tat_chuc_danh": null,
+    "sdt": null
+  },
+  {
+    "id": 2,
+    "ma": "NV0009",
+    "ten": "ThS Khoa Tâm Thần 2",
+    "la_bac_si": true,
+    "id_chuc_danh": null,
+    "chuc_danh": null,
+    "viet_tat_chuc_danh": null,
+    "sdt": null
+  },
+  {
+    "id": 7,
+    "ma": "NV0009",
+    "ten": "Trần Hải Yến",
+    "la_bac_si": true,
+    "id_chuc_danh": 1,
+    "chuc_danh": "Bác sĩ",
+    "viet_tat_chuc_danh": "BS",
+    "sdt": "0912233445"
+  },
+  {
+    "id": 15,
+    "ma": "NV0009",
+    "ten": "Trương Minh Đức",
+    "la_bac_si": false,
+    "id_chuc_danh": null,
+    "chuc_danh": null,
+    "viet_tat_chuc_danh": null,
+    "sdt": "0904123456"
+  },
+  {
+    "id": 11,
+    "ma": "NV0009",
+    "ten": "Võ Ngọc Anh",
+    "la_bac_si": false,
+    "id_chuc_danh": 51,
+    "chuc_danh": "Kỹ thuật viên",
+    "viet_tat_chuc_danh": "KTV",
+    "sdt": "0977123456"
+  }
+]

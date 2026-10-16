@@ -1,0 +1,4745 @@
+﻿[
+  {
+    "id": 429,
+    "ma": "XNHS79",
+    "ten": "ADA (adenosine deaminase) [Dịch chọc dò]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 250000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 496,
+    "ma": "DUMDLS06",
+    "ten": "Allergy Panel 1 (Bộ 91 dị ứng nguyên)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 2050000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 463,
+    "ma": "XNVS31",
+    "ten": "Amibe /Phân (Entamoeba histolytica )",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 80000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 537,
+    "ma": "DV0334",
+    "ten": "Amphetamin",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 439,
+    "ma": "XNVS07",
+    "ten": "Anti-HBc (Total IgG &IgM)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 440,
+    "ma": "XNVS08",
+    "ten": "Anti-HBc (Total IgM)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 433,
+    "ma": "XNVS01",
+    "ten": "AntiHAV IgM miễn dịch tự động",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 160000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 533,
+    "ma": "DV0330",
+    "ten": "AntiHAV IgM test nhanh",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 438,
+    "ma": "XNVS06",
+    "ten": "AntiHBe (HBeAb) (Định lượng)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 140000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 436,
+    "ma": "XNVS04",
+    "ten": "AntiHBs (HBsAb) định lượng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 137000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 444,
+    "ma": "XNVS12",
+    "ten": "AntiHCV (HCVAb) miễn dịch tự động",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 445,
+    "ma": "XNVS13",
+    "ten": "AntiHCV (HCVAb) test nhanh",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 80000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 449,
+    "ma": "XNVS17",
+    "ten": "AntiHEV IgM miễn dịch tự động",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 160000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 532,
+    "ma": "DV0329",
+    "ten": "AntiHEV IgM test nhanh",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 450,
+    "ma": "XNVS18",
+    "ten": "AntiHIV (HIVAb) test nhanh",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 458,
+    "ma": "XNVS26",
+    "ten": "BK (Tuberculosis) (AFB) nhuộm, soi KHV [Dịch, đàm, NT5]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 459,
+    "ma": "XNVS27",
+    "ten": "BK/Mycobacterium tuberculosis Real-time PCR (PCR lao - 01 mẫu) [Dịch/đàm/NT5]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 250000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 495,
+    "ma": "DUMDLS05",
+    "ten": "Các tự kháng thể trong viêm gan tự miễn (4 loại) (Liver Panel 4: AMA-M2, LKM-1, LC-1, SLA/LP)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 900000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 161,
+    "ma": "TTNOI057",
+    "ten": "Cắt chỉ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 55000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 332,
+    "ma": "TTMAT003",
+    "ten": "Cắt chỉ khâu da mi đơn giản",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 50000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 333,
+    "ma": "TTMAT004",
+    "ten": "Cắt chỉ khâu kết mạc",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 50000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 170,
+    "ma": "TTNOI066",
+    "ten": "Cắt lọc tổ chức hoại tử hoặc cắt lọc vết thương đơn giản",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 220000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 197,
+    "ma": "TTTMH015",
+    "ten": "Cắt phanh lưỡi",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 350000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 178,
+    "ma": "TTSAN007",
+    "ten": "Cắt; đốt sùi mào gà âm hộ; âm đạo",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 193,
+    "ma": "TTTMH011",
+    "ten": "Cầm máu mũi bằng vật liệu cầm máu [1 bên]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 230000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 194,
+    "ma": "TTTMH012",
+    "ten": "Cầm máu mũi bằng vật liệu cầm máu [2 bên]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 196,
+    "ma": "TTTMH014",
+    "ten": "Cầm máu sau phẫu thuật cắt Amidan hoặc nạo VA",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 140000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 179,
+    "ma": "TTSAN008",
+    "ten": "Chích áp xe vú",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 201,
+    "ma": "TTTMH019",
+    "ten": "Chích áp xe vùng đầu cổ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 220000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 202,
+    "ma": "TTTMH020",
+    "ten": "Chích nhọt ống tai ngoài",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 250000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 110,
+    "ma": "TTNOI006",
+    "ten": "Chích rạch, dẫn lưu ổ áp xe lớn",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 109,
+    "ma": "TTNOI005",
+    "ten": "Chích rạch, dẫn lưu ổ áp xe nhỏ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 477,
+    "ma": "XNVS45",
+    "ten": "Chlamydia Pneumoniae IgG (Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 476,
+    "ma": "XNVS44",
+    "ten": "Chlamydia Pneumoniae IgM (Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 487,
+    "ma": "XNVS55",
+    "ten": "Chlamydia trachomatis - Neisseria gonorrhoeae DNA",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 486,
+    "ma": "XNVS54",
+    "ten": "Chlamydia trachomatis IgG (Liason)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 485,
+    "ma": "XNVS53",
+    "ten": "Chlamydia trachomatis IgM (Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 188,
+    "ma": "TTTMH006",
+    "ten": "Chọc hút dịch vành tai",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 90,
+    "ma": "CTMR005",
+    "ten": "Chụp cắt lớp vi tính bụng - tiểu khung thường quy không tiêm thuốc cản quang (từ 1-32 lát)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 900000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 92,
+    "ma": "CTMR007",
+    "ten": "Chụp cắt lớp vi tính cột sống cổ không tiêm thuốc cản quang (từ 1- 32 lát)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 93,
+    "ma": "CTMR008",
+    "ten": "Chụp cắt lớp vi tính cột sống ngực không tiêm thuốc cản quang (từ 1- 32 lát)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 94,
+    "ma": "CTMR009",
+    "ten": "Chụp cắt lớp vi tính cột sống thắt lưng không tiêm thuốc cản quang (từ 1- 32 lát)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 91,
+    "ma": "CTMR006",
+    "ten": "Chụp cắt lớp vi tính hệ tiết niệu thường quy không tiêm thuốc cản quang (từ 1-32 lát)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 88,
+    "ma": "CTMR003",
+    "ten": "Chụp cắt lớp vi tính hốc mắt không tiêm thuốc cản quang (từ 1-32 lát)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 89,
+    "ma": "CTMR004",
+    "ten": "Chụp cắt lớp vi tính lồng ngực không tiêm thuốc cản quang (từ 1- 32 lát)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 900000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 86,
+    "ma": "CTMR001",
+    "ten": "Chụp cắt lớp vi tính sọ não không tiêm thuốc cản quang (từ 1-32 lát)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 87,
+    "ma": "CTMR002",
+    "ten": "Chụp cắt lớp vi tính xoang hàm mặt không tiêm thuốc cản quang (từ 1-32 lát)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 228,
+    "ma": "TTRHM026",
+    "ten": "Chụp tủy bằng Hydroxit canxi",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 450000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 42,
+    "ma": "XQ007",
+    "ten": "Chụp X-quang Blondeau",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 40,
+    "ma": "XQ005",
+    "ten": "Chụp X-quang Blondeau [số hóa 2 phim]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 85,
+    "ma": "XQ050",
+    "ten": "Chụp X-quang bụng không chuẩn bị thẳng hoặc nghiêng [số hóa 1 phim] (Tìm liềm hơi)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 84,
+    "ma": "XQ049",
+    "ten": "Chụp X-quang bụng không chuẩn bị thẳng hoặc nghiêng [số hóa 1 phim] (Tìm sỏi)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 47,
+    "ma": "XQ012",
+    "ten": "Chụp X-quang cột sống cổ thẳng nghiêng [số hóa 2 phim]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 50,
+    "ma": "XQ015",
+    "ten": "Chụp X-quang cột sống cùng cụt thẳng nghiêng [số hóa 2 phim]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 48,
+    "ma": "XQ013",
+    "ten": "Chụp X-quang cột sống ngực thẳng nghiêng hoặc chếch [số hóa 2 phim]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 49,
+    "ma": "XQ014",
+    "ten": "Chụp X-quang cột sống thắt lưng thẳng nghiêng [số hóa 2 phim]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 38,
+    "ma": "XQ003",
+    "ten": "Chụp X-quang hàm chếch một bên [số hóa 1 phim]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 41,
+    "ma": "XQ006",
+    "ten": "Chụp X-quang Hirtz",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 72,
+    "ma": "XQ037",
+    "ten": "Chụp X-quang khớp gối thẳng, nghiêng hoặc chếch [số hóa 2 phim] (Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 73,
+    "ma": "XQ038",
+    "ten": "Chụp X-quang khớp gối thẳng, nghiêng hoặc chếch [số hóa 2 phim] (Trái)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 68,
+    "ma": "XQ033",
+    "ten": "Chụp X-quang khớp háng nghiêng [số hóa 1 phim] (Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 69,
+    "ma": "XQ034",
+    "ten": "Chụp X-quang khớp háng nghiêng [số hóa 1 phim] (Trái)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 66,
+    "ma": "XQ031",
+    "ten": "Chụp X-quang khớp háng thẳng hai bên [số hóa 1 phim] (Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 67,
+    "ma": "XQ032",
+    "ten": "Chụp X-quang khớp háng thẳng hai bên [số hóa 1 phim] (Trái)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 58,
+    "ma": "XQ023",
+    "ten": "Chụp X-quang khớp khuỷu thẳng, nghiêng hoặc chếch [số hóa 2 phim] (Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 59,
+    "ma": "XQ024",
+    "ten": "Chụp X-quang khớp khuỷu thẳng, nghiêng hoặc chếch [số hóa 2 phim] (Trái)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 44,
+    "ma": "XQ009",
+    "ten": "Chụp X-quang khớp thái dương hàm [số hóa 1 phim] (Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 45,
+    "ma": "XQ010",
+    "ten": "Chụp X-quang khớp thái dương hàm [số hóa 1 phim] (Trái)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 54,
+    "ma": "XQ019",
+    "ten": "Chụp X-quang khớp vai thẳng [số hóa 2 phim] (Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 55,
+    "ma": "XQ020",
+    "ten": "Chụp X-quang khớp vai thẳng [số hóa 2 phim] (Trái)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 51,
+    "ma": "XQ016",
+    "ten": "Chụp X-quang khung chậu thẳng [số hóa 1 phim]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 37,
+    "ma": "XQ002",
+    "ten": "Chụp X-quang mặt thẳng nghiêng [số hóa 2 phim]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 46,
+    "ma": "XQ011",
+    "ten": "Chụp X-quang mỏm trâm [số hóa 1 phim]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 83,
+    "ma": "XQ048",
+    "ten": "Chụp X-quang ngực nghiêng hoặc chếch mỗi bên [số hóa 1 phim] (Trái/Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 82,
+    "ma": "XQ047",
+    "ten": "Chụp X-quang ngực thẳng [số hóa 1 phim]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 43,
+    "ma": "XQ008",
+    "ten": "Chụp X-quang Schuller [số hóa 1 phim] (Trái/Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 36,
+    "ma": "XQ001",
+    "ten": "Chụp X-quang sọ thẳng, nghiêng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 64,
+    "ma": "XQ029",
+    "ten": "Chụp X-quang xương bàn ngón tay thẳng, nghiêng hoặc chếch [số hóa 2 phim] (Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 65,
+    "ma": "XQ030",
+    "ten": "Chụp X-quang xương bàn ngón tay thẳng, nghiêng hoặc chếch [số hóa 2 phim] (Trái)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 79,
+    "ma": "XQ044",
+    "ten": "Chụp X-quang xương bàn, ngón chân thẳng, nghiêng hoặc chếch [số hóa 2 phim]  (Trái)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 78,
+    "ma": "XQ043",
+    "ten": "Chụp X-quang xương bàn, ngón chân thẳng, nghiêng hoặc chếch [số hóa 2 phim] (Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 56,
+    "ma": "XQ021",
+    "ten": "Chụp X-quang xương cánh tay thẳng nghiêng [số hóa 2 phim] (Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 57,
+    "ma": "XQ022",
+    "ten": "Chụp X-quang xương cánh tay thẳng nghiêng [số hóa 2 phim] (Trái)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 74,
+    "ma": "XQ039",
+    "ten": "Chụp X-quang xương cẳng chân thẳng nghiêng [số hóa 2 phim] (Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 75,
+    "ma": "XQ040",
+    "ten": "Chụp X-quang xương cẳng chân thẳng nghiêng [số hóa 2 phim] (Trái)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 60,
+    "ma": "XQ025",
+    "ten": "Chụp X-quang xương cẳng tay thẳng nghiêng [số hóa 2 phim] (Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 61,
+    "ma": "XQ026",
+    "ten": "Chụp X-quang xương cẳng tay thẳng nghiêng [số hóa 2 phim] (Trái)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 39,
+    "ma": "XQ004",
+    "ten": "Chụp X-quang xương chính mũi nghiêng hoặc tiếp tuyến [số hóa 1 phim]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 76,
+    "ma": "XQ041",
+    "ten": "Chụp X-quang xương cổ chân thẳng, nghiêng hoặc chếch [số hóa 2 phim] (Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 77,
+    "ma": "XQ042",
+    "ten": "Chụp X-quang xương cổ chân thẳng, nghiêng hoặc chếch [số hóa 2 phim] (Trái)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 62,
+    "ma": "XQ027",
+    "ten": "Chụp X-quang xương cổ tay thẳng, nghiêng hoặc chếch [số hóa 2 phim] (Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 63,
+    "ma": "XQ028",
+    "ten": "Chụp X-quang xương cổ tay thẳng, nghiêng hoặc chếch [số hóa 2 phim] (Trái)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 52,
+    "ma": "XQ017",
+    "ten": "Chụp X-quang xương đòn thẳng hoặc chếch [số hóa 1 phim] (Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 53,
+    "ma": "XQ018",
+    "ten": "Chụp X-quang xương đòn thẳng hoặc chếch [số hóa 1 phim] (Trái)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 105000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 70,
+    "ma": "XQ035",
+    "ten": "Chụp X-quang xương đùi thẳng nghiêng [số hóa 2 phim] (Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 71,
+    "ma": "XQ036",
+    "ten": "Chụp X-quang xương đùi thẳng nghiêng [số hóa 2 phim] (Trái)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 80,
+    "ma": "XQ045",
+    "ten": "Chụp X-quang xương gót thẳng nghiêng [số hóa 2 phim] (Phải)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 81,
+    "ma": "XQ046",
+    "ten": "Chụp X-quang xương gót thẳng nghiêng [số hóa 2 phim] (Trái)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 469,
+    "ma": "XNVS37",
+    "ten": "Clonorchis/Opisthorchis (Sán lá gan nhỏ) IgG (Clonorchis sinensis - Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 468,
+    "ma": "XNVS36",
+    "ten": "Clonorchis/Opisthorchis (Sán lá gan nhỏ) IgM (Clonorchis sinensis - Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 484,
+    "ma": "XNVS52",
+    "ten": "CMV IgG miễn dịch tự động",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 483,
+    "ma": "XNVS51",
+    "ten": "CMV IgM miễn dịch tự động",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 339,
+    "ma": "HHTM06",
+    "ten": "Co cục máu đông (Co cục máu)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 35000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 540,
+    "ma": "DV0337",
+    "ten": "Codein",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 518,
+    "ma": "TVXN03",
+    "ten": "CTV thu mẫu cho đối tác GeneSolution (loại 1)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 519,
+    "ma": "TVXN04",
+    "ten": "CTV thu mẫu cho đối tác GeneSolution (loại 2)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 276,
+    "ma": "TTRHM074",
+    "ten": "Cùi giả Titan",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 263,
+    "ma": "TTRHM061",
+    "ten": "Cùi Giả Zirconia",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 471,
+    "ma": "XNVS39",
+    "ten": "Cysticercus cellulosae (Sán lợn) IgG (Cysticercus-Taenia Solium - Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 470,
+    "ma": "XNVS38",
+    "ten": "Cysticercus cellulosae (Sán lợn) IgM (Cysticercus-Taenia Solium - Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 325,
+    "ma": "TTRHM123",
+    "ten": "Dán mắc cài trực tiếp sử dụng chất gắn quang trùng hợp",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 5000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 454,
+    "ma": "XNVS22",
+    "ten": "Dengue virus NS1Ag test nhanh",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 224,
+    "ma": "TTRHM022",
+    "ten": "Dịch vụ Trám răng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 225,
+    "ma": "TTRHM023",
+    "ten": "Dịch vụ Trám răng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 226,
+    "ma": "TTRHM024",
+    "ten": "Dịch vụ Trám răng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 227,
+    "ma": "TTRHM025",
+    "ten": "Dịch vụ Trám răng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 400000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 305,
+    "ma": "TTRHM103",
+    "ten": "Dịch vụ trám răng sữa",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 314,
+    "ma": "TTRHM112",
+    "ten": "Duy trì kết quả điều trị nắn chỉnh răng bằng khí cụ cố định",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 181,
+    "ma": "TTSAN010",
+    "ten": "Đặt dụng cụ tử cung",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 105,
+    "ma": "TTNOI001",
+    "ten": "Đặt ống thông dạ dày",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 287,
+    "ma": "TTRHM085",
+    "ten": "Đệm nhựa nấu toàn hàm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 348,
+    "ma": "HHTM15",
+    "ten": "Đếm số lượng CD3 - CD4 - CD8",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 345,
+    "ma": "HHTM12",
+    "ten": "Điện di huyết sắc tố (Điện di Hemoglobin) ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 350000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 368,
+    "ma": "XNHS18",
+    "ten": "Điện di protein huyết thanh",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 379,
+    "ma": "XNHS29",
+    "ten": "Điện giải đồ (Na, K, Cl, Ca 2+) [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 115000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 95,
+    "ma": "TDCN001",
+    "ten": "Điện tim thường",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 312,
+    "ma": "TTRHM110",
+    "ten": "Điều trị chỉnh hình răng mặt sử dụng khí cụ Facemask và ốc nong nhanh",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 15000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 210,
+    "ma": "TTRHM008",
+    "ten": "Điều trị đóng cuống răng bằng Canxi Hydroxit",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 650000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 211,
+    "ma": "TTRHM009",
+    "ten": "Điều trị đóng cuống răng bằng MTA",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 650000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 229,
+    "ma": "TTRHM027",
+    "ten": "Điều trị sâu ngà răng phục hồi bằng Amalgam",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 450000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 204,
+    "ma": "TTRHM002",
+    "ten": "Điều trị sâu ngà răng phục hồi bằng Composite",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 450000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 205,
+    "ma": "TTRHM003",
+    "ten": "Điều trị sâu ngà răng phục hồi bằng GlassIonomer Cement",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 450000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 303,
+    "ma": "TTRHM101",
+    "ten": "Điều trị trám răng bảo tồn tuỷ có lót vật liệu sinh học Biodentin",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 3000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 304,
+    "ma": "TTRHM102",
+    "ten": "Điều trị trám răng bảo tồn tuỷ có lót vật liệu sinh học Biodentin (có gây tê)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 3290000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 236,
+    "ma": "TTRHM034",
+    "ten": "Điều trị tủy lại",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 231,
+    "ma": "TTRHM029",
+    "ten": "Điều trị tủy răng 1 ống tủy",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 400000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 232,
+    "ma": "TTRHM030",
+    "ten": "Điều trị tủy răng 2 ống tủy",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 400000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 233,
+    "ma": "TTRHM031",
+    "ten": "Điều trị tủy răng 3 ống tủy",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 235,
+    "ma": "TTRHM033",
+    "ten": "Điều trị tủy răng 4 ống tủy chữ C",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 234,
+    "ma": "TTRHM032",
+    "ten": "Điều trị tủy răng 4 ống tủy trở lên",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 306,
+    "ma": "TTRHM104",
+    "ten": "Điều trị tủy răng hàm dưới",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 700000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 208,
+    "ma": "TTRHM006",
+    "ten": "Điều trị tủy răng sữa [một chân]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 350000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 209,
+    "ma": "TTRHM007",
+    "ten": "Điều trị tủy răng sữa [nhiều chân]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 480000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 371,
+    "ma": "XNHS21",
+    "ten": "Định lượng Acid Uric [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 40000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 399,
+    "ma": "XNHS49",
+    "ten": "Định lượng AFP [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 366,
+    "ma": "XNHS16",
+    "ten": "Định lượng Albumin [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 50000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 398,
+    "ma": "XNHS48",
+    "ten": "Định lượng Anti - TPO (Anti-Thyroid Peroxidase antibodies) [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 354,
+    "ma": "XNHS04",
+    "ten": "Định lượng Anti CCP [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 240000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 396,
+    "ma": "XNHS46",
+    "ten": "Định lượng Anti-Tg (Antibody-Thyroglobulin) [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 411,
+    "ma": "XNHS61",
+    "ten": "Định lượng bhCG [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 140000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 365,
+    "ma": "XNHS15",
+    "ten": "Định lượng Bilirubin gián tiếp [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 0.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 363,
+    "ma": "XNHS13",
+    "ten": "Định lượng Bilirubin toàn phần [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 45000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 364,
+    "ma": "XNHS14",
+    "ten": "Định lượng Bilirubin trực tiếp [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 45000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 418,
+    "ma": "XNHS68",
+    "ten": "Định lượng bổ thể C3 [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 120000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 419,
+    "ma": "XNHS69",
+    "ten": "Định lượng bổ thể C4 [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 120000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 401,
+    "ma": "XNHS51",
+    "ten": "Định lượng CA 125 [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 402,
+    "ma": "XNHS52",
+    "ten": "Định lượng CA 15-3 [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 403,
+    "ma": "XNHS53",
+    "ten": "Định lượng CA 19-9 [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 405,
+    "ma": "XNHS55",
+    "ten": "Định lượng CA 72-4 [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 381,
+    "ma": "XNHS31",
+    "ten": "Định lượng Canxi ion hóa [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 45000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 380,
+    "ma": "XNHS30",
+    "ten": "Định lượng Canxi toàn phần [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 45000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 400,
+    "ma": "XNHS50",
+    "ten": "Định lượng CEA [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 170000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 358,
+    "ma": "XNHS08",
+    "ten": "Định lượng Ceton/Keton (Beta-hydroxybutyrat) [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 45000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 386,
+    "ma": "XNHS36",
+    "ten": "Định lượng Chì [Pb/Blood]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 350000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 375,
+    "ma": "XNHS25",
+    "ten": "Định lượng Cholesterol toàn phần [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 40000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 420,
+    "ma": "XNHS70",
+    "ten": "Định lượng Cortisol  [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 160000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 421,
+    "ma": "XNHS71",
+    "ten": "Định lượng Cortisol [Nước bọt]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 160000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 370,
+    "ma": "XNHS20",
+    "ten": "Định lượng Creatinin [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 40000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 351,
+    "ma": "XNHS01",
+    "ten": "Định lượng CRP (C-Reactive Protein)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 85000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 404,
+    "ma": "XNHS54",
+    "ten": "Định lượng Cyfra 21-1 [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 344,
+    "ma": "HHTM11",
+    "ten": "Định lượng D-Dimer [Máu](Citrat)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 350000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 414,
+    "ma": "XNHS64",
+    "ten": "Định lượng Estradiol [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 120000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 384,
+    "ma": "XNHS34",
+    "ten": "Định lượng Ferritin [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 140000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 343,
+    "ma": "HHTM10",
+    "ten": "Định lượng Fibrinogen (yếu tố I - PP Clauss)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 412,
+    "ma": "XNHS62",
+    "ten": "Định lượng FSH [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 392,
+    "ma": "XNHS42",
+    "ten": "Định lượng FT3 [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 393,
+    "ma": "XNHS43",
+    "ten": "Định lượng FT4 [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 356,
+    "ma": "XNHS06",
+    "ten": "Định lượng Glucose [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 40000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 528,
+    "ma": "DV0325",
+    "ten": "Định lượng Glucose [Máu] (sau ăn 1h)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 40000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 529,
+    "ma": "DV0326",
+    "ten": "Định lượng Glucose [Máu] (sau ăn 2h)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 40000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 355,
+    "ma": "XNHS05",
+    "ten": "Định lượng HbA1c ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 135000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 376,
+    "ma": "XNHS26",
+    "ten": "Định lượng HDL-C [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 45000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 422,
+    "ma": "XNHS72",
+    "ten": "Định lượng IL-6 (Interleukin 6) [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 490000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 385,
+    "ma": "XNHS35",
+    "ten": "Định lượng Kẽm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 498,
+    "ma": "DUMDLS08",
+    "ten": "Định lượng kháng thể kháng Phospholipid IgG",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 497,
+    "ma": "DUMDLS07",
+    "ten": "Định lượng kháng thể kháng Phospholipid IgM",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 423,
+    "ma": "XNHS73",
+    "ten": "Định lượng kháng thể kháng ty lạp thể (AMA-M2)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 377,
+    "ma": "XNHS27",
+    "ten": "Định lượng LDL-C [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 45000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 413,
+    "ma": "XNHS63",
+    "ten": "Định lượng LH [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 387,
+    "ma": "XNHS37",
+    "ten": "Định lượng Magnesium/Magie/Mg [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 60000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 430,
+    "ma": "XNHS80",
+    "ten": "Định lượng MAU (Micro Albumin Urine) [Niệu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 406,
+    "ma": "XNHS56",
+    "ten": "Định lượng NSE (Neuron Specific Enolase) [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 352,
+    "ma": "XNHS02",
+    "ten": "Định lượng Pro-calcitonin [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 340000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 415,
+    "ma": "XNHS65",
+    "ten": "Định lượng Progesteron [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 416,
+    "ma": "XNHS66",
+    "ten": "Định lượng Prolactin [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 180000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 367,
+    "ma": "XNHS17",
+    "ten": "Định lượng Protein toàn phần [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 45000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 407,
+    "ma": "XNHS57",
+    "ten": "Định lượng PSA toàn phần (Total PSA) [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 408,
+    "ma": "XNHS58",
+    "ten": "Định lượng PSA tự do (Free PSA) [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 394,
+    "ma": "XNHS44",
+    "ten": "Định lượng PTH [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 160000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 353,
+    "ma": "XNHS03",
+    "ten": "Định lượng RF [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 95000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 453,
+    "ma": "XNVS21",
+    "ten": "Định lượng RPR ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 382,
+    "ma": "XNHS32",
+    "ten": "Định lượng Sắt (Fe)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 90000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 410,
+    "ma": "XNHS60",
+    "ten": "Định lượng SCC [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 240000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 397,
+    "ma": "XNHS47",
+    "ten": "Định lượng Tg (Thyroglobulin) [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 395,
+    "ma": "XNHS45",
+    "ten": "Định lượng TRAb (TSH Receptor Antibodies) [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 480000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 383,
+    "ma": "XNHS33",
+    "ten": "Định lượng Transferrin [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 374,
+    "ma": "XNHS24",
+    "ten": "Định lượng Triglycerid [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 40000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 388,
+    "ma": "XNHS38",
+    "ten": "Định lượng Troponin-I hs [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 391,
+    "ma": "XNHS41",
+    "ten": "Định lượng TSH [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 369,
+    "ma": "XNHS19",
+    "ten": "Định lượng Urê máu [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 40000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 336,
+    "ma": "HHTM03",
+    "ten": "Định nhóm máu hệ ABO (Kỹ thuật phiến đá)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 60000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 337,
+    "ma": "HHTM04",
+    "ten": "Định nhóm máu hệ Rh(D) (Kỹ thuật phiến đá)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 40000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 362,
+    "ma": "XNHS12",
+    "ten": "Đo hoạt độ ALP [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 50000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 360,
+    "ma": "XNHS10",
+    "ten": "Đo hoạt độ ALT (GPT) [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 40000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 372,
+    "ma": "XNHS22",
+    "ten": "Đo hoạt độ Amylase [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 50000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 373,
+    "ma": "XNHS23",
+    "ten": "Đo hoạt độ Amylase [Niệu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 50000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 359,
+    "ma": "XNHS09",
+    "ten": "Đo hoạt độ AST (GOT) [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 40000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 389,
+    "ma": "XNHS39",
+    "ten": "Đo hoạt độ CK-MB [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 80000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 361,
+    "ma": "XNHS11",
+    "ten": "Đo hoạt độ GGT [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 40000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 390,
+    "ma": "XNHS40",
+    "ten": "Đo hoạt độ LDH [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 65000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 378,
+    "ma": "XNHS28",
+    "ten": "Đo hoạt độ Lipase [Máu]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 90000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 97,
+    "ma": "TDCN003",
+    "ten": "Đo hô hấp ký",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 160000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 174,
+    "ma": "TTSAN003",
+    "ten": "Đốt nhiệt cổ tử cung",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 670000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 357,
+    "ma": "XNHS07",
+    "ten": "Đường máu mao mạch",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 40000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 473,
+    "ma": "XNVS41",
+    "ten": "Echinococcus granulosus (Sán dây chó) IgG (Echinococcus - Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 472,
+    "ma": "XNVS40",
+    "ten": "Echinococcus granulosus (Sán dây chó) IgM (Echinococcus - Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 256,
+    "ma": "TTRHM054",
+    "ten": "Emax Multi",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 6500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 250,
+    "ma": "TTRHM048",
+    "ten": "Emax Press",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 5200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 474,
+    "ma": "XNVS42",
+    "ten": "Fasciola (Sán lá gan lớn) IgG (Fasciola sp-Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 506,
+    "ma": "GPB08",
+    "ten": "FNA - Chọc hút kim nhỏ, chẩn đoán tế bào học 1 vị trí tổn thương/U của da, dưới da/Các cơ quan có vị trí nông",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 700000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 277,
+    "ma": "TTRHM075",
+    "ten": "Full Kim loại",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 278,
+    "ma": "TTRHM076",
+    "ten": "Full Titan",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 900000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 230,
+    "ma": "TTRHM028",
+    "ten": "Gây tê nhổ răng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 50000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 299,
+    "ma": "TTRHM097",
+    "ten": "Gây tê Trám răng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 50000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 324,
+    "ma": "TTRHM122",
+    "ten": "Giữ khoảng bằng khí cụ cố định cung lưỡi (LA)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 5000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 323,
+    "ma": "TTRHM121",
+    "ten": "Giữ khoảng bằng khí cụ cố định Nance",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 5000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 322,
+    "ma": "TTRHM120",
+    "ten": "Giữ khoảng răng bằng khí cụ cố định cung ngang vòm khẩu cái (TPA)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 5000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 475,
+    "ma": "XNVS43",
+    "ten": "Gnathostoma (Giun đầu gai) IgG (Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 515,
+    "ma": "DTSHPT007",
+    "ten": "Gói XN đi kèm NIPT (NIPT bonus)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 0.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 488,
+    "ma": "XNVS56",
+    "ten": "Group B Streptococcus (GBS) PCR/Dịch - 3 tháng cuối",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 291,
+    "ma": "TTRHM089",
+    "ten": "Hàm khung kim loại",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 294,
+    "ma": "TTRHM092",
+    "ten": "Hàm khung liên kết",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 295,
+    "ma": "TTRHM093",
+    "ten": "Hàm khung liên sứ trên khung",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 2000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 293,
+    "ma": "TTRHM091",
+    "ten": "Hàm khung Titan",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 2000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 292,
+    "ma": "TTRHM090",
+    "ten": "Hàm khung Vita",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 443,
+    "ma": "XNVS11",
+    "ten": "HBcrAg miễn dịch tự động",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 600000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 437,
+    "ma": "XNVS05",
+    "ten": "HBeAg (Định lượng)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 140000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 434,
+    "ma": "XNVS02",
+    "ten": "HBsAg miễn dịch tự động",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 435,
+    "ma": "XNVS03",
+    "ten": "HBsAg test nhanh",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 80000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 441,
+    "ma": "XNVS09",
+    "ten": "HBV đo tải lượng hệ thống tự động",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 442,
+    "ma": "XNVS10",
+    "ten": "HBV đo tải lượng Real-time PCR",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 417,
+    "ma": "XNHS67",
+    "ten": "HCC RISK (Điểm GALAD: giới, tuổi, AFP-L3, AFP và PIVKA-II [DCP]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 446,
+    "ma": "XNVS14",
+    "ten": "HCV đo tải lượng hệ thống tự động",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 447,
+    "ma": "XNVS15",
+    "ten": "HCV đo tải lượng Real-time PCR",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 448,
+    "ma": "XNVS16",
+    "ten": "HCV genotype Real-time PCR",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 541,
+    "ma": "DV0338",
+    "ten": "Heroin",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 534,
+    "ma": "DV0331",
+    "ten": "Hóa đơn mua hàng PXN",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 0.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 96,
+    "ma": "TDCN002",
+    "ten": "Holter điện tâm đồ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 460,
+    "ma": "XNVS28",
+    "ten": "HP Test IgG (Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 140000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 461,
+    "ma": "XNVS29",
+    "ten": "HP Test IgM (Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 140000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 489,
+    "ma": "XNVS57",
+    "ten": "HPV genotype (16 tuýp)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 400000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 490,
+    "ma": "XNVS58",
+    "ten": "HPV genotype (24 tuýp)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 435000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 107,
+    "ma": "TTNOI003",
+    "ten": "Hút dịch bao thanh dịch, nang (kén) bao hoạt dịch khác",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 136,
+    "ma": "TTNOI032",
+    "ten": "Hút dịch khớp cổ chân",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 137,
+    "ma": "TTNOI033",
+    "ten": "Hút dịch khớp cổ tay",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 135,
+    "ma": "TTNOI031",
+    "ten": "Hút dịch khớp háng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 132,
+    "ma": "TTNOI028",
+    "ten": "Hút dịch khớp khác",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 134,
+    "ma": "TTNOI030",
+    "ten": "Hút dịch khớp khuỷu",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 133,
+    "ma": "TTNOI029",
+    "ten": "Hút dịch khớp vai",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 108,
+    "ma": "TTNOI004",
+    "ten": "Hút ổ viêm hoặc áp xe phần mềm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 273,
+    "ma": "TTRHM071",
+    "ten": "Inlay – Onlay Composite",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 900000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 262,
+    "ma": "TTRHM060",
+    "ten": "Inlay – Onlay Lisi Press",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 4200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 275,
+    "ma": "TTRHM073",
+    "ten": "Inlay/Onlay Emax Press",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 3500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 274,
+    "ma": "TTRHM072",
+    "ten": "Inlay/Onlay Zirconia",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 3000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 7,
+    "ma": "KB007",
+    "ten": "Khám sức khỏe tổng quát (BH)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 494,
+    "ma": "DUMDLS04",
+    "ten": "Kháng thể kháng dsDNA (anti-dsDNA) [ELISA]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 250000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 493,
+    "ma": "DUMDLS03",
+    "ten": "Kháng thể kháng nhân (anti-ANA) [ELISA]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 491,
+    "ma": "DUMDLS01",
+    "ten": "Kháng thể kháng nhân (anti-ANA) [kỹ thuật huỳnh quang ANA IFT Global] ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 250000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 492,
+    "ma": "DUMDLS02",
+    "ten": "Kháng thể kháng nhân (anti-ANA) [kỹ thuật huỳnh quang ANA IFT Profile 23] ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1900000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 347,
+    "ma": "HHTM14",
+    "ten": "Khẳng định kháng đông Lupus (LAC/LA confirm: Lupus Anticoagulant confirm)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 160,
+    "ma": "TTNOI056",
+    "ten": "Khâu vết thương phần mềm trên 10 cm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 600000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 159,
+    "ma": "TTNOI055",
+    "ten": "Khâu vết thương phần mềm trên 5 cm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 400000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 200,
+    "ma": "TTTMH018",
+    "ten": "Khí dung mũi họng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 50000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 106,
+    "ma": "TTNOI002",
+    "ten": "Khí dung thuốc giãn phế quản",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 50000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 180,
+    "ma": "TTSAN009",
+    "ten": "Làm thuốc âm hộ; âm đạo",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 50000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 189,
+    "ma": "TTTMH007",
+    "ten": "Làm thuốc tai",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 50000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 173,
+    "ma": "TTSAN002",
+    "ten": "Làm thuốc vết khâu tầng sinh môn nhiễm khuẩn",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 331,
+    "ma": "TTMAT002",
+    "ten": "Lấy calci kết mạc",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 213,
+    "ma": "TTRHM011",
+    "ten": "Lấy cao răng và làm nhẵn mặt răng [1 hàm]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 212,
+    "ma": "TTRHM010",
+    "ten": "Lấy cao răng và làm nhẵn mặt răng [2 hàm]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 199,
+    "ma": "TTTMH017",
+    "ten": "Lấy dị vật hạ họng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 198,
+    "ma": "TTTMH016",
+    "ten": "Lấy dị vật họng miệng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 330,
+    "ma": "TTMAT001",
+    "ten": "Lấy dị vật kết mạc",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 195,
+    "ma": "TTTMH013",
+    "ten": "Lấy dị vật mũi",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 187,
+    "ma": "TTTMH005",
+    "ten": "Lấy dị vật tai",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 250000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 111,
+    "ma": "TTNOI007",
+    "ten": "Lấy dịch khớp xét nghiệm tế bào học",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 190,
+    "ma": "TTTMH008",
+    "ten": "Lấy nút biểu bì ống tai ngoài",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 253,
+    "ma": "TTRHM051",
+    "ten": "Lisi Press",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 6500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 286,
+    "ma": "TTRHM084",
+    "ten": "Lưới Đức trắng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 350000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 285,
+    "ma": "TTRHM083",
+    "ten": "Lưới Đức vàng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 284,
+    "ma": "TTRHM082",
+    "ten": "Lưới Việt Nam",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 250000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 300,
+    "ma": "TTRHM098",
+    "ten": "Mài chỉnh xương ổ răng dưới 1cm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 290,
+    "ma": "TTRHM088",
+    "ten": "Máng tẩy",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 240,
+    "ma": "TTRHM038",
+    "ten": "Mão kim loại thường cẩn sứ (Sứ - Kim loại)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 241,
+    "ma": "TTRHM039",
+    "ten": "Mão titan cẩn sứ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 2000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 242,
+    "ma": "TTRHM040",
+    "ten": "Mão toàn sứ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 3500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 279,
+    "ma": "TTRHM077",
+    "ten": "Mão Veneer sứ Kim loại",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 900000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 280,
+    "ma": "TTRHM078",
+    "ten": "Mão Veneer sứ Titan",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 538,
+    "ma": "DV0335",
+    "ten": "Marijuana",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 340,
+    "ma": "HHTM07",
+    "ten": "Máu lắng (bằng phương pháp thủ công)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 40000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 500,
+    "ma": "GPB02",
+    "ten": "Max-prep PAP ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 450000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 298,
+    "ma": "TTRHM096",
+    "ten": "Móc cài bi",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 2000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 297,
+    "ma": "TTRHM095",
+    "ten": "Móc cài đôi",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 296,
+    "ma": "TTRHM094",
+    "ten": "Móc cài đơn",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 283,
+    "ma": "TTRHM081",
+    "ten": "Móc dẻo",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 539,
+    "ma": "DV0336",
+    "ten": "Morphin",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 310,
+    "ma": "TTRHM108",
+    "ten": "Nắn chỉnh mất cân xứng hàm chiều trước sau bằng khí cụ chức năng cố định",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 50000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 317,
+    "ma": "TTRHM115",
+    "ten": "Nắn chỉnh răng có sử dụng neo chặn bằng khí cụ cố định cung lưỡi (LA)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 321,
+    "ma": "TTRHM119",
+    "ten": "Nắn chỉnh răng lạc chỗ sử dụng khí cụ cố định",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 15000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 320,
+    "ma": "TTRHM118",
+    "ten": "Nắn chỉnh răng ngầm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 15000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 318,
+    "ma": "TTRHM116",
+    "ten": "Nắn chỉnh răng sử dụng neo chặn bằng MicroImplant",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 5000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 319,
+    "ma": "TTRHM117",
+    "ten": "Nắn chỉnh răng xoay sử dụng khí cụ cố định",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 50000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 313,
+    "ma": "TTRHM111",
+    "ten": "Nắn chỉnh răng/hàm dùng lực ngoài miệng sử dụng Chincup",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 15000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 311,
+    "ma": "TTRHM109",
+    "ten": "Nắn chỉnh răng/hàm dùng lực ngoài miệng sử dụng Headgear",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 15000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 281,
+    "ma": "TTRHM079",
+    "ten": "Nền hàm nhựa dẻo 1 bên",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 282,
+    "ma": "TTRHM080",
+    "ten": "Nền hàm nhựa dẻo 2 bên",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 350,
+    "ma": "NOITIET01",
+    "ten": "Nghiệm pháp dung nạp glucose đường uống (75g glucose) 3 mẫu cho phụ nữ mang thai",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 180000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 531,
+    "ma": "DV0328",
+    "ten": "Nghiệm pháp dung nạp glucose đường uống (75g glucose) 3 mẫu cho phụ nữ mang thai (BS)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 155000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 530,
+    "ma": "DV0327",
+    "ten": "Nghiệm pháp dung nạp glucose đường uống (75g glucose) 3 mẫu cho phụ nữ mang thai (Làm lại lần 2)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 0.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 191,
+    "ma": "TTTMH009",
+    "ten": "Nhét bấc mũi sau",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 192,
+    "ma": "TTTMH010",
+    "ten": "Nhét bấc mũi trước",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 218,
+    "ma": "TTRHM016",
+    "ten": "Nhổ chân răng sữa",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 50000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 215,
+    "ma": "TTRHM013",
+    "ten": "Nhổ chân răng vĩnh viễn",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 400000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 217,
+    "ma": "TTRHM015",
+    "ten": "Nhổ răng sữa",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 216,
+    "ma": "TTRHM014",
+    "ten": "Nhổ răng thừa",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 400000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 203,
+    "ma": "TTRHM001",
+    "ten": "Nhổ răng vĩnh viễn",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 400000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 214,
+    "ma": "TTRHM012",
+    "ten": "Nhổ răng vĩnh viễn lung lay",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 308,
+    "ma": "TTRHM106",
+    "ten": "Nong rộng hàm bằng khí cụ cố định nong nhanh",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 20000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 309,
+    "ma": "TTRHM107",
+    "ten": "Nong rộng hàm bằng khí cụ cố định Quad-Helix",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 5000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 103,
+    "ma": "NS006",
+    "ten": "Nội soi đại tràng sigma",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 350000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 102,
+    "ma": "NS005",
+    "ten": "Nội soi đại trực tràng toàn bộ ống mềm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 600000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 100,
+    "ma": "NS003",
+    "ten": "Nội soi hậu môn ống cứng can thiệp - thắt trĩ bằng vòng cao su",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 550000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 186,
+    "ma": "TTTMH004",
+    "ten": "Nội soi tai mũi họng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 184,
+    "ma": "TTTMH002",
+    "ten": "Nội soi tai mũi họng [mũi]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 80000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 183,
+    "ma": "TTTMH001",
+    "ten": "Nội soi tai mũi họng [tai]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 80000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 185,
+    "ma": "TTTMH003",
+    "ten": "Nội soi thanh quản ống mềm chẩn đoán",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 80000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 98,
+    "ma": "NS001",
+    "ten": "Nội soi thực quản - dạ dày - tá tràng  đường miệng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 350000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 101,
+    "ma": "NS004",
+    "ten": "Nội soi trực tràng ống cứng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 290000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 104,
+    "ma": "NS007",
+    "ten": "Nội soi trực tràng ống mềm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 290000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 272,
+    "ma": "TTRHM070",
+    "ten": "Onlay - Inlay Kim loại",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 600000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 271,
+    "ma": "TTRHM069",
+    "ten": "Onlay - Inlay Titan",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 499,
+    "ma": "GPB01",
+    "ten": "PAP's Smear thường quy",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 466,
+    "ma": "XNVS34",
+    "ten": "Paragonimus (Sán lá phổi) IgG (Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 465,
+    "ma": "XNVS33",
+    "ten": "Paragonimus (Sán lá phổi) IgM (Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 346,
+    "ma": "HHTM13",
+    "ten": "Phát hiện kháng đông Lupus (LAC/LA screen: Lupus Anticoagulant screen)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 301,
+    "ma": "TTRHM099",
+    "ten": "Phẫu thuật cắt chóp chân răng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 171,
+    "ma": "TTNGOAI001",
+    "ten": "Phẫu thuật cắt da bao quy đầu",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 4250000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 238,
+    "ma": "TTRHM036",
+    "ten": "Phẫu thuật nhổ răng khôn mọc lệch hàm dưới",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 2000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 237,
+    "ma": "TTRHM035",
+    "ten": "Phẫu thuật nhổ răng khôn mọc lệch hàm trên",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 900000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 239,
+    "ma": "TTRHM037",
+    "ten": "Phục hình tháo lắp răng nhựa (Việt Nam)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 207,
+    "ma": "TTRHM005",
+    "ten": "Phục hồi cổ răng bằng Composite",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 206,
+    "ma": "TTRHM004",
+    "ten": "Phục hồi cổ răng bằng GlassIonomer Cement",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 269,
+    "ma": "TTRHM067",
+    "ten": "Răng Composite",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 400000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 307,
+    "ma": "TTRHM105",
+    "ten": "Răng Đức",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 268,
+    "ma": "TTRHM066",
+    "ten": "Răng Excellent",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 350000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 267,
+    "ma": "TTRHM065",
+    "ten": "Răng Mỹ (Justy)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 264,
+    "ma": "TTRHM062",
+    "ten": "Răng Nhật",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 250000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 270,
+    "ma": "TTRHM068",
+    "ten": "Răng sứ Vita",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 265,
+    "ma": "TTRHM063",
+    "ten": "Răng Tây Ban Nha",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 250000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 266,
+    "ma": "TTRHM064",
+    "ten": "Răng Ý (Major)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 250000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 482,
+    "ma": "XNVS50",
+    "ten": "Rubella virus IgG miễn dịch tự động",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 481,
+    "ma": "XNVS49",
+    "ten": "Rubella virus IgM miễn dịch tự động",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 190000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 455,
+    "ma": "XNVS23",
+    "ten": "Salmonella Widal",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 250000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 427,
+    "ma": "XNHS77",
+    "ten": "Sàng lọc sơ sinh (71 hội chứng rối loạn chuyển hoá/máu gót chân)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 428,
+    "ma": "XNHS78",
+    "ten": "Sàng lọc sơ sinh (Rối loạn nội tiết – chuyển hóa di truyền/máu gót chân)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 700000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 424,
+    "ma": "XNHS74",
+    "ten": "Sàng lọc trước sinh (Combined test/Double test - 3 tháng đầu)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 450000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 509,
+    "ma": "DTSHPT001",
+    "ten": "Sàng lọc trước sinh (NIPT 4 hội chứng)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 2300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 512,
+    "ma": "DTSHPT004",
+    "ten": "Sàng lọc trước sinh (NIPT-Trisure Procare)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 10500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 510,
+    "ma": "DTSHPT002",
+    "ten": "Sàng lọc trước sinh (NIPT-Trisure Thalass: 4 hội chứng + α, β- Thalassemia/ADN mẹ )",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 3000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 511,
+    "ma": "DTSHPT003",
+    "ten": "Sàng lọc trước sinh (NIPT-Trisure)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 5500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 425,
+    "ma": "XNHS75",
+    "ten": "Sàng lọc trước sinh (Triple test - 3 tháng giữa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 450000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 467,
+    "ma": "XNVS35",
+    "ten": "Schistosoma mansoni (Sán máng) IgG (Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 19,
+    "ma": "SA011",
+    "ten": "Siêu âm các tuyến nước bọt",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 14,
+    "ma": "SA006",
+    "ten": "Siêu âm Doppler động mạch cảnh",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 12,
+    "ma": "SA004",
+    "ten": "Siêu âm Doppler động mạch chi dưới",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 10,
+    "ma": "SA002",
+    "ten": "Siêu âm Doppler động mạch chi trên",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 15,
+    "ma": "SA007",
+    "ten": "Siêu âm Doppler động mạch thận",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 28,
+    "ma": "SA020",
+    "ten": "Siêu âm Doppler phần phụ của thai (nhau thai, dây rốn)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 13,
+    "ma": "SA005",
+    "ten": "Siêu âm Doppler tĩnh mạch chi dưới",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 11,
+    "ma": "SA003",
+    "ten": "Siêu âm Doppler tĩnh mạch chi trên",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 27,
+    "ma": "SA019",
+    "ten": "Siêu âm Doppler tử cung phần phụ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 20,
+    "ma": "SA012",
+    "ten": "Siêu âm hạch vùng cổ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 23,
+    "ma": "SA015",
+    "ten": "Siêu âm khớp cổ chân",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 110000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 24,
+    "ma": "SA016",
+    "ten": "Siêu âm khớp cổ tay",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 110000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 21,
+    "ma": "SA013",
+    "ten": "Siêu âm khớp gối",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 110000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 25,
+    "ma": "SA017",
+    "ten": "Siêu âm khớp khuỷu",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 22,
+    "ma": "SA014",
+    "ten": "Siêu âm khớp vai",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 110000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 16,
+    "ma": "SA008",
+    "ten": "Siêu âm ổ bụng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 120000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 17,
+    "ma": "SA009",
+    "ten": "Siêu âm phần mềm (một vị trí)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 32,
+    "ma": "SA024",
+    "ten": "Siêu âm thai (thai, nhau thai, nước ối) ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 0.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 35,
+    "ma": "SA027",
+    "ten": "Siêu âm thai nhi trong 3 tháng cuối",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 33,
+    "ma": "SA025",
+    "ten": "Siêu âm thai nhi trong 3 tháng đầu",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 34,
+    "ma": "SA026",
+    "ten": "Siêu âm thai nhi trong 3 tháng giữa",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 9,
+    "ma": "SA001",
+    "ten": "Siêu âm tim Doppler",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 26,
+    "ma": "SA018",
+    "ten": "Siêu âm tinh hoàn hai bên",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 120000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 18,
+    "ma": "SA010",
+    "ten": "Siêu âm tuyến giáp",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 110000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 31,
+    "ma": "SA023",
+    "ten": "Siêu âm tuyến vú hai bên",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 30,
+    "ma": "SA022",
+    "ten": "Siêu âm tử cung phần phụ qua đường âm đạo",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 290000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 29,
+    "ma": "SA021",
+    "ten": "Siêu âm tử cung phần phụ qua đường bụng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 120000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 176,
+    "ma": "TTSAN005",
+    "ten": "Sinh thiết âm đạo",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 600000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 177,
+    "ma": "TTSAN006",
+    "ten": "Sinh thiết âm hộ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 600000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 175,
+    "ma": "TTSAN004",
+    "ten": "Sinh thiết cổ tử cung",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 600000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 501,
+    "ma": "GPB03",
+    "ten": "Smart-prep PAP",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 450000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 172,
+    "ma": "TTSAN001",
+    "ten": "Soi cổ tử cung",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 462,
+    "ma": "XNVS30",
+    "ten": "Stool Exam (COP) (Tìm KST đường ruột/phân)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 90000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 478,
+    "ma": "XNVS46",
+    "ten": "Streptococcus pyogenes ASO (Anti-Streptolysin O định lượng)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 90000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 261,
+    "ma": "TTRHM059",
+    "ten": "Sứ Cao Câp Multi Zircad Prime",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 8600000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 316,
+    "ma": "TTRHM114",
+    "ten": "Sử dụng cung ngang khẩu cái (TPA) làm neo chặn trong điều trị nắn chỉnh răng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 315,
+    "ma": "TTRHM113",
+    "ten": "Sử dụng khí cụ cố định Nance làm neo chặn trong điều trị nắn chỉnh răng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 327,
+    "ma": "TTRHM125",
+    "ten": "Sử dụng khí cụ tháo lắp điều trị thói quen xấu đẩy lưỡi",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 10000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 326,
+    "ma": "TTRHM124",
+    "ten": "Sử dụng khí cụ tháo lắp điều trị thói quen xấu mút môi",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 10000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 328,
+    "ma": "TTRHM126",
+    "ten": "Sử dụng khí cụ tháo lắp điều trị thói quen xấu mút ngón tay",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 10000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 329,
+    "ma": "TTRHM127",
+    "ten": "Sử dụng khí cụ tháo lắp điều trị thói quen xấu thở đường miệng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 10000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 244,
+    "ma": "TTRHM042",
+    "ten": "Sứ Zirconia",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 3500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 258,
+    "ma": "TTRHM056",
+    "ten": "Sứ Zirconia 3m Lava Plus",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 7300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 251,
+    "ma": "TTRHM049",
+    "ten": "Sứ Zirconia Argenz",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 5600000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 252,
+    "ma": "TTRHM050",
+    "ten": "Sứ Zirconia Cercon (Ht)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 6500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 247,
+    "ma": "TTRHM045",
+    "ten": "Sứ Zirconia Ddbio (Dental Direkt)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 4300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 245,
+    "ma": "TTRHM043",
+    "ten": "Sứ Zirconia Katana",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 3800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 255,
+    "ma": "TTRHM053",
+    "ten": "Sứ Zirconia Multi",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 6500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 259,
+    "ma": "TTRHM057",
+    "ten": "Sứ Zirconia Nacera",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 7700000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 248,
+    "ma": "TTRHM046",
+    "ten": "Sứ Zirconia Sagemax",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 5200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 246,
+    "ma": "TTRHM044",
+    "ten": "Sứ Zirconia White Peaks",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 3900000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 249,
+    "ma": "TTRHM047",
+    "ten": "Sứ Zirconia Zolid",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 5200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 452,
+    "ma": "XNVS20",
+    "ten": "Syphilis miễn dịch tự động",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 110000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 451,
+    "ma": "XNVS19",
+    "ten": "Syphillis test nhanh (Treponema pallidum test nhanh) ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 45000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 513,
+    "ma": "DTSHPT005",
+    "ten": "Tầm soát bệnh di truyền lặn α, β- Thalassemia - Carrier Thalass (2ml EDTA)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 2200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 426,
+    "ma": "XNHS76",
+    "ten": "Tầm soát Tiền sản giật - 3 tháng đầu",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 820000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 99,
+    "ma": "NS002",
+    "ten": "Test Helicobacter Pylori qua nội soi tiêu hóa",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 80000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 349,
+    "ma": "TIEUHOA01",
+    "ten": "Test hơi thở tìm vi khuẩn HP bằng C13",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 800000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 182,
+    "ma": "TTSAN011",
+    "ten": "Tháo dụng cụ tử cung",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 165,
+    "ma": "TTNOI061",
+    "ten": "Thay băng vết thương, vết mổ chiều dài < 15cm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 80000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 162,
+    "ma": "TTNOI058",
+    "ten": "Thay băng vết thương, vết mổ chiều dài từ > 50 cm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 164,
+    "ma": "TTNOI060",
+    "ten": "Thay băng vết thương, vết mổ chiều dài từ 15cm đến 30 cm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 140000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 163,
+    "ma": "TTNOI059",
+    "ten": "Thay băng vết thương, vết mổ chiều dài từ trên 30 cm đến 50 cm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 220000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 169,
+    "ma": "TTNOI065",
+    "ten": "Thay băng vết thương, vết mổ nhiễm trùng chiều dài < 15 cm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 110000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 166,
+    "ma": "TTNOI062",
+    "ten": "Thay băng vết thương, vết mổ nhiễm trùng chiều dài > 50cm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 330000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 167,
+    "ma": "TTNOI063",
+    "ten": "Thay băng vết thương, vết mổ nhiễm trùng chiều dài từ  trên 30 cm đến 50 cm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 250000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 168,
+    "ma": "TTNOI064",
+    "ten": "Thay băng vết thương, vết mổ nhiễm trùng chiều dài từ 15 cm đến 30 cm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 170000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 502,
+    "ma": "GPB04",
+    "ten": "Thin prep PAP",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 600000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 338,
+    "ma": "HHTM05",
+    "ten": "Thời gian máu chảy phương pháp Duke",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 35000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 341,
+    "ma": "HHTM08",
+    "ten": "Thời gian prothrombin (PT/TQ/Tỷ lệ Prothrombin)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 90000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 342,
+    "ma": "HHTM09",
+    "ten": "Thời gian thromboplastin một phần hoạt hóa (APTT/TCK)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 520,
+    "ma": "TVXN05",
+    "ten": "Thu mẫu ngoại viện (KH cá nhân)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 431,
+    "ma": "XNHS81",
+    "ten": "Tỉ số A/C (Albumin/Creatinin niệu)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 150,
+    "ma": "TTNOI046",
+    "ten": "Tiêm bao cân gan chân",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 151,
+    "ma": "TTNOI047",
+    "ten": "Tiêm bao gân Achille",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 139,
+    "ma": "TTNOI035",
+    "ten": "Tiêm bao gân dạng dài và duỗi ngắn ngón tay cái",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 143,
+    "ma": "TTNOI039",
+    "ten": "Tiêm bao gân gấp ngón tay",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 144,
+    "ma": "TTNOI040",
+    "ten": "Tiêm bao gân nhị đầu khớp vai",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 125,
+    "ma": "TTNOI021",
+    "ten": "Tiêm bao thanh dịch dưới cơ Delta",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 129,
+    "ma": "TTNOI025",
+    "ten": "Tiêm bao thanh dịch dưới xương bánh chè sâu",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 130,
+    "ma": "TTNOI026",
+    "ten": "Tiêm bao thanh dịch gót nông",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 126,
+    "ma": "TTNOI022",
+    "ten": "Tiêm bao thanh dịch mỏm khuỷu",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 131,
+    "ma": "TTNOI027",
+    "ten": "Tiêm bao thanh dịch sau xương gót",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 128,
+    "ma": "TTNOI024",
+    "ten": "Tiêm bao thanh dịch trước xương bánh chè",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 127,
+    "ma": "TTNOI023",
+    "ten": "Tiêm bao thanh dịch ụ ngồi",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 156,
+    "ma": "TTNOI052",
+    "ten": "Tiêm điểm bám gân chân ngỗng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 157,
+    "ma": "TTNOI053",
+    "ten": "Tiêm điểm bám gân lồi cầu ngoài xương cánh tay",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 154,
+    "ma": "TTNOI050",
+    "ten": "Tiêm điểm bám gân lồi cầu ngoài xương đùi",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 158,
+    "ma": "TTNOI054",
+    "ten": "Tiêm điểm bám gân lồi cầu trong xương cánh tay",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 153,
+    "ma": "TTNOI049",
+    "ten": "Tiêm điểm bám gân lồi cầu trong xương đùi",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 155,
+    "ma": "TTNOI051",
+    "ten": "Tiêm điểm bám gân lồi củ trước xương chày",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 149,
+    "ma": "TTNOI045",
+    "ten": "Tiêm điểm bám gân mỏm cùng vai",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 142,
+    "ma": "TTNOI038",
+    "ten": "Tiêm điểm bám gân mỏm trâm quay",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 141,
+    "ma": "TTNOI037",
+    "ten": "Tiêm điểm bám gân mỏm trâm trụ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 152,
+    "ma": "TTNOI048",
+    "ten": "Tiêm điểm bám gân quanh khớp gối",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 140,
+    "ma": "TTNOI036",
+    "ten": "Tiêm đường hầm cổ tay",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 146,
+    "ma": "TTNOI042",
+    "ten": "Tiêm gân dưới gai",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 147,
+    "ma": "TTNOI043",
+    "ten": "Tiêm gân dưới vai",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 145,
+    "ma": "TTNOI041",
+    "ten": "Tiêm gân trên gai",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 148,
+    "ma": "TTNOI044",
+    "ten": "Tiêm gân tròn bé",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 117,
+    "ma": "TTNOI013",
+    "ten": "Tiêm khớp bàn ngón chân",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 116,
+    "ma": "TTNOI012",
+    "ten": "Tiêm khớp bàn ngón tay",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 113,
+    "ma": "TTNOI009",
+    "ten": "Tiêm khớp cổ chân",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 114,
+    "ma": "TTNOI010",
+    "ten": "Tiêm khớp cổ tay",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 123,
+    "ma": "TTNOI019",
+    "ten": "Tiêm khớp đòn cùng vai",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 119,
+    "ma": "TTNOI015",
+    "ten": "Tiêm khớp đốt ngón chân",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 118,
+    "ma": "TTNOI014",
+    "ten": "Tiêm khớp đốt ngón tay",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 124,
+    "ma": "TTNOI020",
+    "ten": "Tiêm khớp háng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 112,
+    "ma": "TTNOI008",
+    "ten": "Tiêm khớp khác",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 115,
+    "ma": "TTNOI011",
+    "ten": "Tiêm khớp khuỷu tay",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 121,
+    "ma": "TTNOI017",
+    "ten": "Tiêm khớp ức đòn",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 122,
+    "ma": "TTNOI018",
+    "ten": "Tiêm khớp ức sườn",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 120,
+    "ma": "TTNOI016",
+    "ten": "Tiêm khớp vai",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 138,
+    "ma": "TTNOI034",
+    "ten": "Tiêm phần mềm quanh khớp khác",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 464,
+    "ma": "XNVS32",
+    "ten": "Toxocara (Giun đũa chó, mèo) IgG (Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 320000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 480,
+    "ma": "XNVS48",
+    "ten": "Toxoplasma gondii IgG (Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 479,
+    "ma": "XNVS47",
+    "ten": "Toxoplasma gondii IgM (Elisa)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 432,
+    "ma": "XNHS82",
+    "ten": "Tổng phân tích nước tiểu (Biorex 11TS)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 60000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 334,
+    "ma": "HHTM01",
+    "ten": "Tổng phân tích tế bào máu ngoại vi (bằng máy đếm laser) (CTM 5TP)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 335,
+    "ma": "HHTM02",
+    "ten": "Tổng phân tích tế bào máu ngoại vi (bằng máy đếm tổng trở) (CTM 3TP)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 70000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 536,
+    "ma": "DV0333",
+    "ten": "TP-PA định lượng (Treponema Pallidum)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 450000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 223,
+    "ma": "TTRHM021",
+    "ten": "Trám bít hố rãnh bằng GlassIonomer Cement",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 222,
+    "ma": "TTRHM020",
+    "ten": "Trám bít hố rãnh bằng nhựa Sealant",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 220,
+    "ma": "TTRHM018",
+    "ten": "Trám bít hố rãnh với Composite hóa trùng hợp",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 221,
+    "ma": "TTRHM019",
+    "ten": "Trám bít hố rãnh với Composite quang trùng hợp",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 219,
+    "ma": "TTRHM017",
+    "ten": "Trám bít hố rãnh với GlassIonomer Cement quang trùng hợp",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 300000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 457,
+    "ma": "XNVS25",
+    "ten": "Trichomonas vaginalis soi tươi [Huyết trắng]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 45000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 514,
+    "ma": "DTSHPT006",
+    "ten": "Trisure Carrier (Tầm soát 18 bệnh di truyền lặn nghiêm trọng và phổ biến nhất )",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 3000000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 517,
+    "ma": "TVXN02",
+    "ten": "Tư vấn XN kháng thể HIV tự nguyện",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 0.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 516,
+    "ma": "TVXN01",
+    "ten": "Tư vấn XN tầm soát ung thư cổ tử cung",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 0.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 409,
+    "ma": "XNHS59",
+    "ten": "Tỷ lệ PSA (PSA Total + Free PSA)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 320000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 289,
+    "ma": "TTRHM087",
+    "ten": "Vá hàm nhựa nấu toàn hàm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 200000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 288,
+    "ma": "TTRHM086",
+    "ten": "Vá hàm nhựa tự cứng",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 150000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 535,
+    "ma": "DV0332",
+    "ten": "Vắc xin uốn ván (VAT-VN)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 90000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 257,
+    "ma": "TTRHM055",
+    "ten": "Veneer Emax Press",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 6500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 254,
+    "ma": "TTRHM052",
+    "ten": "Veneer Lisi Press",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 6500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 260,
+    "ma": "TTRHM058",
+    "ten": "Veneer Siêu Mỏng 0.3",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 7700000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 243,
+    "ma": "TTRHM041",
+    "ten": "Veneer sứ cao cấp",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 8600000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 302,
+    "ma": "TTRHM100",
+    "ten": "Vệ sinh răng 2 hàm",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 88000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 456,
+    "ma": "XNVS24",
+    "ten": "Vi nấm soi tươi [Huyết trắng]",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 45000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 505,
+    "ma": "GPB07",
+    "ten": "Xét nghiệm mô bệnh học các bệnh phẩm sinh thiết - GPB mẫu lớn",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 1100000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 503,
+    "ma": "GPB05",
+    "ten": "Xét nghiệm mô bệnh học các bệnh phẩm sinh thiết - GPB mẫu nhỏ",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 504,
+    "ma": "GPB06",
+    "ten": "Xét nghiệm mô bệnh học các bệnh phẩm sinh thiết - GPB mẫu trung",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 700000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 507,
+    "ma": "GPB09",
+    "ten": "Xét nghiệm và chẩn đoán tế bào học bằng khối tế bào (Cell block)",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 500000.00,
+    "gui_ngoai": false
+  },
+  {
+    "id": 508,
+    "ma": "GPB10",
+    "ten": "Xét nghiệm và chẩn đoán tế bào học dịch cơ thể",
+    "loai_dich_vu": 2,
+    "don_vi_tinh": "Lần",
+    "don_gia": 500000.00,
+    "gui_ngoai": false
+  }
+]

@@ -1,0 +1,56 @@
+@{
+    ViewData["Title"] = "Tổng quan cơ sở KCB";
+    var coQuyenDongBoJson = User.CoQuyen("danh_muc", "Sua");
+}
+
+<div class="container-fluid admin-workspace ht-overview-page" id="ht-overview-root"
+     data-can-sync-json="@coQuyenDongBoJson.ToString().ToLowerInvariant()">
+        <div class="card border-0 shadow-sm mb-2">
+        <div class="card-body px-3 py-2">
+            <div class="ht-overview-filter-v3">
+                <div class="ht-ov-inline-field">
+                    <label class="form-label small fw-semibold mb-0" for="ht-ov-ma">Mã cơ sở</label>
+                    <input type="text" class="form-control form-control-sm" id="ht-ov-ma" placeholder="Nhập mã cơ sở..." />
+                </div>
+                <div class="ht-ov-inline-field">
+                    <label class="form-label small fw-semibold mb-0" for="ht-ov-ten">Tên cơ sở</label>
+                    <input type="text" class="form-control form-control-sm" id="ht-ov-ten" placeholder="Nhập tên cơ sở..." />
+                </div>
+                <div class="ht-ov-inline-field">
+                    <label class="form-label small fw-semibold mb-0" for="ht-ov-tinh">Tỉnh / Thành</label>
+                    <select class="form-select form-select-sm" id="ht-ov-tinh">
+                        <option value="">Tất cả tỉnh / thành</option>
+                    </select>
+                </div>
+                <div class="ht-ov-inline-field">
+                    <label class="form-label small fw-semibold mb-0" for="ht-ov-phuong">Phường / Xã</label>
+                    <select class="form-select form-select-sm" id="ht-ov-phuong" disabled>
+                        <option value="">Tất cả phường / xã</option>
+                    </select>
+                </div>
+                <div class="d-flex align-items-center gap-2 ht-ov-filter-actions">
+                    <button type="button" class="btn btn-primary btn-sm flex-grow-1" id="btn-ht-ov-loc">
+                        <i class="bi bi-funnel me-1"></i>Lọc
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-ht-ov-xoa-loc" title="Xóa bộ lọc">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ht-cskcb-card-grid ht-cskcb-card-grid-3" id="ht-overview-grid">
+        <div class="text-center text-muted py-5 w-100">Đang tải danh sách cơ sở KCB...</div>
+    </div>
+
+    <div class="qlpm-pagination-bar mt-3 d-none" id="ht-overview-pagination"></div>
+
+    <a href="/he_thong/cskcb" class="ht-floating-add" title="Thêm cơ sở KCB" aria-label="Thêm cơ sở KCB">
+        <i class="bi bi-plus-lg"></i>
+    </a>
+</div>
+
+@section Scripts {
+    <script src="~/js/he_thong/tong_quan.js" asp-append-version="true"></script>
+}

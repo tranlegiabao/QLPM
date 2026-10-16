@@ -1,0 +1,157 @@
+@model QuanLyPhongMach.Models.Printing.Kho.KhoNhapPrintModel
+@{ Layout = "~/Views/kho/LayoutKho.cshtml"; }
+@* Port HisSoft/Views/HH_NhapKho/PhieuNhapKhoPDF.cshtml. *@
+<style>
+    th {
+        font-size: 15px;
+    }
+
+    td {
+        font-size: 15px;
+    }
+</style>
+<div class="title card" style="margin-left:0; display:block;">
+    <div style="width:100%">
+        <h1 style="font-size: x-large;font-weight: 700;text-align: center; margin: 0;">
+            PHIẾU NHẬP KHO @(Model.DaHuy ? "- ĐÃ HỦY" : "")
+        </h1>
+    </div>
+</div>
+<div class="info card">
+    @if (Model.LaLegacy) { <div class="row-info">Legacy: tên/ĐVT chưa có snapshot lịch sử.</div> }
+    @if (Model.DaHuy) { <div class="row-info">Lý do hủy: @Model.LyDoHuy</div> }
+    <div class="row-info text-center">
+        Số phiếu: <a>@Model.SoPhieu</a>, Ngày tạo: @Model.NgayNhap.ToString("dd-MM-yyyy")
+    </div>
+    <div class="row-info text-center">
+        Số HĐ: <a>@Model.SoHoaDon</a>, Ngày HĐ: @Model.NgayHoaDon?.ToString("dd-MM-yyyy")
+    </div>
+    <div class="row-info">
+        <div class="flex w-100">
+            <div>
+                Nhà cung cấp: @Model.NhaCungCap
+            </div>
+        </div>
+    </div>
+    <div class="row-info">
+        <div class="flex w-100">
+            <div>
+                Ghi chú: @Model.GhiChu
+            </div>
+        </div>
+    </div>
+</div>
+<div class="table card">
+    <table style="width:100%;">
+        <thead>
+            <tr>
+                <th style="width:3%">STT</th>
+                <th style="width:26%">Tên hàng hóa</th>
+                <th style="width:8%">Mã HH</th>
+                <th style="width:7%">Hạn dùng</th>
+                <th style="width:7%">ĐVT nhập</th>
+                <th style="width:6%">SL nhập</th>
+                <th style="width:5%">SLQĐ</th>
+                <th style="width:8%">Giá nhập</th>
+                <th style="width:4%">%CK</th>
+                <th style="width:4%">%VAT</th>
+                <th style="width:10%">Thành tiền</th>
+                <th style="width:6%">SL tồn</th>
+                <th style="width:6%">Tỷ lệ hao hụt</th>
+            </tr>
+            <tr>
+                <th style="width:3%">A</th>
+                <th style="width:26%">B</th>
+                <th style="width:8%">C</th>
+                <th style="width:7%">D</th>
+                <th style="width:7%">E</th>
+                <th style="width:6%">1</th>
+                <th style="width:5%">2</th>
+                <th style="width:8%">3</th>
+                <th style="width:4%">4</th>
+                <th style="width:4%">5</th>
+                <th style="width:10%">6</th>
+                <th style="width:6%">7</th>
+                <th style="width:6%">8</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 1;
+            }
+            @foreach (var ct in Model.ChiTiet)
+            {
+                <tr>
+                    <td class="text-center">@i</td>
+                    <td class="">@ct.Ten</td>
+                    <td class="">@ct.Ma</td>
+                    <td class="text-center">@ct.HanDung?.ToString("dd-MM-yy")</td>
+                    <td class="">@ct.DonViTinh</td>
+                    <td class="text-end">@ct.SoLuong.ToString("#,##0.##")</td>
+                    <td class="text-end">@ct.HeSoQuyDoi.ToString("#,##0.##")</td>
+                    <td class="text-end">@ct.GiaNhap.ToString("#,##0.##")</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end">@ct.ThanhTien.ToString("#,##0.##")</td>
+                    <td class="text-end">@ct.SoLuongTonCoSo?.ToString("#,##0.##")</td>
+                    <td class="text-end"></td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+</div>
+<div class="">
+     <div style="border: 1px solid black; padding:5px; font-size:16px; letter-spacing: 0.5px;">
+        <div class="flex" style="margin-left: 60px; margin-right: 50px;">
+            <div class="w-25">
+                Tiền hàng: @Model.TongTien.ToString("#,##0") 
+            </div>
+            <div class="text-center w-25">
+                Tiền CK: 0
+            </div>
+            <div class="text-center w-25">
+                Tiền thuế: 0
+            </div>
+            <div class="text-end w-25">
+                Phải trả: @Model.TongTien.ToString("#,##0")
+            </div>
+        </div>
+    </div>
+</div>
+<div style="page-break-inside:avoid;">
+    <div class="flex">
+        <div class="w-33 text-center"></div>
+        <div class="w-33 text-center"></div>
+        <div class="w-33 text-center">
+            <em>Ngày ... Tháng ... Năm ...</em>
+        </div>
+    </div>
+    <div class="">
+        <div class="flex" style="font-size:16px; font-weight:700">
+            <div class="w-33 text-center">
+                Người lập phiếu
+            </div>
+            <div class="w-33 text-center">
+                Thủ kho
+            </div>
+            <div class="w-33 text-center">
+                Kế toán trưởng
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="flex" style="font-size:12px;">
+            <div class="w-33 text-center">
+                (ký, họ tên)
+            </div>
+            <div class="w-33 text-center">
+                (ký, họ tên)
+            </div>
+            <div class="w-33 text-center">
+                (ký, họ tên, đóng dấu)
+            </div>
+        
+        </div>
+    </div>
+</div>

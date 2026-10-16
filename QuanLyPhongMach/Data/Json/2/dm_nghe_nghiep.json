@@ -1,0 +1,62 @@
+﻿[
+  {
+    "id": 1,
+    "ma": "01",
+    "ten": "Cán bộ, công chức, viên chức"
+  },
+  {
+    "id": 2,
+    "ma": "02",
+    "ten": "Công nhân"
+  },
+  {
+    "id": 3,
+    "ma": "03",
+    "ten": "Nông dân"
+  },
+  {
+    "id": 4,
+    "ma": "04",
+    "ten": "Kinh doanh, buôn bán"
+  },
+  {
+    "id": 5,
+    "ma": "05",
+    "ten": "Nhân viên văn phòng, dịch vụ"
+  },
+  {
+    "id": 6,
+    "ma": "06",
+    "ten": "Lực lượng vũ trang"
+  },
+  {
+    "id": 7,
+    "ma": "07",
+    "ten": "Học sinh, sinh viên"
+  },
+  {
+    "id": 8,
+    "ma": "08",
+    "ten": "Trẻ em dưới 6 tuổi"
+  },
+  {
+    "id": 9,
+    "ma": "09",
+    "ten": "Hưu trí, người cao tuổi"
+  },
+  {
+    "id": 10,
+    "ma": "10",
+    "ten": "Nội trợ"
+  },
+  {
+    "id": 11,
+    "ma": "11",
+    "ten": "Lao động tự do"
+  },
+  {
+    "id": 99,
+    "ma": "99",
+    "ten": "Khác"
+  }
+]

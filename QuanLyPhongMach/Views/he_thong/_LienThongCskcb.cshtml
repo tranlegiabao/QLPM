@@ -1,0 +1,12 @@
+@if (User.IsInRole("quan_tri_he_thong"))
+{
+    <fieldset class="border rounded p-2 mt-3" id="ht-cs-ltt">
+        <legend class="float-none w-auto small fw-semibold px-1">Tài khoản liên thông toa thuốc</legend>
+        <label for="ht-cs-ltt-ma" class="form-label small mb-1">Mã liên thông cơ sở</label>
+        <input id="ht-cs-ltt-ma" class="form-control form-control-sm" maxlength="100" />
+        <label for="ht-cs-ltt-mk" class="form-label small mt-2 mb-1">Mật khẩu liên thông</label>
+        <input id="ht-cs-ltt-mk" type="password" class="form-control form-control-sm" maxlength="500" autocomplete="new-password" />
+        <div id="ht-cs-ltt-info" class="form-text">Tài khoản liên thông được lưu cùng cơ sở KCB.</div>
+        <label class="form-check mt-2 mb-2"><input id="ht-cs-ltt-active" type="checkbox" class="form-check-input" />Bật liên thông toa thuốc</label>
+    </fieldset>
+}

@@ -1,0 +1,53 @@
+@model QuanLyPhongMach.Models.ViewModels.CauHinhHeThongViewModel
+@{
+    var groups = Model.DanhSach
+        .GroupBy(x => string.IsNullOrWhiteSpace(x.Nhom) ? "Khác" : x.Nhom)
+        .OrderBy(x => x.Key)
+        .ToList();
+}
+<div class="ht-config-page" id="ht-config-root" data-cskcb-id="@Model.IdCskcb">
+    @Html.AntiForgeryToken()
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-0">
+            @if (groups.Count == 0)
+            {
+                <div class="text-center text-muted py-5">Chưa có cấu hình cho cơ sở này.</div>
+            }
+            else
+            {
+                @foreach (var group in groups)
+                {
+                    <section class="ht-config-group" aria-label="@group.Key">
+                        <div class="px-3 py-2 bg-light border-bottom fw-semibold text-primary">@group.Key</div>
+                        @foreach (var item in group.OrderBy(x => x.MaChucNang))
+                        {
+                            <div class="d-flex align-items-center gap-3 px-3 py-3 border-bottom ht-config-row">
+                                <div class="flex-grow-1 min-w-0">
+                                    @if (string.IsNullOrWhiteSpace(item.GhiChu))
+                                    {
+                                        <span class="fw-semibold text-break">@item.MaChucNang</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="fw-semibold text-break ht-config-code"
+                                              tabindex="0"
+                                              title="@item.GhiChu">@item.MaChucNang</span>
+                                    }
+                                </div>
+                                <div class="form-check form-switch m-0 flex-shrink-0">
+                                    <input class="form-check-input ht-config-toggle"
+                                           type="checkbox"
+                                           role="switch"
+                                           aria-label="Bật hoặc tắt @item.MaChucNang"
+                                           data-config-code="@item.MaChucNang"
+                                           checked="@(item.HieuLuc ? "checked" : null)" />
+                                </div>
+                            </div>
+                        }
+                    </section>
+                }
+            }
+        </div>
+    </div>
+</div>

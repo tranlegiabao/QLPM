@@ -1,0 +1,21 @@
+.vs/
+bin/
+obj/
+.codex/.codex-build/
+.codex-build/his-v95/
+
+*.user
+*.suo
+
+Data/Json/
+logs/
+temp/
+
+appsettings.local.json
+appsettings.Development.local.json
+.env
+.env.*
+.codex/
+*.zip
+# Kết quả CLS upload local - metadata nằm trong DB, file không commit Git
+QuanLyPhongMach/App_Data/cls/

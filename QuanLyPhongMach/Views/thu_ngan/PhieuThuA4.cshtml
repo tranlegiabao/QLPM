@@ -1,0 +1,310 @@
+@model QuanLyPhongMach.Models.Printing.ThuNgan.ThuNganPrintModel
+@{ Layout = null; const bool inqrthanhtoan = false; }
+@* Port từ HisSoft/Views/QL_TaiChinh/PDFPhieuThuA4.cshtml; giữ bố cục, dùng snapshot QLPM. *@
+<style type="text/css">
+    .flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+    }
+
+    .justify-content-end {
+        -webkit-box-pack: end;
+        justify-content: flex-end;
+        justify-content: end;
+    }
+
+    .justify-content-between {
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+    }
+
+    .title {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+    }
+
+        .title > div {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+        }
+
+    .border {
+        border: 1px solid;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    td {
+        padding: 3px;
+        font-size: 22px !important;
+    }
+
+    .row-info {
+        margin-bottom: 5px;
+        font-size: 22px !important;
+    }
+
+    .row-info div{
+        font-size: 22px !important;
+    }
+
+    th {
+        font-size: 22px;
+        font-weight: 600;
+        text-align: center;
+        background-color: whitesmoke;
+    }
+
+    .card {
+        margin-bottom: 15px;
+        font-size: 24px !important;
+    }
+
+        .card.mb-1 > div {
+            margin-bottom: 3px;
+        }
+
+    p {
+        margin: 0;
+    }
+
+        p > b {
+            padding: 3px 5px 3px 5px;
+        }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-end {
+        text-align: end;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .w-70 {
+        width: 70%;
+    }
+
+    .w-60 {
+        width: 60%;
+    }
+
+    .w-55 {
+        width: 55%;
+    }
+
+    .w-50 {
+        width: 50%;
+    }
+
+    .w-45 {
+        width: 45%;
+    }
+
+    .w-40 {
+        width: 40%;
+    }
+
+    .w-30 {
+        width: 30%;
+    }
+
+    .w-25 {
+        width: 25%;
+    }
+
+    .w-20 {
+        width: 20%;
+    }
+
+    .mb-0 {
+        margin: 0;
+    }
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid; }
+</style>
+<div class="flex card">
+    <div style="width:66%">
+        @await Html.PartialAsync("~/Views/thu_ngan/_Header.cshtml", Model)
+        @* <img style="width:100%; height:90px; object-fit:contain;" src="data:image/png;base64,@ViewBag.logo" /> *@
+    </div>
+    <div style="width: 34%; font-size:18px; padding-left: 30px">
+        <div class="text-center" style="font-size: 36px;">
+            <b>@(Model.LoaiChungTu == "HOAN" ? "PHIẾU HOÀN TIỀN" : "PHIẾU THU")</b>
+        </div>
+        <div class="pb-2 text-center">
+           Số phiếu: <em>@Model.SoPhieu</em>
+        </div>
+        <div class="text-center">
+            Mã VV: <em>@Model.MaVaoVien</em>
+        </div>
+    </div>
+</div>
+
+<div class="info card">
+     <div class="row-info">
+        <div style="width:100%; font-size: 30px;">
+            Ngày thu: @Model.NgayGioThu.ToString("dd-MM-yyyy HH:mm")
+        </div>
+    </div>
+    <div class="row-info">
+        <div class="flex justify-content-between" style="width:100%;">
+            <div style="width:50%;">
+                Họ tên: <b>@Model.HoTen</b>
+            </div>
+            <div style="width:30%;">
+                 Năm sinh: @Model.NgaySinh?.Year
+            </div>
+            <div class="text-end" style="width:20%;">
+                Giới tính: @Model.GioiTinh
+            </div>
+        </div>
+    </div>
+    <div class="row-info">
+        <div class="flex" style="width:100%">
+            <div style="width:75%;">
+                Địa chỉ:  @Model.DiaChiBenhNhan
+            </div>
+             <div class="text-end" style="width:25%;">
+                Điện thoại: @Model.DienThoaiBenhNhan
+            </div>
+        </div>
+    </div>
+</div>
+<div class="table card">
+    <table style="width:100%;">
+        <thead>
+            <tr>
+                <th style="width:4%; font-size: 20px;">TT</th>
+                <th style="width:52%; font-size: 20px;">Nội dung</th>
+                <th style="width:4%; font-size: 20px;">SL</th>
+                <th style="width:4%; font-size: 20px;">DVT</th>
+                <th style="width:15%; font-size: 20px;">Đơn giá</th>
+                <th style="width:6%; font-size: 20px;">Giảm(%)</th>
+                <th style="width:15%; font-size: 20px;">Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+              @{
+                int stt = 1;
+                decimal TongThucThu = 0;
+                @foreach (var cp in Model.ChiTiet)
+                {
+                        <tr>
+                            <td style="text-align:center; font-size: 18px;">@stt</td>
+                            <td style="text-align:start; font-size: 18px;">@cp.Ten</td>
+                            <td style="text-align:end; font-size: 18px;">@cp.SoLuong.ToString("#,###.##")</td>
+                            <td style="text-align:end; font-size: 18px;">@cp.DonViTinh</td>
+                            <td style="text-align:end; font-size: 18px;">@cp.DonGia.ToString("#,###.###")</td>
+                            <td style="text-align:end; font-size: 18px;">@cp.GiamPhanTram.ToString("#,##0.##")</td>
+                            <td style="text-align:end; font-size: 18px;">@cp.ThanhToan.ToString("#,###.##")</td>
+                        </tr>
+                        TongThucThu += cp.ThanhToan;
+                        stt++;
+                    
+                }
+                <tr style="font-weight: bold">
+                    <td colspan="6" style="text-align:center; font-size: 16px;">Tổng cộng</td>
+                    <td style="text-align:end; font-size: 16px;">@TongThucThu.ToString("#,###.##")</td>
+                </tr>
+                <tr style="font-weight: bold">
+                    <td colspan="7" style="text-align:center; font-size: 16px;">
+                        <div class="flex">
+                            <div style="width: 34%"><div class="flex"><div style="width:50%; text-align:end">SD Tạm ứng : </div><div style="width:50%; text-align:end">— </div> </div></div>
+                            <div style="width: 33%"><div class="flex"><div style="width:65%; text-align:end;white-space:nowrap;">Chuyển khoản : </div><div style="width:35%; text-align:end">@Model.ChuyenKhoan.ToString("#,##0.##") </div> </div></div>
+                            <div style="width: 33%"><div class="flex"><div style="width:50%; text-align:end">Tiền mặt : </div><div style="width:50%; text-align:end">@Model.TienMat.ToString("#,##0.##") </div> </div></div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div style="font-size: 18px; page-break-inside:avoid;">
+    <div class="row-info" style="margin-bottom: 10px;">
+        <div class="flex" style="width:100%">
+            <div style="width:auto; padding-right:6px">Viết bằng chữ:</div>
+            <div style="width:auto;min-width:85%; border-bottom: 1px dotted"><i>@QuanLyPhongMach.Services.so_tien_bang_chu.Doc(Model.ThucThu)</i></div>
+        </div>
+    </div>
+    @if(Model.GhiChu != null && Model.GhiChu != ""){
+    <div class="row-info">
+        <div class="flex" style="width:100%">
+               Ghi chú: @Model.GhiChu
+        </div>
+    </div>
+    }
+    <div class="row-info" style="margin-bottom: 20px;">
+        <div class="flex" style="width:100%">
+               <em>@(Model.TrangThai == 0 ? "CHỨNG TỪ ĐÃ HỦY: " + Model.LyDoHuy : "")</em>
+        </div>
+    </div>
+    <div class="sign mt-15">
+        <div class="row-info">
+            <div class="flex justify-content-end" style="width:100%;">
+                <div class="text-center" style="font-size:15px; white-space:nowrap; @(inqrthanhtoan == true ? "width:20%;" : "width:25%;")">
+                    Ngày @Model.NgayGioThu.Day tháng @Model.NgayGioThu.Month năm @Model.NgayGioThu.Year
+                </div>
+          </div>
+            <div class="flex" style="width:100%;">
+                
+                <div style="font-size:15px; @(inqrthanhtoan == true ? "width:20%;" : "width:25%;")">
+                    <div style="text-align:center;">
+                        <div>
+                            @(Model.LoaiChungTu == "HOAN" ? "NGƯỜI NHẬN TIỀN" : "NGƯỜI ĐÓNG TIỀN")
+                        </div>
+                        <div style="margin-bottom: 65px">
+                            <em>(Ký, họ tên)</em>
+                        </div>
+                        <div>
+                            @Model.HoTen
+                        </div>
+                    </div>
+                </div>
+                <div style="font-size:15px;  @(inqrthanhtoan == true ? "width:20%;" : "width:25%;")">
+                    <div style="text-align:center;">
+                        <div>
+                            KẾ TOÁN
+                        </div>
+                        <div style="margin-bottom: 65px">
+                            <em>(Ký, họ tên)</em>
+                        </div>
+                    </div>
+                </div>
+                <div style="font-size:15px;  @(inqrthanhtoan == true ? "width:20%;" : "width:25%;")">
+                    <div style="text-align:center;">
+                        <div>
+                            THỦ QUỸ
+                        </div>
+                        <div style="margin-bottom: 65px">
+                            <em>(Ký, họ tên)</em>
+                        </div>
+                    </div>
+                </div>
+                <div style="font-size:15px;  @(inqrthanhtoan == true ? "width:20%;" : "width:25%;")">
+                    <div style="text-align:center;">
+                        <div>
+                            NGƯỜI LẬP PHIẾU
+                        </div>
+                        <div style="margin-bottom: 65px">
+                            <em>(Ký, họ tên)</em>
+                        </div>
+                        <div>
+                             @Model.NhanVienThu
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>

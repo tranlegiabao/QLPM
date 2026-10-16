@@ -1,0 +1,195 @@
+{
+  "mapping": {
+    "QL_Kho_Nhap": {
+      "ID": "ID",
+      "IDCSKCB": "IDCSKCB",
+      "IDKho": "IDKho",
+      "SoPhieu": "SoPhieu",
+      "SoHoaDon": "SoHoaDon",
+      "NgayNhap": "NgayGio",
+      "IDNhanVienNhap": "IDNhanVien",
+      "TongTien": "TongTien",
+      "GhiChu": "GhiChu",
+      "DaHuy": "DaHuy",
+      "IDNhaCungCap": "IDNhaCungCap",
+      "NgayHoaDon": "NgayHoaDon",
+      "NgayGioHuy": "NgayGioHuy",
+      "IDNhanVienHuy": "IDNhanVienHuy",
+      "LyDoHuy": "LyDoHuy",
+      "TenNhaCungCapSnapshot": "TenNhaCungCapSnapshot",
+      "IDTaiKhoanNhap": "IDTaiKhoan",
+      "TenNguoiNhapSnapshot": "TenNguoiThucHienSnapshot",
+      "IDTaiKhoanHuy": "IDTaiKhoanHuy",
+      "TenNguoiHuySnapshot": "TenNguoiHuySnapshot"
+    },
+    "QL_Kho_Nhap_CT": {
+      "ID": "ID",
+      "IDCSKCB": "IDCSKCB",
+      "IDNhap": "IDChungTu",
+      "IDThuoc": "IDThuoc",
+      "IDDonViTinh": "IDDonViTinh",
+      "HeSoQuyDoi": "HeSoQuyDoi",
+      "SoLuong": "SoLuong",
+      "SoLuongCoSo": "SoLuongCoSo",
+      "GiaNhap": "GiaNhap",
+      "ThanhTien": "ThanhTien",
+      "SoLo": "SoLo",
+      "HanDung": "HanDung",
+      "IDLoThuoc": "IDLoThuoc",
+      "TenThuocSnapshot": "TenThuocSnapshot",
+      "MaThuocSnapshot": "MaThuocSnapshot",
+      "DonViTinhSnapshot": "DonViTinhSnapshot",
+      "VAT": "VAT",
+      "TienVAT": "TienVAT"
+    },
+    "QL_Kho_Xuat": {
+      "ID": "ID",
+      "IDCSKCB": "IDCSKCB",
+      "IDKho": "IDKho",
+      "IDVaoVien": "IDVaoVien",
+      "SoPhieu": "SoPhieu",
+      "NgayXuat": "NgayGio",
+      "IDNhanVienXuat": "IDNhanVien",
+      "TongGiaVon": "TongGiaVon",
+      "GhiChu": "GhiChu",
+      "DaHuy": "DaHuy",
+      "IDTaiKhoanXuat": "IDTaiKhoan",
+      "TenNguoiXuatSnapshot": "TenNguoiThucHienSnapshot"
+    },
+    "QL_Kho_Xuat_CT": {
+      "ID": "ID",
+      "IDCSKCB": "IDCSKCB",
+      "IDXuat": "IDChungTu",
+      "IDToaThuocCT": "IDToaThuocCT",
+      "IDThuoc": "IDThuoc",
+      "IDLoThuoc": "IDLoThuoc",
+      "SoLuongCoSo": "SoLuongCoSo",
+      "GiaVon": "GiaVon",
+      "ThanhTien": "ThanhTien",
+      "SoLuongDaHoan": "SoLuongDaHoan",
+      "IDThuTienChungTuCT": "IDThuTienChungTuCT",
+      "HeSoQuyDoi": "HeSoQuyDoi"
+    },
+    "QL_Kho_Hoan": {
+      "ID": "ID",
+      "IDCSKCB": "IDCSKCB",
+      "IDVaoVien": "IDVaoVien",
+      "SoPhieu": "SoPhieu",
+      "NgayHoan": "NgayGio",
+      "IDNhanVienHoan": "IDNhanVien",
+      "LyDo": "LyDo",
+      "IDTaiKhoanHoan": "IDTaiKhoan",
+      "IDChungTuHuy": "IDChungTuHuy",
+      "Loai": "LoaiNghiepVu",
+      "TenNguoiHoanSnapshot": "TenNguoiThucHienSnapshot"
+    },
+    "QL_Kho_Hoan_CT": {
+      "ID": "ID",
+      "IDHoan": "IDChungTu",
+      "IDXuatCT": "IDChungTuCTGoc",
+      "SoLuongCoSo": "SoLuongCoSo"
+    },
+    "QL_Kho_DieuChinh": {
+      "ID": "ID",
+      "IDCSKCB": "IDCSKCB",
+      "IDKho": "IDKho",
+      "Loai": "LoaiNghiepVu",
+      "SoPhieu": "SoPhieu",
+      "NgayGio": "NgayGio",
+      "IDNhanVien": "IDNhanVien",
+      "LyDo": "LyDo",
+      "IDTaiKhoan": "IDTaiKhoan",
+      "TenNguoiThucHienSnapshot": "TenNguoiThucHienSnapshot"
+    },
+    "QL_Kho_DieuChinh_CT": {
+      "ID": "ID",
+      "IDCSKCB": "IDCSKCB",
+      "IDChungTu": "IDChungTu",
+      "IDLoThuoc": "IDLoThuoc",
+      "SoLuongThayDoi": "SoLuongThayDoi",
+      "SoLuongTruoc": "SoLuongTruoc",
+      "SoLuongSau": "SoLuongSau"
+    }
+  },
+  "specs": {
+    "QL_Kho_Nhap": [
+      "NHAP",
+      "QL_Kho_ChungTu",
+      "Nhap",
+      false
+    ],
+    "QL_Kho_Nhap_CT": [
+      "NHAP",
+      "QL_Kho_ChungTu_CT",
+      "Nhap",
+      true
+    ],
+    "QL_Kho_Xuat": [
+      "CAP_PHAT",
+      "QL_Kho_ChungTu",
+      "Xuat",
+      false
+    ],
+    "QL_Kho_Xuat_CT": [
+      "CAP_PHAT",
+      "QL_Kho_ChungTu_CT",
+      "Xuat",
+      true
+    ],
+    "QL_Kho_Hoan": [
+      "HOAN",
+      "QL_Kho_ChungTu",
+      "Hoan",
+      false
+    ],
+    "QL_Kho_Hoan_CT": [
+      "HOAN",
+      "QL_Kho_ChungTu_CT",
+      "Hoan",
+      true
+    ],
+    "QL_Kho_DieuChinh": [
+      "DIEU_CHINH",
+      "QL_Kho_ChungTu",
+      "DieuChinh",
+      false
+    ],
+    "QL_Kho_DieuChinh_CT": [
+      "DIEU_CHINH",
+      "QL_Kho_ChungTu_CT",
+      "DieuChinh",
+      true
+    ]
+  },
+  "affected": [
+    "STO_QL_ThuNgan_DaoCapChungTu",
+    "STO_QL_Kho_ChungTu_ChiTiet",
+    "STO_QL_Kho_DanhSachKho",
+    "STO_QL_Kho_DieuChinh_DanhSach",
+    "STO_QL_Kho_DieuChinh_Luu",
+    "STO_QL_Kho_DongDaCap",
+    "STO_QL_Kho_LoThuoc_DanhSach",
+    "STO_QL_Kho_Nhap",
+    "STO_QL_Kho_Nhap_ChiTiet",
+    "STO_QL_Kho_Nhap_DanhSach",
+    "STO_QL_Kho_Nhap_Huy",
+    "STO_QL_Kho_Thuoc_Danh_Sach",
+    "STO_QL_ThuNgan_DanhSachChungTu",
+    "STO_QL_Kho_Thuoc_GanNhom",
+    "STO_QL_Kho_TonKho_DanhSach",
+    "STO_QL_Kho_Xuat_ChiTiet",
+    "STO_QL_ThuNgan_HoanTien",
+    "STO_QL_Kho_Xuat_DanhSach",
+    "STO_QL_Kho_Xuat_Hoan",
+    "STO_QL_Kho_Xuat_TheoToa",
+    "STO_QL_Kho_PhieuCap_DanhSach",
+    "STO_QL_Kho_PhieuCap_In",
+    "STO_QL_Kho_MotKho_Lay",
+    "STO_QL_Kho_Gia_DanhSach",
+    "STO_QL_Kho_Gia_Luu",
+    "STO_QL_Kho_DanhMuc_NhapHIS",
+    "STO_QL_Kho_TongQuan",
+    "STO_QL_Kho_DanhMuc_DanhSach",
+    "STO_QL_Kho_BaoCao"
+  ]
+}

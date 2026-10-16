@@ -1,0 +1,624 @@
+@{
+    ViewData["Title"] = "Khám bệnh";
+    var targetIdVaoVien = ViewBag.TargetIdVaoVien as long?;
+    var canSuaKham = ViewBag.CanSuaKham is bool canSua && canSua;
+}
+
+<div class="qlpm-page-root kham-benh-layout" id="kham-benh-root" data-target-id-vaovien="@(targetIdVaoVien?.ToString() ?? "")" data-can-sua-kham="@(canSuaKham ? "true" : "false")">
+    <!-- CỘT TRÁI: DANH SÁCH BỆNH NHÂN KHÁM (~300px) -->
+    <section class="qlpm-pane-left kham-benh-list" aria-label="Danh sách bệnh nhân khám">
+        <div class="border-bottom pb-2 mb-2">
+            <!-- Ô ngày thu nhỏ, không icon không chữ 'Ngày', nằm cạnh ô tìm kiếm -->
+            <div class="d-flex gap-1 mb-2">
+                <input type="text" id="kb-filter-ngay" class="form-control form-control-sm text-center" style="width: 105px; flex-shrink: 0;" placeholder="dd-mm-yyyy" />
+                <div class="input-group input-group-sm flex-grow-1">
+                    <input type="text" id="kb-filter-tu-khoa" class="form-control" placeholder="Tìm BN..." />
+                    <button class="btn btn-outline-secondary px-2" type="button" id="btn-kb-tim-kiem" title="Tìm kiếm"><i class="bi bi-search"></i></button>
+                </div>
+            </div>
+
+            <!-- Bộ lọc trạng thái & Nút Tải danh sách -->
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-1">
+                <div class="kham-benh-status-filter d-flex gap-2">
+                    <div class="form-check form-check-inline m-0">
+                        <input class="form-check-input" type="radio" name="kb-filter-trang-thai" id="kb-rad-chua-kham" value="0" checked />
+                        <label class="form-check-label text-status-chua-kham small" for="kb-rad-chua-kham">Chưa</label>
+                    </div>
+                    <div class="form-check form-check-inline m-0">
+                        <input class="form-check-input" type="radio" name="kb-filter-trang-thai" id="kb-rad-dang-kham" value="1" />
+                        <label class="form-check-label text-status-dang-kham small" for="kb-rad-dang-kham">Đang</label>
+                    </div>
+                    <div class="form-check form-check-inline m-0">
+                        <input class="form-check-input" type="radio" name="kb-filter-trang-thai" id="kb-rad-da-kham" value="2" />
+                        <label class="form-check-label text-status-da-kham small" for="kb-rad-da-kham">Xong</label>
+                    </div>
+                    <div class="form-check form-check-inline m-0">
+                        <input class="form-check-input" type="radio" name="kb-filter-trang-thai" id="kb-rad-tat-ca" value="" />
+                        <label class="form-check-label small" for="kb-rad-tat-ca">Tất cả</label>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-sm btn-load-list py-0 px-2" type="button" id="btn-kb-reload" title="Tải lại danh sách bệnh nhân">
+                    <i class="bi bi-arrow-clockwise"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Bảng danh sách bệnh nhân: Cột Mã BN đem xuống cuối trước cột Lịch sử -->
+        <div class="qlpm-table-container kham-benh-table-wrap flex-grow-1">
+            <table class="table table-bordered qlpm-table table-sm m-0" id="kb-table">
+                <thead>
+                    <tr>
+                        <th class="col-sticky-stt kb-patient-stt-column text-center" style="width: 34px; min-width: 34px; max-width: 34px;">STT</th>
+                        <th class="kb-patient-name-column">Tên</th>
+                        <th class="text-center" style="width: 45px;">NS</th>
+                        <th class="text-center" style="width: 40px;">GT</th>
+                        <th style="width: 75px;">Mã BN</th>
+                        <th class="text-center col-sticky-ls kb-history-col" style="width: 32px; min-width: 32px; max-width: 32px;">LS</th>
+                    </tr>
+                </thead>
+                <tbody id="kb-table-body">
+                    <tr><td colspan="6" class="text-center text-muted py-4">Đang tải danh sách...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="qlpm-pagination-bar mt-auto" id="kb-pagination"></div>
+    </section>
+
+    <!-- CỘT GIỮA: ĐIỀU HƯỚNG NHANH CÁC VÙNG NHẬP LIỆU -->
+    <aside class="kham-benh-section-nav" aria-label="Điều hướng nội dung khám bệnh">
+        <button type="button" class="kb-section-nav-btn active" data-target="kb-section-thong-tin" data-bs-toggle="tooltip" data-bs-placement="right" title="1. Thông tin bệnh nhân & Phác đồ" aria-label="Thông tin bệnh nhân và phác đồ">
+            <i class="bi bi-person-vcard"></i>
+        </button>
+        <button type="button" class="kb-section-nav-btn" data-target="kb-section-sinh-hieu" data-bs-toggle="tooltip" data-bs-placement="right" title="2. Sinh hiệu" aria-label="Sinh hiệu">
+            <i class="bi bi-heart-pulse"></i>
+        </button>
+        <button type="button" class="kb-section-nav-btn" data-target="kb-section-trieu-chung" data-bs-toggle="tooltip" data-bs-placement="right" title="3. Triệu chứng & Bệnh sử" aria-label="Triệu chứng">
+            <i class="bi bi-chat-left-text"></i>
+        </button>
+        <button type="button" class="kb-section-nav-btn" data-target="kb-section-chan-doan" data-bs-toggle="tooltip" data-bs-placement="right" title="4. Chẩn đoán bệnh (ICD-10)" aria-label="Chẩn đoán bệnh">
+            <i class="fa-solid fa-stethoscope"></i>
+        </button>
+        <button type="button" class="kb-section-nav-btn" data-target="kb-section-chi-dinh" data-bs-toggle="tooltip" data-bs-placement="right" title="5. Chỉ định Cận lâm sàng" aria-label="Chỉ định Cận lâm sàng">
+            <i class="bi bi-clipboard2-pulse"></i>
+        </button>
+        <button type="button" class="kb-section-nav-btn" data-target="kb-section-toa-thuoc" data-bs-toggle="tooltip" data-bs-placement="right" title="6. Toa thuốc điều trị" aria-label="Toa thuốc điều trị">
+            <i class="bi bi-capsule"></i>
+        </button>
+    </aside>
+
+    <!-- CỘT PHẢI: VÙNG KHÁM BỆNH DẠNG CUỘN -->
+    <section class="qlpm-pane-right kham-benh-form-pane" aria-label="Nội dung khám bệnh">
+        <div id="kb-empty-state" class="text-center my-auto py-5 text-muted">
+            <i class="bi bi-clipboard2-pulse fs-1 text-secondary mb-2 d-block"></i>
+            <h6 class="fw-bold">Chưa chọn bệnh nhân</h6>
+            <p class="small mb-0">Vui lòng chọn một bệnh nhân từ danh sách bên trái để bắt đầu khám bệnh.</p>
+        </div>
+
+        <div id="kb-detail-container" class="d-none d-flex flex-column h-100">
+            <div class="kb-entry-scroll flex-grow-1" id="kb-entry-scroll">
+                <!-- 1. THÔNG TIN BN + PHÁC ĐỒ -->
+                <section class="kb-scroll-section section-box kb-lines-1" id="kb-section-thong-tin" data-kb-section>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <div class="section-title kb-compact-title mb-0">
+                            <i class="bi bi-person-vcard me-1"></i> Thông tin:
+                        </div>
+                        <div class="d-flex align-items-center gap-2 flex-wrap flex-grow-1" id="kb-patient-header-bar">
+                            <div class="d-flex align-items-center gap-1 kb-info-name">
+                                @* <span class="kb-info-separator" aria-hidden="true">|</span> *@
+                                <input type="text" id="kb-header-ho-ten"
+                                       class="form-control-plaintext p-0 m-0 fw-bold text-uppercase text-primary kb-info-value"
+                                       readonly tabindex="-1" aria-readonly="true" />
+                            </div>
+                            <div class="d-flex align-items-center gap-1 kb-info-birth">
+                                <span class="kb-info-label">Ngày sinh:</span>
+                                <input type="text" id="kb-header-nam-sinh"
+                                       class="form-control-plaintext p-0 m-0 fw-semibold text-dark kb-info-value"
+                                       readonly tabindex="-1" aria-readonly="true" />
+                            </div>
+                            <div class="d-flex align-items-center gap-1 kb-info-gender">
+                                <span class="kb-info-label">Giới tính:</span>
+                                <input type="text" id="kb-header-gioi-tinh-text"
+                                       class="form-control-plaintext p-0 m-0 fw-semibold text-dark kb-info-value"
+                                       readonly tabindex="-1" aria-readonly="true" />
+                                <select id="kb-header-gioi-tinh" class="d-none"></select>
+                            </div>
+                            <div class="d-flex align-items-center gap-1 kb-info-regimen">
+                                <span class="kb-info-label">Phác đồ:</span>
+                                <div class="flex-grow-1 min-w-0">
+                                    <select id="kb-select-phac-do" class="form-select form-select-sm" placeholder="-- Chọn --"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Vùng lâm sàng: Sinh hiệu + Triệu chứng + Chẩn đoán -->
+                <div class="kb-clinical-group" aria-label="Sinh hiệu, triệu chứng và chẩn đoán">
+                <!-- 2-3. SINH HIỆU -->
+                <section class="kb-scroll-section section-box kb-lines-2" id="kb-section-sinh-hieu" data-kb-section>
+                    <div class="d-flex align-items-start gap-2">
+                        <div class="section-title kb-compact-title mb-0 pt-1">
+                            <i class="bi bi-heart-pulse me-1 text-danger"></i> Sinh hiệu:
+                        </div>
+                        <div class="sinh-hieu-box-inline flex-grow-1">
+                            <div class="row g-1 mb-1 align-items-center">
+                                <div class="col-xl-2 col-md-4 col-6">
+                                    <div class="input-group input-group-sm"><span class="input-group-text py-0">Mạch</span><input type="text" inputmode="decimal" id="sh-mach" class="form-control text-center py-0" placeholder="Lần/P" /></div>
+                                </div>
+                                <div class="col-xl-2 col-md-4 col-6">
+                                    <div class="input-group input-group-sm"><span class="input-group-text py-0">Nhiệt độ</span><input type="text" inputmode="decimal" id="sh-nhiet-do" class="form-control text-center py-0" placeholder="°C" /></div>
+                                </div>
+                                <div class="col-xl-3 col-md-4 col-6">
+                                    <div class="input-group input-group-sm"><span class="input-group-text py-0">Huyết áp</span><div class="kb-blood-pressure-inputs form-control py-0"><input type="text" inputmode="numeric" id="sh-huyet-ap-tam-thu" class="text-center" aria-label="Huyết áp" /><span aria-hidden="true">/</span><input type="text" inputmode="numeric" id="sh-huyet-ap-tam-truong" class="text-center" aria-label="Huyết áp tâm trương" /></div><input type="hidden" id="sh-huyet-ap" /></div>
+                                </div>
+                                <div class="col-xl-2 col-md-4 col-6">
+                                    <div class="input-group input-group-sm"><span class="input-group-text py-0">Nhịp thở</span><input type="text" inputmode="decimal" id="sh-nhip-tho" class="form-control text-center py-0" placeholder="Lần/P" /></div>
+                                </div>
+                                <div class="col-xl-3 col-md-4 col-6">
+                                    <div class="input-group input-group-sm"><span class="input-group-text py-0">SpO2</span><input type="text" inputmode="decimal" id="sh-spo2" class="form-control text-center py-0" placeholder="%" /></div>
+                                </div>
+                            </div>
+                            <div class="row g-1 align-items-center">
+                                <div class="col-md-4 col-6">
+                                    <div class="input-group input-group-sm"><span class="input-group-text py-0">Chiều cao</span><input type="text" inputmode="decimal" id="sh-chieu-cao" class="form-control text-center py-0" placeholder="cm" /></div>
+                                </div>
+                                <div class="col-md-4 col-6">
+                                    <div class="input-group input-group-sm"><span class="input-group-text py-0">Cân nặng</span><input type="text" inputmode="decimal" id="sh-can-nang" class="form-control text-center py-0" placeholder="Kg" /></div>
+                                </div>
+                                <div class="col-md-4 col-6">
+                                    <div class="input-group input-group-sm"><span class="input-group-text py-0">BMI</span><input type="text" id="sh-bmi" class="form-control text-center fw-bold text-primary py-0" readonly placeholder="--" /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4-5. TRIỆU CHỨNG -->
+                <section class="kb-scroll-section section-box kb-lines-1" id="kb-section-trieu-chung" data-kb-section>
+                    <div class="input-group input-group-sm kb-inline-input-title">
+                        <span class="input-group-text fw-semibold kb-trieu-chung-label" id="kb-label-trieu-chung">
+                            <i class="bi bi-chat-heart-fill me-1 text-danger"></i> Triệu chứng:
+                        </span>
+                        <textarea id="kb-trieu-chung" class="form-control" rows="1" placeholder="Nhập lý do khám, bệnh sử..." title="Nhấp chuột phải để tạo/quản lý cụm từ viết tắt"></textarea>
+                    </div>
+                </section>
+
+                <!-- 6-10. CHẨN ĐOÁN BỆNH -->
+                <section class="kb-scroll-section section-box kb-lines-5" id="kb-section-chan-doan" data-kb-section>
+                    <div class="kb-title-content-row kb-section-title-content">
+                        <div class="section-title kb-compact-title mb-0"><i class="fa-solid fa-stethoscope me-1"></i> Chẩn đoán:</div>
+                        <div class="kb-title-content-body kb-section-content">
+                            <div class="d-flex align-items-center gap-1 mb-1 kb-inline-section-toolbar">
+                                <div class="kb-compact-selector kb-diagnosis-selector">
+                                    <select id="kb-select-icd10" placeholder="Mã / tên bệnh"></select>
+                                </div>
+                            </div>
+                            <div class="table-responsive table-scroll-container border rounded kb-fixed-table-wrap kb-icd-scroll">
+                                <table class="table table-sm table-bordered m-0 grid-mini qlpm-one-line-head" id="kb-table-icd10">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 90px;">Mã bệnh</th>
+                                            <th>Tên bệnh</th>
+                                            <th style="width: 45px;" class="text-center">BĐ</th>
+                                            <th style="width: 55px;" class="text-center">Chính</th>
+                                            <th style="width: 45px;" class="text-center" title="Bệnh khác">#</th>
+                                            <th style="width: 40px;" class="text-center">Xóa</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="kb-tbody-icd10"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                </div>
+
+                <!-- 11-15. CHỈ ĐỊNH CẬN LÂM SÀNG -->
+                <section class="kb-scroll-section section-box kb-lines-5" id="kb-section-chi-dinh" data-kb-section>
+                    <div class="kb-title-content-row kb-section-title-content">
+                        <div class="section-title kb-compact-title mb-0"><i class="bi bi-clipboard2-pulse-fill me-1"></i> Chỉ định:</div>
+                        <div class="kb-title-content-body kb-section-content">
+                            <div class="d-flex gap-1 align-items-center mb-1 kb-inline-section-toolbar kb-order-toolbar">
+                                <div class="kb-compact-selector kb-order-selector">
+                                    <select id="kb-select-dich-vu" placeholder="Công việc / dịch vụ"></select>
+                                </div>
+                                <span class="badge bg-light text-primary border text-nowrap qlpm-money-total" id="kb-chi-dinh-tong-tien" title="Cộng tiền chỉ định cận lâm sàng">Cộng CĐ: 0 đ</span>
+                                <button type="button" class="btn btn-sm btn-primary py-0 px-2 fw-semibold text-nowrap text-white" id="btn-kb-in-chi-dinh" tabindex="-1" title="In riêng phiếu chỉ định theo gửi ngoài / nội bộ">
+                                    <i class="bi bi-printer-fill me-1 text-white"></i> In
+                                </button>
+                                @if (ViewBag.CanSuaKham as bool? == true)
+                                {
+                                    <button type="button" class="btn btn-sm btn-kb-ky-so py-0 px-2 fw-semibold text-nowrap" id="btn-kb-ky-so-chi-dinh" tabindex="-1" title="Ký toàn bộ chỉ định và mở xem trước khi in">
+                                        Ký số
+                                    </button>
+                                }
+                            </div>
+                            <div class="table-responsive table-scroll-container border rounded kb-fixed-table-wrap kb-order-scroll">
+                                <table class="table table-sm table-bordered m-0 grid-mini qlpm-one-line-head kb-order-table" id="kb-table-chi-dinh">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center kb-order-datetime-col">Ngày giờ</th>
+                                            <th class="kb-sticky-service-col">Công việc / Dịch vụ</th>
+                                            <th class="text-center">SL</th>
+                                            <th class="text-end">Đơn giá</th>
+                                            <th class="text-center">KQ</th>
+                                            <th class="text-center">Gửi ngoài</th>
+                                            <th class="text-center kb-order-actions-col">Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="kb-tbody-chi-dinh"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 16-22. TOA THUỐC ĐIỀU TRỊ -->
+                <section class="kb-scroll-section section-box kb-lines-7 mb-2" id="kb-section-toa-thuoc" data-kb-section>
+                    <div class="kb-title-content-row kb-section-title-content">
+                        <div class="section-title kb-compact-title mb-0"><i class="bi bi-capsule me-1"></i> Toa thuốc:</div>
+                        <div class="kb-title-content-body kb-section-content">
+                            <div class="d-flex align-items-center gap-1 mb-1 kb-inline-section-toolbar kb-prescription-toolbar">
+                                <div class="input-group input-group-sm kb-so-ngay-toolbar">
+                                    <span class="input-group-text py-0" title="Số ngày">SN</span>
+                                    <input type="number" id="kb-toa-so-ngay" class="form-control text-center fw-bold py-0" min="1" max="90" value="3" />
+                                </div>
+                                <label class="input-group input-group-sm kb-loai-toa-picker">
+                                    <span class="input-group-text py-0">Loại toa</span>
+                                    <select id="kb-loai-toa" class="form-select py-0">
+                                        <option value="c" selected>Đơn thuốc cơ bản [DTCB]</option>
+                                        <option value="n">Đơn thuốc gây nghiện [DTGN]</option>
+                                        <option value="h">Đơn thuốc hướng tâm thần và thuốc tiền chất [DTHTTVTTC]</option>
+                                    </select>
+                                </label>
+                                <span class="badge bg-success-subtle text-success border border-success-subtle qlpm-money-total" id="kb-footer-tong-tien" title="Cộng tiền đơn thuốc">
+                                    <i class="bi bi-cash-stack me-1"></i> Cộng Thuốc: <strong>0 đ</strong>
+                                </span>
+                                <button type="button" class="btn btn-sm btn-primary py-0 px-2 fw-semibold text-nowrap text-white" id="btn-kb-in-toa-thuoc" tabindex="-1" title="In đơn thuốc điều trị">
+                                    <i class="bi bi-printer-fill me-1 text-white"></i> In
+                                </button>
+                                @if (ViewBag.CanLienThongToaThuoc as bool? == true)
+                                {
+                                    <button type="button" class="btn btn-sm btn-kb-ky-so py-0 px-2 fw-semibold text-nowrap" id="btn-kb-ky-so-toa" tabindex="-1" title="Ký toàn bộ toa thuốc và mở xem trước khi in">
+                                        Ký số
+                                    </button>
+                                }
+                            </div>
+                            <div class="kb-prescription-picker-shell">
+                                <div class="table-responsive table-scroll-container border rounded-top mb-0 kb-fixed-table-wrap kb-prescription-scroll">
+                                    <table class="table table-sm table-bordered m-0 toa-grid-table table-input qlpm-one-line-head" id="kb-table-toa-thuoc">
+                                    <thead>
+                                        <tr class="text-center align-middle bg-light">
+
+                                            <th class="col-sticky-stt text-center" style="width:26px;min-width:26px;max-width:26px;">TT</th>
+                                            <th class="col-ngay-ke text-center" style="width:72px;min-width:72px;max-width:72px;">Ngày giờ</th>
+                                            <th class="col-sticky-thuoc text-start" style="width:150px;min-width:150px;max-width:150px;">Thuốc</th>
+                                            <th style="width:100px;min-width:100px;max-width:100px;" class="text-start">Hoạt chất</th>
+                                            <th class="text-center" title="Số ngày">SN</th>
+                                            <th class="text-center">ĐVT</th>
+                                            <th style="width:55px;min-width:55px;max-width:55px;" class="text-center">Sáng</th>
+                                            <th style="width:55px;min-width:55px;max-width:55px;" class="text-center">Trưa</th>
+                                            <th style="width:55px;min-width:55px;max-width:55px;" class="text-center">Chiều</th>
+                                            <th style="width:55px;min-width:55px;max-width:55px;" class="text-center">Tối</th>
+                                            <th style="width:90px;min-width:90px;max-width:90px;" class="text-center" title="Đường dùng">ĐD</th>
+                                            <th style="width:180px;min-width:180px;max-width:180px;" class="text-start">Cách dùng khác</th>
+                                            <th style="width:90px;min-width:90px;max-width:90px;" class="text-end">Đơn giá</th>
+                                            <th style="width:105px;min-width:105px;max-width:105px;" class="text-end">Thành tiền</th>
+                                            <th class="col-sticky-dvt-dung text-center" style="width:68px;min-width:68px;max-width:68px;">ĐVT dùng</th>
+                                            <th class="col-sticky-sl text-center" style="width:36px;min-width:36px;max-width:36px;">SL</th>
+                                            <th class="col-sticky-xoa text-center" style="width:45px;min-width:45px;max-width:45px;">Xóa</th>
+                                        </tr>
+                                    </thead>
+                                        <tbody id="kb-tbody-toa-thuoc"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="kb-footer-toathuoc" class="p-2 rounded-bottom bg-light border border-top-0">
+                                <div class="d-flex flex-wrap gap-2 align-items-center">
+                                    <div class="input-group input-group-sm" style="width:auto;">
+                                        <span class="input-group-text bg-white py-0">
+                                            <input type="checkbox" class="form-check-input me-1 mt-0" id="kb-chk-tai-kham" checked /> Tái khám:
+                                        </span>
+                                        <input type="text" id="kb-ngay-tai-kham" class="form-control text-center py-0" style="width: 105px;" placeholder="dd-mm-yyyy" disabled />
+                                    </div>
+                                </div>
+                                <div class="input-group input-group-sm kb-dan-do-input">
+                                    <span class="input-group-text bg-white py-0"><i class="bi bi-chat-left-dots me-1"></i> Dặn dò:</span>
+                                    <input type="text" id="kb-dan-do" class="form-control py-0" placeholder="Lời dặn của bác sĩ..." title="Nhấp chuột phải để tạo/quản lý cụm từ viết tắt" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="kham-benh-actions">
+                <button type="button" class="btn btn-outline-danger px-3" id="btn-kb-xoa-trang" title="Xóa trắng vùng nhập hiện tại, không thay đổi trạng thái khám">
+                    <i class="bi bi-eraser me-1"></i> Xóa trắng
+                </button>
+                <button type="button" class="btn btn-outline-secondary px-4" id="btn-kb-ke-lai">
+                    <i class="bi bi-arrow-repeat me-1"></i> Kê lại
+                </button>
+                <div class="kb-total-record text-danger fw-bold" id="kb-tong-ho-so-wrap">Tổng hồ sơ: <strong id="kb-tong-ho-so" class="text-danger">0 đ</strong></div>
+                <button type="button" class="btn btn-luu px-4 fw-bold" id="btn-kb-luu" title="L&#432;u d&#7919; li&#7879;u kh&#225;m xu&#7889;ng DB">
+                    <i class="bi bi-floppy-fill me-1"></i> Lưu (F2)
+                </button>
+                <button type="button" class="btn btn-success px-4" id="btn-kb-kham-xong" title="Lưu và hoàn tất khám">
+                    <i class="bi bi-check-circle-fill me-1"></i>Lưu & Khám xong
+                </button>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- XEM TRƯỚC PHÁC ĐỒ: cùng bố cục khám bệnh, chỉ xem - không ghi hồ sơ khi mở. -->
+<div class="modal fade" id="modalXemTruocPhacDo" tabindex="-1"
+     aria-labelledby="kb-pd-preview-title" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable kb-pd-preview-dialog">
+        <div class="modal-content kb-pd-preview-content">
+            <div class="modal-header py-2">
+                <div class="min-w-0">
+                    <h5 class="modal-title fw-bold" id="kb-pd-preview-title">Áp dụng phác đồ <span id="kb-pd-preview-code" class="text-primary"></span></h5>
+                    
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+            </div>
+            <div class="modal-body kb-pd-preview-body p-0" id="kb-pd-preview-body">
+                <div class="kb-pd-preview-clinical">
+                    <section class="kb-pd-preview-section">
+                        <div class="kb-pd-preview-section-label"><i class="bi bi-heart-pulse me-1"></i> Sinh hiệu:</div>
+                        <div class="kb-pd-preview-section-body">
+                            <div class="kb-pd-preview-vitals">
+                                <div class="input-group input-group-sm"><span class="input-group-text">Mạch</span><input class="form-control text-center" value="" readonly aria-label="Mạch" /></div>
+                                <div class="input-group input-group-sm"><span class="input-group-text">Nhiệt độ</span><input class="form-control text-center" value="" readonly aria-label="Nhiệt độ" /></div>
+                                <div class="input-group input-group-sm"><span class="input-group-text">Huyết áp</span><input class="form-control text-center" value="" readonly aria-label="Huyết áp" /></div>
+                                <div class="input-group input-group-sm"><span class="input-group-text">Nhịp thở</span><input class="form-control text-center" value="" readonly aria-label="Nhịp thở" /></div>
+                                <div class="input-group input-group-sm"><span class="input-group-text">SpO2</span><input class="form-control text-center" value="" readonly aria-label="SpO2" /></div>
+                                <div class="input-group input-group-sm"><span class="input-group-text">Chiều cao</span><input class="form-control text-center" value="" readonly aria-label="Chiều cao" /></div>
+                                <div class="input-group input-group-sm"><span class="input-group-text">Cân nặng</span><input class="form-control text-center" value="" readonly aria-label="Cân nặng" /></div>
+                                <div class="input-group input-group-sm"><span class="input-group-text">BMI</span><input class="form-control text-center" value="" readonly aria-label="BMI" /></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="kb-pd-preview-section">
+                        <div class="kb-pd-preview-section-label"><i class="bi bi-chat-heart-fill me-1"></i> Triệu chứng:</div>
+                        <div class="kb-pd-preview-section-body">
+                            <div class="kb-pd-preview-readonly" id="kb-pd-preview-symptoms"></div>
+                        </div>
+                    </section>
+                    <section class="kb-pd-preview-section">
+                        <div class="kb-pd-preview-section-label"><i class="fa-solid fa-stethoscope me-1"></i> Chẩn đoán:</div>
+                        <div class="kb-pd-preview-section-body">
+                            <div class="table-responsive">
+                                <table class="table table-sm table-bordered align-middle mb-0 kb-pd-preview-table">
+                                    <thead><tr><th style="width:100px">Mã bệnh</th><th>Tên bệnh</th>
+                                        <th class="text-center" style="width:54px">BĐ</th>
+                                        <th class="text-center" style="width:60px">Chính</th>
+                                        <th class="text-center" style="width:48px">#</th></tr></thead>
+                                    <tbody id="kb-pd-preview-diagnoses"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <section class="kb-pd-preview-section kb-pd-preview-orders">
+                    <div class="kb-pd-preview-section-label"><i class="bi bi-clipboard2-pulse-fill me-1"></i> Chỉ định:</div>
+                    <div class="kb-pd-preview-section-body">
+                        <div class="d-flex align-items-center justify-content-end mb-1">
+                            <span class="badge bg-light text-primary border qlpm-money-total">Cộng CĐ: <strong id="kb-pd-preview-orders-total">0 đ</strong></span>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-sm table-bordered align-middle mb-0 kb-pd-preview-table">
+                                <thead><tr><th class="kb-pd-preview-nowrap">Ngày giờ</th><th>Công việc / Dịch vụ</th>
+                                    <th class="text-center">SL</th><th class="text-end">Đơn giá</th>
+                                    <th class="text-center kb-pd-preview-nowrap">Gửi ngoài</th></tr></thead>
+                                <tbody id="kb-pd-preview-orders-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="kb-pd-preview-section kb-pd-preview-prescriptions">
+                    <div class="kb-pd-preview-section-label"><i class="bi bi-capsule me-1"></i> Toa thuốc:</div>
+                    <div class="kb-pd-preview-section-body">
+                        <div class="d-flex align-items-center gap-2 mb-1 flex-wrap">
+                            <span class="kb-pd-preview-readonly py-1 px-2">SN: <strong id="kb-pd-preview-days"></strong></span>
+                            <span class="kb-pd-preview-readonly py-1 px-2">Loại toa: <strong id="kb-pd-preview-type"></strong></span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle qlpm-money-total ms-auto">Cộng Thuốc: <strong id="kb-pd-preview-medicine-total">0 đ</strong></span>
+                        </div>
+                        <div class="table-responsive kb-pd-preview-prescription-scroll">
+                            <table class="table table-sm table-bordered align-middle mb-0 kb-pd-preview-table kb-pd-preview-medicine-table">
+                                <thead><tr>
+                                    <th>TT</th><th>Ngày giờ</th><th>Thuốc</th><th>Hoạt chất</th><th>SN</th><th>ĐVT</th>
+                                    <th>Sáng</th><th>Trưa</th><th>Chiều</th><th>Tối</th><th>ĐD</th><th>Cách dùng khác</th>
+                                    <th class="text-end">Đơn giá</th><th class="text-end">Thành tiền</th><th>ĐVT dùng</th><th>SL</th>
+                                </tr></thead>
+                                <tbody id="kb-pd-preview-medicines"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="modal-footer py-2 kb-pd-preview-footer">
+                <span class="fw-bold text-danger me-auto">Tổng hồ sơ: <strong id="kb-pd-preview-grand-total">0 đ</strong></span>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Không</button>
+                <button type="button" class="btn btn-primary px-3" id="kb-pd-preview-apply">
+                    <i class="bi bi-check-circle me-1"></i>Áp dụng
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL LỊCH SỬ KHÁM BỆNH (TỶ LỆ 3 : 7) -->
+<div class="modal fade" id="modalKhamLichSu" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header py-2 bg-light border-bottom">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-clock-history text-primary fs-5"></i>
+                    <div>
+                        <h6 class="modal-title fw-bold text-primary mb-0">Lịch sử khám bệnh</h6>
+                        <small class="text-muted" id="modal-ls-patient-info">Bệnh nhân: --</small>
+                    </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+            </div>
+            <div class="modal-body p-2">
+                <div class="modal-ls-layout">
+                    <!-- CỘT TRÁI (30%): DANH SÁCH LẦN KHÁM CŨ + Ô TÌM KIẾM -->
+                    <div class="modal-ls-left">
+                        <div class="input-group input-group-sm mb-2">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" id="modal-ls-search" class="form-control" placeholder="Lọc theo ngày, bác sĩ, bệnh..." />
+                        </div>
+                        <div class="overflow-auto flex-grow-1" id="modal-ls-list-container">
+                            <!-- Render các thẻ lần khám -->
+                        </div>
+                        <div class="qlpm-pagination-bar mt-1" id="modal-ls-pagination"></div>
+                    </div>
+
+                    <!-- CỘT PHẢI: HỒ SƠ CHI TIẾT CỦA LẦN KHÁM ĐƯỢC CHỌN -->
+                    <div class="modal-ls-right" id="modal-ls-detail-container">
+                        <div class="modal-ls-detail-placeholder" id="modal-ls-detail-empty">
+                            <i class="bi bi-calendar2-week fs-2 text-secondary mb-2"></i>
+                            <strong>Chưa chọn lần khám</strong>
+                            <span>Chọn một lần khám trong danh sách để xem hồ sơ chi tiết.</span>
+                        </div>
+                        <div id="modal-ls-detail-content" class="modal-ls-detail-content d-none">
+                            <!-- Chi tiết sinh hiệu, triệu chứng, chẩn đoán, cận lâm sàng, toa thuốc -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer py-2 d-flex justify-content-between align-items-center bg-light border-top">
+                <button type="button" class="btn btn-sm btn-secondary px-3" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-sm btn-primary px-4 fw-bold" id="btn-modal-ls-ke-lai" disabled>
+                    <i class="bi bi-arrow-repeat me-1"></i> Kê lại lần khám này
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- KẾT QUẢ CLS: lưu một file kết quả cho mỗi chỉ định -->
+<div class="modal fade" id="modalKetQuaCls" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable cls-result-modal">
+        <div class="modal-content">
+            <div class="modal-header py-2">
+                <div class="min-w-0">
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h5 class="modal-title mb-0">Kết quả cận lâm sàng</h5>
+                        <span class="badge bg-secondary" id="cls-result-status">Chưa có KQ</span>
+                    </div>
+                    <div class="small text-muted text-truncate" id="cls-modal-title-service"></div>
+                    <div class="small text-muted" id="cls-modal-patient"></div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+            </div>
+
+            <div class="modal-body p-3">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div>
+                        <strong>T&#224;i li&#7879;u k&#7871;t qu&#7843; CLS</strong>
+                        <span class="badge bg-secondary rounded-pill ms-1" id="cls-file-count">0</span>
+                    </div>
+                    <span class="small text-muted">Một file PDF hoặc ảnh JPG, PNG, WEBP mỗi chỉ định · tối đa 15 MB. Tải file mới sẽ thay thế file hiện tại.</span>
+                </div>
+                <input class="visually-hidden" type="file" id="cls-file-input" accept=".pdf,.jpg,.jpeg,.png,.webp,application/pdf,image/jpeg,image/png,image/webp" tabindex="-1" />
+                <div class="cls-file-dropzone" id="cls-file-dropzone" role="button" tabindex="0" aria-label="Ch&#7885;n ho&#7863;c th&#7843; file k&#7871;t qu&#7843 CLS">
+                    <i class="bi bi-cloud-arrow-up fs-2 text-primary" aria-hidden="true"></i>
+                    <div class="fw-semibold">K&#233;o file v&#224;o &#273;&#226;y ho&#7863;c b&#7845;m &#273;&#7875; ch&#7885;n</div>
+                    <div class="small text-muted">Ch&#7885;n ho&#7863;c th&#7843; m&#7897;t file. T&#7843;i file m&#7899;i s&#7869; thay file hi&#7879;n t&#7841;i.</div>
+                </div>
+                <div id="cls-upload-queue" class="mt-2"></div>
+                <div class="d-flex justify-content-end mt-2">
+                    <button class="btn btn-primary" type="button" id="btn-cls-upload" disabled>
+                        <i class="bi bi-upload me-1"></i>T&#7843;i file &#273;&#227; ch&#7885;n l&#234;n
+                    </button>
+                </div>
+                <hr class="my-3" />
+                <div id="cls-file-list"></div>
+            </div>
+
+            <div class="modal-footer py-2 d-flex justify-content-end align-items-center">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="cls-result-preview-overlay" class="cls-result-preview-overlay d-none" role="dialog" aria-modal="true" aria-labelledby="cls-preview-title" aria-hidden="true">
+    <div class="cls-result-preview-content">
+        <div class="cls-result-preview-header">
+            <div class="min-w-0">
+                <h4 class="mb-1" id="cls-preview-title">Xem kết quả CLS</h4>
+                <div class="small text-muted text-truncate" id="cls-viewer-title-service"></div>
+                <div class="small text-muted" id="cls-viewer-patient"></div>
+            </div>
+            <div class="cls-result-preview-actions">
+                <a id="cls-viewer-download-link" class="btn btn-sm btn-outline-primary" href="#" download>Tải file</a>
+                <button type="button" class="btn btn-sm btn-primary" id="btn-cls-preview-print">In</button>
+                <button type="button" class="btn btn-sm btn-secondary" id="btn-cls-preview-close">Đóng</button>
+            </div>
+        </div>
+        <div id="cls-viewer-download-notice" class="cls-result-preview-message d-none">
+            Tài liệu này không xem trước được trong trình duyệt. Hãy tải file về để mở.
+        </div>
+        <div id="cls-viewer-loading" class="cls-result-preview-message d-none">Đang tải tài liệu...</div>
+        <iframe id="cls-result-pdf-viewer" title="Tài liệu kết quả CLS" class="cls-result-pdf-viewer"></iframe>
+    </div>
+</div>
+
+<!-- MODAL TẠO CỤM TỪ VIẾT TẮT CHO TRIỆU CHỨNG / DẶN DÒ -->
+<div class="modal fade" id="modalVietTatTrieuChung" tabindex="-1" aria-labelledby="modalVietTatTrieuChungLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content shadow border-0" style="border-radius: 8px;">
+            <div class="modal-header py-2 px-3 border-0">
+                <h5 class="modal-title fs-6 fw-bold text-dark mb-0" id="modalVietTatTrieuChungLabel">
+                    Tạo cụm từ viết tắt
+                </h5>
+                <span class="badge bg-light text-primary border ms-2" id="modal-viet-tat-loai">Triệu chứng</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng" style="font-size: 11px;"></button>
+            </div>
+            <div class="modal-body p-3 pt-0">
+                <div class="d-flex justify-content-end mb-2">
+                    <button type="button" class="btn btn-primary btn-sm px-3 py-1 text-nowrap" id="btn-them-viet-tat" style="font-size: 13px; border-radius: 4px;">
+                        Thêm mới
+                    </button>
+                </div>
+                <div class="table-responsive border rounded" id="table-viet-tat-container" style="max-height: 420px; overflow-y: auto;">
+                    <table class="table table-sm align-middle mb-0" id="table-viet-tat" style="font-size: 13px; border-collapse: separate; border-spacing: 0;">
+                        <thead class="sticky-top" style="background-color: #eaedf1;">
+                            <tr class="text-secondary fw-semibold">
+                                <th style="width: 130px; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;" class="text-center py-2">Viết tắt</th>
+                                <th style="border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;" class="text-center py-2">Cụm từ viết tắt</th>
+                                <th style="width: 50px; border-bottom: 1px solid #dee2e6;" class="text-center py-2">Xóa</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-viet-tat">
+                            <!-- Dữ liệu danh sách cụm từ viết tắt -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer py-2 px-3 border-0 d-flex justify-content-end gap-2">
+                <button type="button" class="btn btn-primary px-4 py-1" id="btn-luu-viet-tat" style="font-size: 13.5px; border-radius: 4px;">
+                    Lưu
+                </button>
+                <button type="button" class="btn btn-light border px-3 py-1" data-bs-dismiss="modal" style="font-size: 13.5px; border-radius: 4px; background-color: #fff;">
+                    Đóng
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<iframe id="kham-benh-print-frame" title="Bản in PDF" style="display:none"></iframe>
+
+@section Scripts {
+    <script src="~/js/kham_benh/khambenh.js?v=@DateTime.Now.Ticks" asp-append-version="true"></script>
+}

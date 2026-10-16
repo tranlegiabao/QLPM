@@ -1,0 +1,24 @@
+@model QuanLyPhongMach.Models.Printing.KhamBenh.KhamBenhPrintDocument
+<table class="info-grid vitals-grid">
+    @for (var row = 0; row < Math.Max(1, (Model.SinhHieu.Count + 3) / 4); row++)
+    {
+        <tr>
+            @for (var column = 0; column < 4; column++)
+            {
+                var index = row * 4 + column;
+                if (index < Model.SinhHieu.Count)
+                {
+                    var vital = Model.SinhHieu[index];
+                    <td>
+                        <span class="label">@vital.Ten:</span>
+                        @vital.GiaTri@if (!string.IsNullOrWhiteSpace(vital.GiaTri) && !string.IsNullOrWhiteSpace(vital.DonViTinh)) { <text> @vital.DonViTinh</text> }
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                }
+            }
+        </tr>
+    }
+</table>

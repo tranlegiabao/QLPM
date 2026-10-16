@@ -1,0 +1,59 @@
+@model QuanLyPhongMach.Models.Printing.KhamBenh.KhamBenhPrintDocument
+@using System.Globalization
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    @await Html.PartialAsync("~/Views/kham_benh/In/_ClinicalPrintStyles.cshtml")
+</head>
+<body class="print-document print-document--prescription">
+@foreach (var sheet in Model.ToaPages)
+{
+    <section class="print-page">
+        @await Html.PartialAsync("~/Views/kham_benh/In/_ClinicalPrintHeader.cshtml", Model)
+        <h1 class="document-title">@sheet.TieuDe</h1>
+        <div class="document-subtitle">@sheet.MaToaThuoc</div>
+        @{
+            ViewData["PatientNameLabel"] = "Tên bệnh nhân";
+            ViewData["ShowPatientIdentity"] = true;
+        }
+        @await Html.PartialAsync("~/Views/kham_benh/In/_ClinicalPatientInfo.cshtml", Model)
+        @await Html.PartialAsync("~/Views/kham_benh/In/_ClinicalVitals.cshtml", Model)
+        <div class="clinical-row"><span class="label">Chẩn đoán:</span> @Model.ChanDoan</div>
+
+        <table class="clinical-table">
+            <thead><tr><th style="width: 6.7%">STT</th><th>Tên thuốc</th><th style="width: 10.4%">SL</th></tr></thead>
+            <tbody>
+            @for (var i = 0; i < sheet.Thuoc.Count; i++)
+            {
+                var row = sheet.Thuoc[i];
+                <tr>
+                    <td class="text-center">@(i + 1)</td>
+                    <td>
+                        <div>
+                            <span class="medicine-name">@row.TenThuoc</span>
+                            @if (!string.IsNullOrWhiteSpace(row.HamLuong)) { <text> <span class="medicine-detail">(@row.HamLuong)</span></text> }
+                            @if (!string.IsNullOrWhiteSpace(row.HoatChat)) { <text> <span class="medicine-detail">(@row.HoatChat)</span></text> }
+                        </div>
+                        <div class="dose">@row.LieuDung</div>
+                    </td>
+                    <td class="nowrap"><strong>@(row.SoLuong < 10 && row.SoLuong > 0 ? "0" + row.SoLuong.ToString("0.##", CultureInfo.InvariantCulture) : row.SoLuong.ToString("0.##", CultureInfo.InvariantCulture))</strong> @row.DonViTinh</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+        <div class="notes"><span class="label">Lời dặn:</span>@if (!string.IsNullOrWhiteSpace(Model.LoiDan)) { <text> @Model.LoiDan</text> }</div>
+        @if (Model.NgayTaiKham.HasValue) { <div class="notes follow-up"><strong>Ngày tái khám:</strong> <strong>@Model.NgayTaiKham.Value.ToString("dd-MM-yyyy")</strong></div> }
+
+        <div class="signatures">
+            <div class="signature"></div>
+            <div class="signature"><div class="issue-date">Ngày @sheet.NgayKe.ToString("dd") tháng @sheet.NgayKe.ToString("MM") năm @sheet.NgayKe.ToString("yyyy")</div><strong>Bác sĩ/Y sĩ khám bệnh</strong><div class="muted">(Ký, ghi rõ họ tên)</div><div class="signature__space"><span class="signature__anchor signature__anchor--top">QLPM_TOA_TOP</span><span class="signature__anchor signature__anchor--bottom">QLPM_TOA_BOTTOM</span></div><strong>@sheet.BacSi</strong></div>
+        </div>
+
+    </section>
+}
+@* fixed footer appears at the bottom of each printed sheet, not at the end of the content block *@
+@await Html.PartialAsync("~/Views/kham_benh/In/_ClinicalGuardianInfo.cshtml", Model)
+</body>
+</html>

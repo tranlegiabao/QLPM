@@ -1,0 +1,102 @@
+﻿[
+  {
+    "id": 1,
+    "ma": "VN",
+    "ten": "Việt Nam"
+  },
+  {
+    "id": 2,
+    "ma": "LA",
+    "ten": "Lào"
+  },
+  {
+    "id": 3,
+    "ma": "KH",
+    "ten": "Campuchia"
+  },
+  {
+    "id": 4,
+    "ma": "TH",
+    "ten": "Thái Lan"
+  },
+  {
+    "id": 5,
+    "ma": "SG",
+    "ten": "Singapore"
+  },
+  {
+    "id": 6,
+    "ma": "MY",
+    "ten": "Malaysia"
+  },
+  {
+    "id": 7,
+    "ma": "ID",
+    "ten": "Indonesia"
+  },
+  {
+    "id": 8,
+    "ma": "PH",
+    "ten": "Philippines"
+  },
+  {
+    "id": 9,
+    "ma": "CN",
+    "ten": "Trung Quốc"
+  },
+  {
+    "id": 10,
+    "ma": "KR",
+    "ten": "Hàn Quốc"
+  },
+  {
+    "id": 11,
+    "ma": "JP",
+    "ten": "Nhật Bản"
+  },
+  {
+    "id": 12,
+    "ma": "TW",
+    "ten": "Đài Loan"
+  },
+  {
+    "id": 13,
+    "ma": "US",
+    "ten": "Hoa Kỳ"
+  },
+  {
+    "id": 14,
+    "ma": "GB",
+    "ten": "Vương Quốc Anh"
+  },
+  {
+    "id": 15,
+    "ma": "FR",
+    "ten": "Pháp"
+  },
+  {
+    "id": 16,
+    "ma": "DE",
+    "ten": "Đức"
+  },
+  {
+    "id": 17,
+    "ma": "RU",
+    "ten": "Nga"
+  },
+  {
+    "id": 18,
+    "ma": "AU",
+    "ten": "Úc"
+  },
+  {
+    "id": 19,
+    "ma": "CA",
+    "ten": "Canada"
+  },
+  {
+    "id": 99,
+    "ma": "XX",
+    "ten": "Quốc tịch khác"
+  }
+]

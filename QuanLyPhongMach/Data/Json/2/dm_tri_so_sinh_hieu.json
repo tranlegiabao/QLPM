@@ -1,0 +1,65 @@
+﻿[
+  {
+    "id": 1,
+    "ma": "MACH",
+    "ten": "Mạch",
+    "don_vi_tinh": "Lần/P",
+    "thu_tu": 1
+  },
+  {
+    "id": 2,
+    "ma": "NDO",
+    "ten": "Nhiệt độ",
+    "don_vi_tinh": "°C",
+    "thu_tu": 2
+  },
+  {
+    "id": 3,
+    "ma": "HA_TT",
+    "ten": "Huyết áp tâm thu",
+    "don_vi_tinh": "mmHg",
+    "thu_tu": 3
+  },
+  {
+    "id": 4,
+    "ma": "HA_TR",
+    "ten": "Huyết áp tâm trương",
+    "don_vi_tinh": "mmHg",
+    "thu_tu": 4
+  },
+  {
+    "id": 5,
+    "ma": "NT",
+    "ten": "Nhịp thở",
+    "don_vi_tinh": "Lần/P",
+    "thu_tu": 5
+  },
+  {
+    "id": 6,
+    "ma": "SPO2",
+    "ten": "SpO2",
+    "don_vi_tinh": "%",
+    "thu_tu": 6
+  },
+  {
+    "id": 7,
+    "ma": "CCAO",
+    "ten": "Chiều cao",
+    "don_vi_tinh": "cm",
+    "thu_tu": 7
+  },
+  {
+    "id": 8,
+    "ma": "CNANG",
+    "ten": "Cân nặng",
+    "don_vi_tinh": "Kg",
+    "thu_tu": 8
+  },
+  {
+    "id": 9,
+    "ma": "BMI",
+    "ten": "BMI",
+    "don_vi_tinh": "Kg/m²",
+    "thu_tu": 9
+  }
+]

@@ -1,0 +1,19 @@
+@model QuanLyPhongMach.Models.ViewModels.CauHinhHeThongViewModel
+@{
+    ViewData["Title"] = $"Cấu hình - {Model.TenCskcb}";
+}
+<div class="container-fluid admin-workspace">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h1 class="h5 mb-1">Cấu hình cơ sở KCB</h1>
+            <p class="small text-muted mb-0">@Model.TenCskcb</p>
+        </div>
+        <a class="btn btn-outline-secondary btn-sm" href="/he_thong/cskcb/@Model.IdCskcb?tab=cau-hinh">
+            <i class="bi bi-arrow-left me-1"></i>Về tab Cấu hình
+        </a>
+    </div>
+    <partial name="~/Views/he_thong/_CauHinhTab.cshtml" model="Model" />
+</div>
+@section Scripts {
+    <script src="~/js/he_thong/cau_hinh.js" asp-append-version="true"></script>
+}

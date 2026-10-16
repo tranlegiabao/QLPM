@@ -1,0 +1,284 @@
+@{
+    var hienThiThanhPhanHe = ViewBag.HienThiThanhPhanHe as bool? ?? true;
+    var daDangNhap = User.Identity?.IsAuthenticated == true;
+    var hoTenDangNhap = daDangNhap ? User.LayHoTen() : string.Empty;
+    var tenDangNhap = daDangNhap ? User.LayTenDangNhap() : string.Empty;
+    var tenVaiTro = daDangNhap ? User.LayTenVaiTro() : string.Empty;
+    var coQuyenTiepNhan = daDangNhap && User.CoQuyen("tiep_nhan", "Xem");
+    var coQuyenKhamBenh = daDangNhap && User.CoQuyen("kham_benh", "Xem");
+    var coQuyenThuNgan = daDangNhap && User.CoQuyen("thu_ngan", "Xem");
+    var coQuyenKho = daDangNhap && User.CoQuyen("kho", "Xem");
+    var coQuyenCapPhat = daDangNhap && User.CoQuyen("kho_cap_phat", "Xem");
+    var coQuyenLienThongToaThuoc = daDangNhap && User.CoQuyen("lien_thong_toa_thuoc", "Xem");
+    var laQuanTriHeThong = daDangNhap && User.IsInRole("quan_tri_he_thong");
+    var coQuyenNhomKhamBenh = coQuyenTiepNhan || coQuyenKhamBenh || coQuyenThuNgan || coQuyenCapPhat;
+    var duongDanNhomKhamBenh = coQuyenTiepNhan
+        ? "/tiep_nhan"
+        : coQuyenKhamBenh
+            ? "/kham_benh"
+            : coQuyenThuNgan
+                ? "/thu_ngan"
+                : "/kho";
+    var coQuyenHeThong = daDangNhap &&
+        (User.CoQuyen("he_thong_nhan_vien", "Xem")
+         || User.CoQuyen("he_thong_tai_khoan", "Xem")
+         || User.CoQuyen("he_thong_vai_tro", "Xem")
+         || User.CoQuyen("he_thong_phan_quyen", "Xem"));
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Quản Lý Phòng Mạch</title>
+    <link rel="icon" type="image/svg+xml" href="~/static/logo-mark.svg" />
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/his-datetimepicker/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="~/lib/tom-select.bootstrap5.min.css" />
+    <link rel="stylesheet" href="~/css/site.css?v=@DateTime.Now.Ticks" asp-append-version="true" />
+    <script>
+        window.currentUser = {
+            hoTen: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(hoTenDangNhap)),
+            tenDangNhap: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(tenDangNhap)),
+            vaiTro: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(tenVaiTro))
+        };
+    </script>
+</head>
+<body class="@(hienThiThanhPhanHe && daDangNhap ? "co-thanh-phan-he" : "khong-co-thanh-phan-he")">
+    @if (daDangNhap)
+    {
+        <header class="qlpm-header">
+            <div class="qlpm-header-left">
+                <a href="/" class="qlpm-logo" aria-label="Trang chủ SixOs - Quản lý Phòng mạch">
+                    <img src="~/static/logo.svg" alt="" />
+                </a>
+
+                <nav class="qlpm-header-menu" aria-label="Menu hệ thống">
+                    <ul class="nav align-items-center">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle @(ViewBag.ActiveTab == "danh_muc" ? "" : "active")" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-grid-fill me-1"></i> Quản lý
+                            </a>
+                            <ul class="dropdown-menu shadow border-0 mt-2 qlpm-management-menu">
+                                @if (coQuyenNhomKhamBenh)
+                                {
+                                    <li><a class="dropdown-item py-2" href="@duongDanNhomKhamBenh"><i class="bi bi-clipboard2-pulse me-2 text-primary"></i> Khám bệnh</a></li>
+                                }
+                                @if (coQuyenKho)
+                                {
+                                    <li><a class="dropdown-item py-2" href="/kho/quan-ly?tab=ton-kho"><i class="bi bi-box-seam me-2 text-primary"></i> Quản lý kho</a></li>
+                                }
+                                @if (User.CoQuyen("phac_do", "Xem"))
+                                {
+                                    <li><a class="dropdown-item py-2" href="/phac_do"><i class="bi bi-journal-medical me-2 text-success"></i> Quản lý phác đồ</a></li>
+                                }
+                                @if (coQuyenLienThongToaThuoc)
+                                {
+                                    <li><a class="dropdown-item py-2" href="/lien_thong_toa_thuoc"><i class="bi bi-cloud-arrow-up me-2 text-success"></i> Liên thông toa thuốc quốc gia</a></li>
+                                }
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="event.preventDefault(); showToast('info', 'Báo cáo đang được phát triển.');">Báo cáo</a>
+                        </li>
+                        @if (coQuyenKho)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle @(ViewBag.ActiveTab == "danh_muc" ? "active" : "")" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Danh mục</a>
+                                <ul class="dropdown-menu shadow border-0 mt-2">
+                                    <li><a class="dropdown-item py-2" href="/danh_muc/nha_cung_cap"><i class="bi bi-truck me-2 text-primary"></i> Nhà cung cấp</a></li>
+                                </ul>
+                            </li>
+                        }
+                        @if (coQuyenHeThong)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="/he_thong"><i class="bi bi-gear me-1"></i>Hệ thống</a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="qlpm-account dropdown">
+                <span class="qlpm-cskcb-logo" title="Logo cơ sở KCB">
+                    <img id="qlpm-cskcb-logo-img"
+                         src="~/static/cskcb-default.svg"
+                         data-default-src="/static/cskcb-default.svg"
+                         alt="Logo cơ sở KCB" />
+                </span>
+                <button class="btn btn-link text-decoration-none text-reset p-0 text-end" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="d-block small qlpm-account-role" style="text-transform:none" title="Account">Account</span>
+                    <strong class="d-block">@(string.IsNullOrWhiteSpace(tenDangNhap) ? User.Identity?.Name : tenDangNhap)</strong>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
+                    @if (coQuyenHeThong)
+                    {
+                        <li><a class="dropdown-item" href="/he_thong"><i class="bi bi-gear me-2"></i>Quản trị hệ thống</a></li>
+                    }
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                        <button class="dropdown-item text-danger" type="button" onclick="fetch('/api/xac_thuc/dang_xuat',{method:'POST',credentials:'same-origin'}).finally(()=>location.href='/xac_thuc/dang_nhap')">
+                            <i class="bi bi-box-arrow-right me-2"></i>Đăng xuất
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </header>
+    }
+
+    @if (hienThiThanhPhanHe && daDangNhap)
+    {
+        <nav class="qlpm-nav-tabs" aria-label="Phân hệ nghiệp vụ">
+            <ul class="nav">
+                @if (coQuyenTiepNhan)
+                {
+                    <li class="nav-item">
+                        <a id="tab-nav-tiep-nhan" class="nav-link @(ViewBag.ActiveTab == "tiep_nhan" ? "active" : "")" href="/tiep_nhan">
+                            <i class="bi bi-person-lines-fill me-1"></i> Thông tin hành chính
+                        </a>
+                    </li>
+                }
+                @if (coQuyenKhamBenh)
+                {
+                    <li class="nav-item">
+                        <a id="tab-nav-kham-benh" class="nav-link @(ViewBag.ActiveTab == "kham_benh" ? "active" : "")" href="/kham_benh">
+                            <i class="bi bi-clipboard2-pulse me-1"></i> Khám bệnh
+                        </a>
+                    </li>
+                }
+                @if (coQuyenThuNgan)
+                {
+                    <li class="nav-item">
+                        <a id="tab-nav-thu-ngan" class="nav-link @(ViewBag.ActiveTab == "thu_ngan" ? "active" : "")" href="/thu_ngan">
+                            <i class="bi bi-cash-coin me-1"></i> Thu ngân
+                        </a>
+                    </li>
+                }
+                @if (coQuyenCapPhat)
+                {
+                    <li class="nav-item">
+                        <a id="tab-nav-kho" class="nav-link @(ViewBag.ActiveTab == "kho" ? "active" : "")" href="/kho">
+                            <i class="bi bi-capsule me-1"></i> Cấp phát thuốc
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+
+    <main role="main" class="qlpm-container">
+        @RenderBody()
+    </main>
+
+    @if (daDangNhap)
+    {
+        <footer class="qlpm-footer">
+            <span>Đơn vị phối hợp thực hiện</span>
+            <span class="qlpm-footer-separator">•</span>
+            <span>Công ty TNHH phần mềm Vũ Phong</span>
+            <span class="qlpm-footer-separator">•</span>
+            <span>Website: <strong>SixOsSoft.com</strong></span>
+            <span class="qlpm-footer-separator">•</span>
+            <span>Email: Vuphongsoft@gmail.com</span>
+            <span class="qlpm-footer-separator">•</span>
+            <span>SĐT: 0901.87.88.96</span>
+        </footer>
+    }
+
+    <div class="modal fade" id="modalDirtyGuard" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title modal-dirty-title"><i class="bi bi-exclamation-triangle-fill me-2"></i> Dữ liệu chưa lưu!</h5>
+                </div>
+                <div class="modal-body fs-6 py-3">
+                    Bệnh nhân đang có dữ liệu chưa lưu.<br />
+                    Nếu tiếp tục, các dữ liệu chưa lưu này sẽ bị bỏ.<br />
+                    Bạn có muốn tiếp tục không?
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="button" class="btn btn-secondary" id="btnDirtyGuardCancel">Không</button>
+                    <button type="button" class="btn btn-danger" id="btnDirtyGuardDiscard">Bỏ dữ liệu và tiếp tục</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalXacNhanChung" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header py-2">
+                    <h5 class="modal-title" id="modal-xac-nhan-tieu-de">Xác nhận thao tác</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                </div>
+                <div class="modal-body" id="modal-xac-nhan-noi-dung">Bạn có muốn tiếp tục không?</div>
+                <div class="modal-footer py-2">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+                    <button type="button" class="btn btn-primary" id="btn-modal-xac-nhan-dong-y">Đồng ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex position-fixed top-0 bottom-0 modal-blur fade" id="page-loader-body" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: -1; left: 0; right: 0;">
+        <div class="modal-dialog modal-sm modal-dialog-centered w-20" role="document">
+            <div class="modal-content">
+                <div class="container container-slim py-4">
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <span class="navbar-brand navbar-brand-autodark"><img src="/static/logo12.svg" height="36" alt=""></span>
+                        </div>
+                        <div class="text-white mb-3 fw-bolder fs-2" id="page-loader-text">Đang tải...</div>
+                        <div class="progress progress-sm">
+                            <div class="progress-bar progress-bar-indeterminate"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/his-datetimepicker/moment-with-locales.min.js"></script>
+    <script src="~/lib/his-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/lib/tom-select.complete.min.js"></script>
+    <script src="~/js/common/toast.js" asp-append-version="true"></script>
+    <script src="~/js/common/pageloader.js" asp-append-version="true"></script>
+    <script src="~/js/common/xac_nhan.js" asp-append-version="true"></script>
+    <script src="~/js/common/api.js" asp-append-version="true"></script>
+    <script src="~/js/common/datetimepicker.js" asp-append-version="true"></script>
+    <script src="~/js/common/tomselect.js" asp-append-version="true"></script>
+    <script src="~/js/common/pagination.js" asp-append-version="true"></script>
+    <script src="~/js/common/no_autofill.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @if (daDangNhap)
+    {
+        <script>
+            document.addEventListener('DOMContentLoaded', async () => {
+                const img = document.getElementById('qlpm-cskcb-logo-img');
+                if (!img) return;
+                const fallback = img.dataset.defaultSrc || '/static/cskcb-default.svg';
+                img.addEventListener('error', () => {
+                    if (img.getAttribute('src') !== fallback) img.setAttribute('src', fallback);
+                });
+                try {
+                    const response = await fetch('/api/he_thong/cskcb/hien_tai', { credentials: 'same-origin' });
+                    if (!response.ok) return;
+                    const payload = await response.json();
+                    const url = payload?.data?.url_logo;
+                    if (typeof url === 'string' && url.trim()) img.setAttribute('src', url.trim());
+                } catch (_) {
+                    // Logo mặc định vẫn được giữ nếu không đọc được ngữ cảnh CSKCB.
+                }
+            });
+        </script>
+    }
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

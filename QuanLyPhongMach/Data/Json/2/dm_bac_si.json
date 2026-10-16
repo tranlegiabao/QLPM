@@ -1,0 +1,74 @@
+﻿[
+  {
+    "id": 1,
+    "ma": "Admin",
+    "ten": "Admin",
+    "id_chuc_danh": null,
+    "chuc_danh": null,
+    "viet_tat_chuc_danh": null
+  },
+  {
+    "id": 18,
+    "ma": "NV009",
+    "ten": "bảo",
+    "id_chuc_danh": 1,
+    "chuc_danh": "Bác sĩ",
+    "viet_tat_chuc_danh": "BS"
+  },
+  {
+    "id": 17,
+    "ma": "NV0009",
+    "ten": "Đỗ Hoàng Nam",
+    "id_chuc_danh": 1,
+    "chuc_danh": "Bác sĩ",
+    "viet_tat_chuc_danh": "BS"
+  },
+  {
+    "id": 8,
+    "ma": "NV0009",
+    "ten": "Lê Quốc Bảo",
+    "id_chuc_danh": 1,
+    "chuc_danh": "Bác sĩ",
+    "viet_tat_chuc_danh": "BS"
+  },
+  {
+    "id": 6,
+    "ma": "NV0009",
+    "ten": "Nguyễn Minh Khoa",
+    "id_chuc_danh": 1,
+    "chuc_danh": "Bác sĩ",
+    "viet_tat_chuc_danh": "BS"
+  },
+  {
+    "id": 5,
+    "ma": "NV0009",
+    "ten": "nice",
+    "id_chuc_danh": 1,
+    "chuc_danh": "Bác sĩ",
+    "viet_tat_chuc_danh": "BS"
+  },
+  {
+    "id": 3,
+    "ma": "NV0009",
+    "ten": "ThS Cận Lâm Sàng",
+    "id_chuc_danh": null,
+    "chuc_danh": null,
+    "viet_tat_chuc_danh": null
+  },
+  {
+    "id": 2,
+    "ma": "NV0009",
+    "ten": "ThS Khoa Tâm Thần 2",
+    "id_chuc_danh": null,
+    "chuc_danh": null,
+    "viet_tat_chuc_danh": null
+  },
+  {
+    "id": 7,
+    "ma": "NV0009",
+    "ten": "Trần Hải Yến",
+    "id_chuc_danh": 1,
+    "chuc_danh": "Bác sĩ",
+    "viet_tat_chuc_danh": "BS"
+  }
+]
